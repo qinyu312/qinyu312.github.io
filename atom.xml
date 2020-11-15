@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qinyu312.github.io</id>
     <title>Gridea</title>
-    <updated>2020-11-15T14:34:24.745Z</updated>
+    <updated>2020-11-15T15:53:08.377Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qinyu312.github.io"/>
     <link rel="self" href="https://qinyu312.github.io/atom.xml"/>
@@ -10,20 +10,6 @@
     <logo>https://qinyu312.github.io/images/avatar.png</logo>
     <icon>https://qinyu312.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
-    <entry>
-        <title type="html"><![CDATA[淸鷠]]></title>
-        <id>https://qinyu312.github.io/post/ji-yi-ci-bu-tong-xun-chang-de-ge-ren-blog-da-jian/</id>
-        <link href="https://qinyu312.github.io/post/ji-yi-ci-bu-tong-xun-chang-de-ge-ren-blog-da-jian/">
-        </link>
-        <updated>2020-11-15T12:29:35.000Z</updated>
-        <content type="html"><![CDATA[<pre><code>得益于大佬的指点教学，我的第一个blog网站顺利建成通🚗。以后的日子里，希望点滴积累
-```
-</code></pre>
-<p>for each(item =&gt; (){</p>
-<p>})<br>
-```</p>
-]]></content>
-    </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://qinyu312.github.io/post/hello-gridea/</id>
