@@ -1,287 +1,304 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-
 <head>
-    <meta charset="UTF-8" />
-<title>҉҉҈淸鷠҉҉҈、</title>
-<meta name="description" content="万般皆苦，唯有自渡">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
-<link type='text/css' rel='stylesheet' href='https://qinyu312.github.io/styles/main.css' media='screen' />
-<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css">
-<link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<script type="text/javascript" src='https://qinyu312.github.io/media/scripts/jquery.js'></script>
-<script type="text/javascript" src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/go.min.js"></script>
-<script>
-    hljs.initHighlightingOnLoad();
-</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://qinyu312.github.io/media/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
+    <link rel="stylesheet" href="https://qinyu312.github.io/styles/main.css">
+    <meta name="description" content="万般皆苦，唯有自渡" />
+    <title>҉҉҈淸鷠҉҉҈、</title>
 </head>
 
+
 <body>
-
-    <div class="layout theme-dark">
-
-        <div class="layout-header">
-
-	<div class="layout-header-main">
-		<div class="container">
-			<div class="row justify-content-lg-center">
-				<div class="col-12 col-lg-9">
-
-					<div class="navbar">
-
-						<div class="logo">
-							<a href="https://qinyu312.github.io">
-								<img class="logo"
-									src="https://qinyu312.github.io/media/images/site_avatar.png?v=1605600351132"
-									alt="">
-							</a>
-						</div>
-
-						<div class="menu d-md-inline-block d-none">
-							<ul class="layout-navigation-list">
-								
-								<li class="layout-navigation-item"><a title="淸鷠"
-										href="https://qinyu312.github.io/post/ji-yi-ci-bu-tong-xun-chang-de-ge-ren-blog-da-jian">淸鷠</a>
-								</li>
-								
-								<li class="layout-navigation-item"><a title="归档"
-										href="/archives">归档</a>
-								</li>
-								
-								<li class="layout-navigation-item"><a title="标签"
-										href="/tags">标签</a>
-								</li>
-								
-								<li class="layout-navigation-item"><a title="关于"
-										href="/post/about">关于</a>
-								</li>
-								
-							</ul>
-						</div>
-
-						<div class="item d-md-inline-block d-none">
-							<div class="search-icon">
-								<i class="fa fa-search" aria-hidden="true"></i>
-							</div>
-						</div>
-
-
-
-						<div class="d-md-inline-block d-none">
-							<div class="search-lightbox">
-								<div class="search-body">
-
-									<form id="gridea-search-form" data-update="1605600351132" action="/search/" class="search-form">
-										<input type="text" name="q" id="s" value="" class="search-field" placeholder="请输入搜索关键词" aria-label="请输入搜索关键词" required="">
-										<button type="submit" class="submit" aria-label="Submit">
-											<i class="fa fa-search" aria-hidden="true"></i>
-										</button>
-									</form>
-
-								</div>
-							</div>
-						</div>
-
-						<div class="nav d-md-none d-inline-block">
-							<div class="trigger">
-								<i class="fa fa-bars layout-btn-toggle" aria-hidden="true"></i>
-							</div>
-						</div>
-
-					</div>
-
-				</div>
-			</div>
-
-
-
-
-		</div>
-	</div>
-
-</div>
+    <!-- 响应式布局，针对PC端内容显示 -->
+    <div id="content">
+        <div class="nav-large">
+            <div class="row">
+                
         
-        <div class="layout-collapse d-md-none">
-	<div class="layout-collapse-main">
-		<ul class="layout-collapse-list">
-			
-			<li class="layout-collapse-item"><a title="淸鷠" href="https://qinyu312.github.io/post/ji-yi-ci-bu-tong-xun-chang-de-ge-ren-blog-da-jian">淸鷠</a></li>
-			
-			<li class="layout-collapse-item"><a title="归档" href="/archives">归档</a></li>
-			
-			<li class="layout-collapse-item"><a title="标签" href="/tags">标签</a></li>
-			
-			<li class="layout-collapse-item"><a title="关于" href="/post/about">关于</a></li>
-			
-
-		</ul>
-	</div>
-</div>
-
-        <div class="layout-banner">
-  <div class="layout-banner-main">
-    <div class="container">
-      <div class="row justify-content-lg-center">
-        <div class="col-12 col-lg-9">
-          <div class="banner">
-            <div class="banner-list row">
-              <div class="item col-12 col-sm-9">
-                
-                
-                <div class="banner-card main">
-                  <a class="card-content" href="https://qinyu312.github.io/post/ji-yi-ci-bu-tong-xun-chang-de-ge-ren-blog-da-jian/" style="background-image: url('')">
-                    <div class="mask"></div>
-                    <div class="title">
-                      <h3 class="card-title">淸鷠</h3>
-                    </div>
-                  </a>
-                </div>
-                
-                
-                
-              </div>
-              <div class="col-12 col-sm-3">
-                <div class="row">
-                  
-                  
-                  
-                  
-                  <div class="item col-4 col-sm-12">
-                    <div class="banner-card">
-                      <a class="card-content" href="https://qinyu312.github.io/post/hello-gridea/"
-                        style="background-image: url('https://qinyu312.github.io/post-images/hello-gridea.png')">
-                        <div class="mask"></div>
-                        <div class="title">
-                          <h3 class="card-title">Hello Gridea</h3>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-</div>
-
-        <div class="layout-content">
-  <div class="layout-content-main">
-    <div class="container">
-      <div class="row justify-content-lg-center">
-        <div class="col-12 col-lg-9">
-          <div class="card-list">
-            
-            
-            
-            
-            
-            
-            
-          </div>
-
-          
-
-        </div>
-      </div>
+    
+    
     </div>
-  </div>
-</div>
+    <div id="bg">
+    </div>
+    <div id="bgchoice" style="display: none">
+    </div>
+            
+            <div id="bgurl" style="display:none"></div>
+             
 
-
-<script type="text/javascript">
-  //点击加载更多
-  jQuery(document).ready(function ($) {
-    //点击下一页的链接(即那个a标签)
-    $(' .btn-paginator').click(function () {
-      $this = $(this);
-      $this.addClass('loading').text('正在加载'); //给a标签加载一个loading的class属性，用来添加加载效果
-      var href = $this.attr('href'); //获取下一页的链接地址
-      if (href != undefined) { //如果地址存在
-        $.ajax({ //发起ajax请求
-          url: href,
-          //请求的地址就是下一页的链接
-          type: 'get',
-          //请求类型是get
-          error: function (request) {
-            //如果发生错误怎么处理
-          },
-          success: function (data) { //请求成功
-            $this.removeClass('loading').text('加载更多'); //移除loading属性
-            var $res = $(data).find('.card'); //从数据中挑出文章数据，请根据实际情况更改
-            $('.card-list').append($res.fadeIn(
-              500)); //将数据加载加进posts-loop的标签中。
-            var newhref = $(data).find('.btn-paginator').attr('href'); //找出新的下一页链接
-            if (newhref != undefined) {
-              $('.btn-paginator').attr('href', newhref);
-            } else {
-              $('.btn-paginator').remove(); //如果没有下一页了，隐藏
-            }
-          }
-        });
+    <!-- 响应式布局，针对手机端内容显示 -->
+    <div class="nav-small">
+            <head>
+  <!-- 引入Bootstrap核心样式文件 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/bootstrap.min.css">
+</head>
+<style>
+  @media screen and (max-width:1200px) and (min-width: 768px) {
+    @media (min-width: 768px) {
+      .navbar-nav {
+        float: right;
+        margin: 0;
       }
-      return false;
-    });
-  });
-</script>
+    }
+  }
+  @media screen and (max-width:768px){
+    .mbapspan{
+      padding: 0;
+    }
+  }
+</style>
 
-        	<div class="layout-footer">
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#barmenu"
+          aria-expanded="false" id="barbutton">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="https://qinyu312.github.io">҉҉҈淸鷠҉҉҈、&nbsp;&nbsp;|</a>
+        <span class="navbar-brand mbapspan"><i id="mbaplayer" class="fa fa-play-circle-o" aria-hidden="true"
+            style="font-size: 28px;top: 12px;position: absolute;" onclick="aplayerPlay();"></i></span>
+      </div>
 
-		<div class="container">
-			<div class="row justify-content-lg-center">
-				<div class="col-12 col-lg-9">
-					<div class="footer">
-						<div class="row">
-							<div class="col-12 col-md-9">
-								<div class="footer-copy">
-									
-									Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-									<div class="footer-icp d-none d-sm-inline-block">
-										<span class="px-2">⋅</span>
-										
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3 d-none d-md-block">
-								<div class="footer-links">
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="barmenu">
+        <ul class="nav navbar-nav">
+          
+          
+          <li>
+            <a href="https://qinyu312.github.io/post/ji-yi-ci-bu-tong-xun-chang-de-ge-ren-blog-da-jian">
+              淸鷠
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/archives">
+              归档
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/tags">
+              标签
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/post/about">
+              关于
+            </a>
+          </li>
+          
+          
+          
+          
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
 
-	</div>
 
-	<script type="text/javascript" src='https://qinyu312.github.io/media/scripts/main.js'></script>
-	
+  <!-- 引入jQuery核心js文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+  <script>
+  var btstate = false;
+  var bt = $("#barbutton");
+  var bm = $("#barmenu");
+  bt.click(function(){
+    dropdown();
+  })
+  function dropdown(){
+    console.log(btstate);
+    //下拉
+    if(btstate==false){
+      bt.removeClass("collapsed");
+      bt.attr("aria-expanded","true");
+      bm.attr("aria-expanded","true")
+      bm.fadeIn(700);
+      btstate = true;
+    }
+    else{
+      bt.addClass("collapsed");
+      bt.attr("aria-expanded","false");
+      bm.removeClass("in");
+      bm.hide();
+      bm.attr("aria-expanded","false");
+      btstate = false;
+    }
+  }
+  </script> 
+</body>
+            <!-- 移动端欢迎页 -->
+<div class="welcome">
+    <div class="avatar-border">
+        <img src="https://qinyu312.github.io/images/avatar.png?v=1605600436093" class="avatar">
     </div>
+    <span class="mobiledescribtion"></span>
+</div>
+
+    <div id="mobilebgurl" style="display:none"></div>
+
+<script>
+    var welcome = $('.welcome');
+    var bgurl = document.getElementById("mobilebgurl").innerHTML;
+    for (var i = 0; i < 3; i++)
+        bgurl = bgurl.replace("\\", "/");
+    welcome.css("background", "url('" + bgurl + "')");
+    var mobiledes = document.querySelector(".mobiledescribtion");
+    var text = "万般皆苦，唯有自渡";
+    // 当前显示第几个字
+    var mobilecharIndex = 1;
+    // 每个字显示间隔默认是500毫秒
+    var mobiledelta = 500;
+
+    // 记录动画执行开始时间
+    var mobilestart = null;
+    // 是否为删除动画
+    var mobileisDeleting = false;
+
+    // 动画回调函数
+    function mobileLoadDes(time) {
+        window.requestAnimationFrame(mobileLoadDes);
+        // 初始化开始时间
+        if (!mobilestart) start = time;
+        // 获取时间间隔
+        var mobileprogress = time - mobilestart;
+        // 每隔一定的时间，打印出一个新的字符
+        if (mobileprogress > mobiledelta) {
+            // 如果是打字效果
+            if (!mobileisDeleting) {
+                // 给展示文字的span新增一个字符，使用innerHTML来替换，charIndex自增1，然后返回新的字符串子串
+                mobiledes.innerHTML = "&nbsp;" + text.slice(
+                    0,
+                    ++mobilecharIndex
+                );
+                mobiledelta = 500 - Math.random() * 400;
+            } else {
+                // 如果是删除效果，则把文字一个一个减掉
+                mobiledes.innerHTML = "&nbsp;" + text.slice(
+                    0,
+                    mobilecharIndex--
+                );
+            }
+            // 把star更新为当前时间，进行下一个周期
+            mobilestart = time;
+
+            // 如果文字已经全部打印完毕
+            if (mobilecharIndex === text.length) {
+                // 下次开始删除文字
+                mobileisDeleting = true;
+                // 删除文字的间隔为200毫秒
+                mobiledelta = 100;
+                // 额外等待1.2秒后再删除
+                mobilestart = time + 1000;
+            }
+
+            // 如果文字删除完毕
+            if (mobilecharIndex < 0) {
+                mobileisDeleting = false;
+                // 额外增加200毫秒延迟
+                mobilestart = time + 200;
+            }
+        }
+    }
+
+    window.requestAnimationFrame(mobileLoadDes);
+</script>
+            <link rel="stylesheet" href="https://qinyu312.github.io/media/css/font-awesome.css">
+<div id="post-container">
+    
+    <div class="postshow postlist">
+        
+        <div id="post" style="width:100%">
+            
+            <img src="" class="postimage"
+                onclick="window.location.href= 'https://qinyu312.github.io/post/ji-yi-ci-bu-tong-xun-chang-de-ge-ren-blog-da-jian/';return false">  
+            
+            <div class="posttitlebox">
+                <div class="posttitlewithoutimg" onclick="window.location.href= 'https://qinyu312.github.io/post/ji-yi-ci-bu-tong-xun-chang-de-ge-ren-blog-da-jian/';return false">
+                    淸鷠
+                </div>
+            </div>
+        </div>
+        <div class="postinfo">
+            <div class="postdate"><i class="fa fa-calendar"></i>2020-11-15</div>
+            <div class="poststatus postdate"><i class="fa fa-clock-o"></i> 1 min read</div>
+            <div class="posttag">
+                
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="postshow postlist">
+        
+        <div id="post" style="width:100%">
+            <img src="https://qinyu312.github.io/post-images/hello-gridea.png" class="postimage"
+                onclick="window.location.href= 'https://qinyu312.github.io/post/hello-gridea/';return false">
+            <div class="posttitlebox">
+                <div class="posttitle" onclick="window.location.href= 'https://qinyu312.github.io/post/hello-gridea/';return false">
+                    Hello Gridea
+                </div>
+            </div>
+        </div>
+        <div class="postinfo">
+            <div class="postdate"><i class="fa fa-calendar"></i>2018-12-12</div>
+            <div class="poststatus postdate"><i class="fa fa-clock-o"></i> 2 min read</div>
+            <div class="posttag">
+                
+                <a href="https://qinyu312.github.io/tag/-xnNQ8u0n/" class="postlink">
+                    <i class="fa fa-tag"></i> Gridea
+                </a>
+                
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
+            <div class="pagination-container">
+                  
+                
+            </div>
+        </div>
+
+        <div id="landlord">
+            <div class="message" style="opacity:0"></div>
+            <canvas id="live2d" width="240" height="250" class="live2d"></canvas>
+        </div>
+    </div>
+    <div id="domainname" style="display:none">https://qinyu312.github.io</div>
 </body>
 
 </html>
+
+
+<script>
+        var bgchoice=$('#bgchoice').html();
+        var bg = $('#bg');
+        var bgurl = document.getElementById("bgurl").innerHTML;
+        if(bgchoice=='default')
+            for (var i = 0; i < 3; i++)
+                bgurl = bgurl.replace("\\", "/");
+        bg.css("background", "url('" + bgurl + "')");
+
+        window.onload = function(){
+            aplayerbtnInit();
+        }
+</script>
