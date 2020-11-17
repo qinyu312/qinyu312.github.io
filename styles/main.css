@@ -9625,3 +9625,8 @@ photos .photo:last-child {
   border-top: 1px solid #aaa;
   padding-top: 8px;
 }
+
+      body {
+        background: fixed linear-gradient(to right bottom, #32b37b, #485DA6, #00a1ba, #01b18e, #6d327c);;
+      }
+    
