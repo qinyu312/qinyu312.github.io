@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qinyu312.github.io</id>
     <title>҉҉҈淸鷠҉҉҈、</title>
-    <updated>2020-11-18T03:39:53.085Z</updated>
+    <updated>2020-11-18T03:41:50.405Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qinyu312.github.io"/>
     <link rel="self" href="https://qinyu312.github.io/atom.xml"/>
@@ -16,7 +16,8 @@
         <link href="https://qinyu312.github.io/post/ji-yi-ci-bu-tong-xun-chang-de-ge-ren-blog-da-jian/">
         </link>
         <updated>2020-11-15T12:29:35.000Z</updated>
-        <content type="html"><![CDATA[<pre><code>    前端开发小菜🐦，借助Gridea平台搭建属于自己的个人博客正式通🚗，🎉🎉🎉在这里，我将不定时分享不定时内容，更多的是对工作🤦‍♂️，技术🧑‍💻，生活🚶🏻等方面的积累收获与感悟，敬请期待！
+        <content type="html"><![CDATA[<pre><code>    前端开发小菜🐦，借助Gridea平台搭建属于自己的个人博客正式通🚗，🎉🎉🎉敬请期待！
+    在这里，我将不定时分享不定时内容，更多的是对工作🤦‍♂️，技术🧑‍💻，生活🚶🏻等方面的积累收获与感悟，期待与你共同进步！
 </code></pre>
 <p><img src="https://w.wallhaven.cc/full/5w/wallhaven-5w26x1.jpg" alt="avatar" loading="lazy"><br>
 第一次写博客的内容就决定是使用Gridea + Github快速搭建个人博客类网站吧！</p>
