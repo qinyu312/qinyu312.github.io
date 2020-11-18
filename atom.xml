@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qinyu312.github.io</id>
     <title>҉҉҈淸鷠҉҉҈、</title>
-    <updated>2020-11-18T08:36:56.739Z</updated>
+    <updated>2020-11-18T15:19:58.818Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qinyu312.github.io"/>
     <link rel="self" href="https://qinyu312.github.io/atom.xml"/>
@@ -10,6 +10,85 @@
     <logo>https://qinyu312.github.io/images/avatar.png</logo>
     <icon>https://qinyu312.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, ҉҉҈淸鷠҉҉҈、</rights>
+    <entry>
+        <title type="html"><![CDATA[初识React]]></title>
+        <id>https://qinyu312.github.io/post/chu-shi-react/</id>
+        <link href="https://qinyu312.github.io/post/chu-shi-react/">
+        </link>
+        <updated>2020-11-18T13:47:24.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="搭建react项目">搭建React项目</h2>
+<p>在装有node.js的基础上，命令行输入命令</p>
+<pre><code>npx create-react-app item-name
+</code></pre>
+<p>即可创建一个React项目，项目结构如下</p>
+<figure data-type="image" tabindex="1"><img src="https://qinyu312.github.io/post-images/1605707465716.png" alt="" loading="lazy"></figure>
+<h2 id="jsx语法">JSX语法</h2>
+<p>src文件下的index.js是项目的入口文件，文件中先后引入了react和react-dom两个库。</p>
+<pre><code>ReactDOM.render(&lt;h2&gt;hello react&lt;/h2&gt;, document.getElementById('root'));
+</code></pre>
+<p>ReactDom实例通过reader方法，将前面的h2标签元素，添加到root元素中，而id为root的元素是public文件的index.html文件的元素。<br>
+JSX语法由javaScript语法 和 XML语法组成，通俗来说就是，当我们在JSX语句中遇到 &lt;&gt; 的形式的，按照XML；来解析，因为他们是标签的形式；遇到 {} 按照javaScript来解析。</p>
+<pre><code>const a = (
+        &lt;div&gt;
+            &lt;p&gt;hello react&lt;/p&gt;
+        &lt;/div&gt;
+) 
+</code></pre>
+<p>如果存在标签结构，并且标签结构需要换行的话，可以使用 （）的形式进行表示</p>
+<h2 id="react-元素渲染">React 元素渲染</h2>
+<p>这里通过一个实例了解react的元素渲染</p>
+<pre><code>&lt;!-- 首先定义一个方法 --&gt;
+function nowTime() {
+    const ele = (
+        &lt;!-- 使用()的形式，可以换行写标签语法 --&gt;
+        &lt;h2&gt;get now time&lt;/h2&gt;  
+        &lt;!-- 定义一个获取当前时间的方法 --&gt;
+        &lt;h1&gt;now time is { new Date().toLocalTimeString() } &lt;/h1&gt;
+    )
+    &lt;!-- 渲染这个获取当前时间的方法 --&gt;
+    reactDom.render(ele, document.getElementById('root));
+}
+&lt;!-- 定时器每隔一秒会调用一次该方法，实现实时更新当前时间 --&gt;
+setInterval(() =&gt; {
+    nowTime()
+},1000)
+
+</code></pre>
+<h2 id="react-组件">React 组件</h2>
+<p>关于Ract组件，区别于vue的以 .vue为后缀结尾的文件，React的组件可以是以 .js 为后缀的文件，也可以是 .jsx 为后缀的文件命名。编写React组件的时候，创建 .js 的组件是没有代码语法提示的，而创建 .jsx 组件文件是有代码语法提示的。 创建React组件分别有两种方式，第一种是通过 类的形式创建组件，第二种是通过Hook的形式创建。并且组件之间是可以互相引入和使用的，以标签的形式存在！</p>
+<pre><code>&lt;!-- 第一种写法 --&gt;
+&lt;!-- 创建一个React组件首先需要引入 React 库 --&gt;
+import React from 'react'
+&lt;!-- 创建一个类App继承React所提供的Component组件的对象 --&gt;
+class App extends React Component {
+    &lt;!-- rander(){} 渲染函数 --&gt;
+    render() {
+        &lt;p&gt;渲染函数中写你需要这个组件展示的内容，或者要做什么&lt;/p&gt;
+    }
+}
+&lt;!-- 导出组件 --&gt;
+export default App
+
+&lt;!-- 第二种写法 --&gt;
+import React from 'react'
+
+export default class App extends React.Component{
+    render() {
+        return {
+            &lt;div&gt;
+                &lt;p&gt;直接导出并继承React下的Component对象&lt;/p&gt;
+            &lt;/div&gt;
+        }
+    }
+}
+</code></pre>
+<p>然后在需要使用的地方引入该组件,并将其放置在渲染函数中渲染即可。</p>
+<pre><code>import 'App' from './App.jsx'
+ReactDOM.render(&lt;App /&gt;, document.getElementById('root));
+
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[记个人博客之旅]]></title>
         <id>https://qinyu312.github.io/post/ji-yi-ci-bu-tong-xun-chang-de-ge-ren-blog-da-jian/</id>
