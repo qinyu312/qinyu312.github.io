@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qinyu312.github.io</id>
     <title>҉҉҈淸鷠҉҉҈、</title>
-    <updated>2020-11-18T03:29:06.567Z</updated>
+    <updated>2020-11-18T03:31:37.105Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qinyu312.github.io"/>
     <link rel="self" href="https://qinyu312.github.io/atom.xml"/>
@@ -16,9 +16,8 @@
         <link href="https://qinyu312.github.io/post/ji-yi-ci-bu-tong-xun-chang-de-ge-ren-blog-da-jian/">
         </link>
         <updated>2020-11-15T12:29:35.000Z</updated>
-        <content type="html"><![CDATA[<pre><code>前端开发 1⃣️ year 的小菜🐦，借助Gridea平台搭建属于自己的个人博客正式通🚗，🎉🎉🎉在这里，我将不定时分享不定时内容🧑‍💻，更多的是，对工作，技术，生活方面的积累收获与感悟，敬请期待吧！
-</code></pre>
-<figure data-type="image" tabindex="1"><img src="https://w.wallhaven.cc/full/5w/wallhaven-5w26x1.jpg" alt="avatar" loading="lazy"></figure>
+        <content type="html"><![CDATA[<p><img src="https://w.wallhaven.cc/full/5w/wallhaven-5w26x1.jpg" alt="avatar" loading="lazy"><br>
+前端开发 1⃣⃣  year 的小菜🐦，借助Gridea平台搭建属于自己的个人博客正式通🚗，🎉🎉🎉在这里，我将不定时分享不定时内容🧑‍💻，更多的是，对工作，技术，生活方面的积累收获与感悟，敬请期待吧！</p>
 ]]></content>
     </entry>
 </feed>
