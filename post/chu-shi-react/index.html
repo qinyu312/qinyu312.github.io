@@ -84,7 +84,7 @@ src文件下的index.js是项目的入口文件，文件中..." />
       <div class="hide-on-mobile hide-on-tablet hide-on-desktop">
         <div id="search-lightbox" class="grid-container grid-small grid-parent mfp-hide">
           <div class="search-wrapper section">
-            <form id="gridea-search-form" data-update="1605712794004" action="/search/index.html" class="search-form" _lpchecked="1">
+            <form id="gridea-search-form" data-update="1605748789045" action="/search/index.html" class="search-form" _lpchecked="1">
               <input type="text" name="q" id="s" value="" class="search-field" placeholder="搜点啥..." aria-label="搜点啥..." required="">
               <button type="submit" class="submit" aria-label="Submit">
                 <i class="fa fa-search-line"></i>
@@ -99,7 +99,7 @@ src文件下的index.js是项目的入口文件，文件中..." />
         <div class="center content">
           <div class="featured-image cover" style="background-image: url('/media/images/custom-featureImage.jpg');">
             <div class="meta top"> 
-              <time class="meta-info" style="float:left;" datetime="2020-11-18"><i class="fa fa-calendar"></i><span class="lately">2 小时前</span></time>
+              <time class="meta-info" style="float:left;" datetime="2020-11-18"><i class="fa fa-calendar"></i><span class="lately">12 小时前</span></time>
               
               <a href="https://qinyu312.github.io/post/chu-shi-react/#comments" class="comments meta-info" title="">
                 <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/chu-shi-react/"> </span>
@@ -131,8 +131,8 @@ src文件下的index.js是项目的入口文件，文件中..." />
 <p>src文件下的index.js是项目的入口文件，文件中先后引入了react和react-dom两个库。</p>
 <pre><code>ReactDOM.render(&lt;h2&gt;hello react&lt;/h2&gt;, document.getElementById('root'));
 </code></pre>
-<p>ReactDom实例通过reader方法，将前面的h2标签元素，添加到root元素中，而id为root的元素是public文件的index.html文件的元素。<br>
-JSX语法由javaScript语法 和 XML语法组成，通俗来说就是，当我们在JSX语句中遇到 &lt;&gt; 的形式的，按照XML；来解析，因为他们是标签的形式；遇到 {} 按照javaScript来解析。</p>
+<p>ReactDOM实例通过render方法，将前面的h2标签元素，添加到root元素中，而id为root的元素是public文件的index.html文件的元素。<br>
+JSX语法由JavaScript语法 和 XML语法组成，通俗来说就是，当我们在JSX语句中遇到 &lt;&gt; 的形式的，按照XML的形式来解析，因为他们是标签；遇到 {} 按照javaScript来解析，表示JS语法。</p>
 <pre><code>const a = (
         &lt;div&gt;
             &lt;p&gt;hello react&lt;/p&gt;
@@ -151,7 +151,7 @@ function nowTime() {
         &lt;h1&gt;now time is { new Date().toLocalTimeString() } &lt;/h1&gt;
     )
     &lt;!-- 渲染这个获取当前时间的方法 --&gt;
-    reactDom.render(ele, document.getElementById('root));
+    reactDOM.render(ele, document.getElementById('root));
 }
 &lt;!-- 定时器每隔一秒会调用一次该方法，实现实时更新当前时间 --&gt;
 setInterval(() =&gt; {
