@@ -23,7 +23,7 @@ npx create-react-app item-name
 
 JSX语法
 src文件下的index.js是项目的入口文件，文件中..." />
-    <meta name="keywords" content="⚛️React" />
+    <meta name="keywords" content="React" />
     <script src="https://qinyu312.github.io/media/js/waterfall.min.js"></script>
     <script src="https://qinyu312.github.io/media/js/prism.min.js"></script>
   </head>
@@ -84,7 +84,7 @@ src文件下的index.js是项目的入口文件，文件中..." />
       <div class="hide-on-mobile hide-on-tablet hide-on-desktop">
         <div id="search-lightbox" class="grid-container grid-small grid-parent mfp-hide">
           <div class="search-wrapper section">
-            <form id="gridea-search-form" data-update="1605766494630" action="/search/index.html" class="search-form" _lpchecked="1">
+            <form id="gridea-search-form" data-update="1605798918135" action="/search/index.html" class="search-form" _lpchecked="1">
               <input type="text" name="q" id="s" value="" class="search-field" placeholder="搜点啥..." aria-label="搜点啥..." required="">
               <button type="submit" class="submit" aria-label="Submit">
                 <i class="fa fa-search-line"></i>
@@ -99,7 +99,7 @@ src文件下的index.js是项目的入口文件，文件中..." />
         <div class="center content">
           <div class="featured-image cover" style="background-image: url('/media/images/custom-featureImage.jpg');">
             <div class="meta top"> 
-              <time class="meta-info" style="float:left;" datetime="2020-11-18"><i class="fa fa-calendar"></i><span class="lately">16 小时前</span></time>
+              <time class="meta-info" style="float:left;" datetime="2020-11-18"><i class="fa fa-calendar"></i><span class="lately">1 天前</span></time>
               
               <a href="https://qinyu312.github.io/post/chu-shi-react/#comments" class="comments meta-info" title="">
                 <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/chu-shi-react/"> </span>
@@ -110,7 +110,7 @@ src文件下的index.js是项目的入口文件，文件中..." />
             <div class="info">
               <div class="tags ">
                 
-                      <a href="https://qinyu312.github.io/tag/FawPGFiR6/" class="ctag ctag-0 ctag-FawPGFiR6" aria-label="">⚛️React</a>
+                      <a href="https://qinyu312.github.io/tag/react/" class="ctag ctag-0 ctag-react" aria-label="">React</a>
                     
               </div>
               <h1 class="title ularge white bold">初识React</h1>
@@ -189,10 +189,79 @@ export default class App extends React.Component{
     }
 }
 </code></pre>
+<pre><code>&lt;!-- 函数组件 --&gt;
+function fun(props) {
+    return (
+        &lt;div&gt;
+            &lt;h3&gt;函数组件&lt;/h3&gt;
+        &lt;/div&gt;
+    )
+}
+&lt;!-- ES6 class类组件 --&gt;
+class App extends React.Component {
+    render() {
+        return (
+            &lt;div&gt;
+                &lt;h3&gt;ES6 class类创建组件&lt;/h3&gt;  
+            &lt;/div&gt;
+        )
+    }
+}
+</code></pre>
 <p>然后在需要使用的地方引入该组件,并将其放置在渲染函数中渲染即可。</p>
 <pre><code>import 'App' from './App.jsx'
 ReactDOM.render(&lt;App /&gt;, document.getElementById('root));
 
+</code></pre>
+<h3 id="props组件动态传参">Props组件动态传参</h3>
+<p>React里面的组件传参通过 props</p>
+<pre><code>&lt;!-- 子组件 --&gt;
+import React from 'react'
+export default class Son extends React.Component {
+    render() {
+        return {
+            &lt;div&gt;
+                &lt;ul&gt;
+                    {
+                    &lt;!-- 子组件中 通过this.props的方式获取父组件传递过来的数据，也就是arr ,然后通过map来遍历获取到的数据--&gt;
+                        this.props.arr.map((element, index) =&gt; {
+                            &lt;!-- 将遍历得到的数据放在li标签中渲染返回，key值需要绑定index唯一值，否则会抛出语法error --&gt;
+                            return &lt;li key={ index }&gt;{ element }&lt;/li&gt;
+                        })
+                    }
+                &lt;/ul&gt;            
+            &lt;/div&gt;
+        }
+    }
+}
+</code></pre>
+<pre><code>import React from 'react'
+&lt;!-- 引入子组件 --&gt;
+import Son from './son'
+export default class Father extends React.Component {
+    render() {
+        &lt;!-- 父组件定义两个数组，用于传递给子组件使用 --&gt;
+        const arrOne = ['Vue' , 'React', 'Angular'],
+                 arrTwo = ['Java', 'Pythen', 'C++']
+        return (
+            &lt;!-- 在两个子组件中分别传入不同的数据 --&gt;
+            &lt;Son arr={ arrOne } /&gt;
+            &lt;Son arr={ arrTwo } /&gt;
+        )
+    }
+}
+</code></pre>
+<h2 id="state-状态">state 状态</h2>
+<pre><code>&lt;!-- 通过this.state定义和保存数据和状态 --&gt;
+    this.state = {
+        flag: true,
+        count: 10,
+    }
+    &lt;!-- 需要修改状态值的时候通过 this.setState({})的方式进行修改 --&gt;
+    this.setState({
+        flag:  false,
+        count: this.state.count ++
+    })
 </code></pre>
 
                 </div>
@@ -301,7 +370,7 @@ ReactDOM.render(&lt;App /&gt;, document.getElementById('root));
                   <h4 class="widget-title title white bordered">标签云</h4>
                   <div class="tagcloud">
                     
-                      <a href="https://qinyu312.github.io/tag/FawPGFiR6/" class="ctag ctag-0 ctag-FawPGFiR6" aria-label="">⚛️React</a>
+                      <a href="https://qinyu312.github.io/tag/react/" class="ctag ctag-0 ctag-react" aria-label="">React</a>
                     
                       <a href="https://qinyu312.github.io/tag/RAus8PL4V/" class="ctag ctag-1 ctag-RAus8PL4V" aria-label="">blog</a>
                     
