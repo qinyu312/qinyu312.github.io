@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qinyu312.github.io</id>
     <title>҉҉҈淸鷠҉҉҈、</title>
-    <updated>2020-11-20T04:20:22.953Z</updated>
+    <updated>2020-11-22T15:02:28.140Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qinyu312.github.io"/>
     <link rel="self" href="https://qinyu312.github.io/atom.xml"/>
@@ -108,6 +108,7 @@ ReactDOM.render(&lt;App /&gt;, document.getElementById('root));
 </code></pre>
 <h3 id="props组件动态传参">Props组件动态传参</h3>
 <p>React里面的组件传参通过 props</p>
+<h3 id="父组件传递参数给子组件">父组件传递参数给子组件</h3>
 <pre><code>&lt;!-- 子组件 --&gt;
 import React from 'react'
 export default class Son extends React.Component {
@@ -144,6 +145,51 @@ export default class Father extends React.Component {
     }
 }
 </code></pre>
+<h3 id="子组件传递参数给父组件">子组件传递参数给父组件</h3>
+<pre><code>&lt;!-- 父组件 --&gt;
+import React from 'react'
+import Son from './son'
+export defaul{t class Father React.Component {
+    &lt;!-- 首先定义state用来存储title的状态 --&gt;
+    constructor() {
+        super();
+        this.state = {
+            title: ‘最初的标题’
+        }
+    }
+    clickChange = () =&gt; {
+        this.setState({
+            title: '最后的标题'
+        })
+    }
+    render()  {
+        return (    
+            &lt;div&gt;
+                父子组件传参
+            &lt;/div&gt;
+            &lt;!-- 使用子组件,title最开始为 ‘最初的标题’， changeFatherProps 被子组件中的点击事件触发从而执行父组件中的clickChange方法，完成对标题的修改 --&gt;
+            &lt;son title={ this.state.title } changeFatherProps={ this.clickChange } /&gt;
+        )
+    }
+}
+</code></pre>
+<pre><code>&lt;!-- 子组件 --&gt;
+import React from 'react'
+
+export defaul{t class Father React.Component {
+    changeFather = () =&gt; {
+        &lt;!-- 通过 this.props 的方式 --&gt;
+        this.prpos.changFatherProps()
+    }
+    render()  {
+        return &lt;div&gt;
+                    父子组件传参
+                    &lt;!-- 点击button事件会触发父组件中方法的执行，将标题修改 --&gt;
+                    &lt;button onClick={ this.changeFather }&gt;点击传参修改&lt;button&gt;
+                &lt;/div&gt;
+    }
+}
+</code></pre>
 <h2 id="state-状态">state 状态</h2>
 <pre><code>&lt;!-- 通过this.state定义保存数据和状态 --&gt;
     this.state = {
@@ -156,6 +202,18 @@ export default class Father extends React.Component {
         count: this.state.count ++
     })
 </code></pre>
+<h2 id="生命周期函数">生命周期函数</h2>
+<p>随着我们对React理解和使用的原来越多，生命周期会越来越有参考价值<br>
+生命周期函数包括:</p>
+<ol>
+<li>componentWillMount:  在组件创建之前执行</li>
+<li>componentDidMount: 在组件渲染之后执行</li>
+<li>shouldComponentUpdata: 返回 true 和 false, true代表允许改变， false代表不允许改变</li>
+<li>componentWillUpdata: 数据在改变之前执行（state, props）</li>
+<li>conponentDidUpdata: 代表数据修改完成（state, props）</li>
+<li>conponentWillReveiceProps: props发生改变时执行的生命周期函数</li>
+<li>conponentWillUnMount: 组件卸载前执行</li>
+</ol>
 ]]></content>
     </entry>
     <entry>
