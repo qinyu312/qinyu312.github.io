@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>React | ҉҉҈淸鷠҉҉҈、</title>
+<title>vue-router 路由守卫 | ҉҉҈淸鷠҉҉҈、</title>
 <meta name="description" content="万般皆苦，唯有自渡" />
 <link rel="shortcut icon" href="https://qinyu312.github.io/favicon.ico">
 <link rel="stylesheet" href="https://qinyu312.github.io/styles/main.css">
@@ -14,11 +14,15 @@
 <script src="https://qinyu312.github.io/media/js/view-image.min.js"></script>
 <script src="https://qinyu312.github.io/media/js/jquery.magnific-popup.min.js"></script>
 <script src="https://qinyu312.github.io/media/js/functions.js"></script>
+    <meta name="referrer" content="never">
+    <meta name="description" content="有一段时间没有写过 vue 的项目了，最近工作中需要自己搭建，所以简单分享一下vue-router路由守卫!
+
+项目中很常见的一种场景，需求是，用户打开网址进入线上地址，首先是登录页面，用户需要账号密码验证码等手段通过验证和赋权，才可以进入..." />
+    <meta name="keywords" content="vue" />
+    <script src="https://qinyu312.github.io/media/js/waterfall.min.js"></script>
+    <script src="https://qinyu312.github.io/media/js/prism.min.js"></script>
   </head>
   <body>
-    <!-- start: #wrapper -->
-    <div class="wrapper">
-      
             <header id="header" class="grid-container">
         <!-- start: .menu-wrapper -->
         <div class="menu-mobile"> 
@@ -85,45 +89,130 @@
         </div>
       </div>
 
-      <main id="home" class="main fullcover no-sidebar content">
-        <div class="grid-container module-wrapper enable-masonry aos-init aos-animate" data-aos="fade-up">
-        <div class="epcl-page-wrapper">
-          <div class="left-content grid-70 np-mobile widget_epcl_related_articles">
-                
-            <!-- start: .articles -->
-            <div class="main-article post">
-  <h2 class="year"># React</h2>
-    
-      <article class="item default grid-33 tablet-grid-50 np-mobile">
-        <a href="https://qinyu312.github.io/post/chu-shi-react/" class="thumb hover-effect">
-          <span class="fullimage cover" style="display: block;background-image: url('/media/images/custom-featureImage.jpeg');"></span>
-        </a>
-        <div class="info gradient-effect">
-          <time datetime="2020-11-18">2020-11-18</time>
-          <h4 class="title usmall">
-            <a href="https://qinyu312.github.io/post/chu-shi-react/">初识React</a>
-          </h4>
-        </div>
-      </article>
+      <main id="single" class="main grid-container fullcover no-sidebar aos-init aos-animate" data-aos="fade">
 
-    
-    <div class="clear"></div>
-</div>
-            <!-- end: .articles -->
-            
-                        <div class="epcl-pagination section">
-              <div class="nav">
-                
-                
-              </div>
+        <div class="center content">
+          <div class="featured-image cover" style="background-image: url('/media/images/custom-featureImage.jpeg');">
+            <div class="meta top"> 
+              <time class="meta-info" style="float:left;" datetime="2020-11-23"><i class="fa fa-calendar"></i><span class="lately">35 分钟前</span></time>
+              
+              <a href="https://qinyu312.github.io/post/vue-router-lu-you-shou-wei/#comments" class="comments meta-info" title="">
+                <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/vue-router-lu-you-shou-wei/"> </span>
+              </a>
+              <span id="/vue-router-lu-you-shou-wei/" class="leancloud_visitors views-counter meta-info" title=""><i class="fa fa-leancloud remixicon"></i><span class="leancloud-visitors-count"></span></span>
+              
             </div>
+            <div class="info">
+              <div class="tags ">
+                
+                      <a href="https://qinyu312.github.io/tag/zGTOL8kaS/" class="ctag ctag-0 ctag-zGTOL8kaS" aria-label="">vue</a>
+                    
+              </div>
+              <h1 class="title ularge white bold">vue-router 路由守卫</h1>
+            </div>
+          </div>
+        </div>  
+
+        <div class="epcl-page-wrapper">
+          <div class="left-content grid-70 np-mobile">
+            <article class="main-article post">
+              <section class="post-content">
+                <div class="text">
+                  <pre><code>有一段时间没有写过 vue 的项目了，最近工作中需要自己搭建，所以简单分享一下vue-router路由守卫!
+</code></pre>
+<p>项目中很常见的一种场景，需求是，用户打开网址进入线上地址，首先是登录页面，用户需要账号密码验证码等手段通过验证和赋权，才可以进入到包括首页，各种管理等内容页面，未登录之前，通过修改路由来进行跳转，如果确实存在此路由，会跳转到登录页面进行登录，如果没有这个路由，会跳转到 404 页面。而成功完成登录后再进行路由地址修改则可以正常跳转！<br>
+这里就需要用到通配符匹配和 路由守卫等操作了</p>
+<h2 id="通配符">通配符 *</h2>
+<p>一般用于菜单路由匹配的最后面，为什么要放在最后面呢？因为放在前面会把写在它之后的路由菜单全部匹配进去，就相当于在小河的上游筑起水坝蓄水，那下游自然就没水了，所以通配符相当于确保没有漏网之鱼的作用，凡是没有被定义的路由，都会被它拦截，转而跳转到首页或者404等页面。</p>
+<pre><code>&lt;!-- router 下的 index.js --&gt;
+export default new Router({
+  routes: [
+    {
+      path:'/home',
+      name:'home',
+      component:home
+    },
+    //通配符的使用
+    {
+      path: '/detail-*',
+      component:detail
+    },
+    {
+      path: '/*',
+      component:notFound
+    }
+  ]
+})
+</code></pre>
+<h2 id="beforeeach-前置路由守卫">beforeEach() 前置路由守卫</h2>
+<p>当你随意修改路由地址上的路由菜单进行跳转，比如在 '/login' 修改为 '/home'却可以正常跳转时，在尚未登录赋权的情况下就可以进入程序主页面，是一种很不安全的操作，就需要用到路由守卫了！全局前置路由守卫用于路由跳转之前执行，他有三个参数 'to' 参数，表示你当前正要跳转到哪里去，也就是目标页面路由， 'from'参数表示，从哪里来的，也就是当前页面， next() 方法，一定需要调用，继续往下执行的函数。</p>
+<pre><code>&lt;!-- 在 roter 文件下的路由配置处， 将meta下的 requireAuth 设置为 true作为此菜单不可不登录直接跳转的标记 --&gt;
+{
+    path: '/home',
+    meta:{ requireAuth: true }
+}
+</code></pre>
+<pre><code>&lt;!-- main.js --&gt;
+beforeEach((to, form, next) =&gt; {
+    console.log(to)
+    console.log(from)
+    &lt;!-- 如果要去的这个页面的路由配置中 meta.requireAuth 为 true的话 --&gt;
+    if(to.meta.requireAuth) {
+        &lt;!-- 判断本地存储是否有token令牌，如果有并且令牌合法，调用 next() 方法继续执行 --&gt;
+        if(localStorage.getItem('access_token')) {
+            next();
+        } else {
+            &lt;!-- 否则就直接调用next()方法跳转回登录页面重新登录 --&gt;
+            next({
+                path: '/login'
+            })
+        }
+    } else {
+        next();
+    }
+})
+</code></pre>
+
+                </div>
+                <div class="clear"></div>
+              </section>
+            </article>
+            <div class="clear"></div>
+
+            <section class="related section">
+              
+              
+              <article class="next grid-50 tablet-grid-50 grid-parent">
+                <div class="thumb cover lazy loaded" style="background-image: url('https://qinyu312.github.io/media/images/react.jpg');"></div>
+                 <a href="https://qinyu312.github.io/post/chu-shi-react/" class="full-link"></a>
+                 <div class="info">
+                  <time datetime="2020-11-18">2020-11-18</time>
+                  <h4 class="title white no-margin">初识React</h4>
+                </div>
+                 <span class="epcl-button red">
+                  <img src="https://qinyu312.github.io/media/images/right-arrow.svg" width="15" alt="Left Arrow">
+                </span>
+                <div class="overlay"></div>
+              </article>
+              
+
+                <div class="clear"></div>
+            </section>
+
+              <div class="clear"></div>
+              
             
+              <div id="comments" class="bg-white hosted ">
+                <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+              </div>
+              <div class="clear"></div>
+            
+
+            </div>
           </div>
-          </div>
-        </div>
       </main>
 
-        <footer id="footer" class="grid-container">
+          <footer id="footer" class="grid-container">
         <div class="widgets row gradient-effect">
             <div class="default-sidebar border-effect">
               <div class="grid-33 tablet-grid-50 mobile-grid-100">
@@ -253,6 +342,9 @@
     <div class="clear"></div>
 
         
+
+      
+    <script src="https://qinyu312.github.io/media/js/functions-post.js"></script>
 
     </div>
     <!-- end: #wrapper -->
