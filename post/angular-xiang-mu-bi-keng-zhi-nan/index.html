@@ -1,8 +1,8 @@
 <html>
   <head>
-  <meta charset="utf-8" />
+    <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>我的朋友们 | ҉҉҈淸鷠҉҉҈、</title>
+<title>Angular项目避坑指南 | ҉҉҈淸鷠҉҉҈、</title>
 <meta name="description" content="万般皆苦，唯有自渡" />
 <link rel="shortcut icon" href="https://qinyu312.github.io/favicon.ico">
 <link rel="stylesheet" href="https://qinyu312.github.io/styles/main.css">
@@ -14,11 +14,13 @@
 <script src="https://qinyu312.github.io/media/js/view-image.min.js"></script>
 <script src="https://qinyu312.github.io/media/js/jquery.magnific-popup.min.js"></script>
 <script src="https://qinyu312.github.io/media/js/functions.js"></script>
+    <meta name="referrer" content="never">
+    <meta name="description" content="最近收到一个新的需求，有一个Angular项目需要兼容到 IE7 以上版本，实在让我又惊又喜，惊的是都 2020年了，还甩不掉 IE7 这颗烫手山芋；喜的是第一次接触 Angular项目，不知道又会学到什么新的知识呢。拉到项目代码后，本地启..." />
+    <meta name="keywords" content="" />
+    <script src="https://qinyu312.github.io/media/js/waterfall.min.js"></script>
+    <script src="https://qinyu312.github.io/media/js/prism.min.js"></script>
   </head>
   <body>
-    <!-- start: #wrapper -->
-    <div class="wrapper">
-      
             <header id="header" class="grid-container">
         <!-- start: .menu-wrapper -->
         <div class="menu-mobile"> 
@@ -85,24 +87,90 @@
         </div>
       </div>
 
-      <main id="friends" class="main fullcover no-sidebar content">
-        <div class="grid-container module-wrapper enable-masonry aos-init aos-animate" data-aos="fade-up">
+      <main id="single" class="main grid-container fullcover no-sidebar aos-init aos-animate" data-aos="fade">
+
+        <div class="center content">
+          <div class="featured-image cover" style="background-image: url('/media/images/custom-featureImage.jpeg');">
+            <div class="meta top"> 
+              <time class="meta-info" style="float:left;" datetime="2020-11-24"><i class="fa fa-calendar"></i><span class="lately">4 小时前</span></time>
+              
+              <a href="https://qinyu312.github.io/post/angular-xiang-mu-bi-keng-zhi-nan/#comments" class="comments meta-info" title="">
+                <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/angular-xiang-mu-bi-keng-zhi-nan/"> </span>
+              </a>
+              <span id="/angular-xiang-mu-bi-keng-zhi-nan/" class="leancloud_visitors views-counter meta-info" title=""><i class="fa fa-leancloud remixicon"></i><span class="leancloud-visitors-count"></span></span>
+              
+            </div>
+            <div class="info">
+              <div class="tags ">
+                
+              </div>
+              <h1 class="title ularge white bold">Angular项目避坑指南</h1>
+            </div>
+          </div>
+        </div>  
+
         <div class="epcl-page-wrapper">
-          <div class="left-content grid-70 np-mobile widget_epcl_related_articles">
+          <div class="left-content grid-70 np-mobile">
+            <article class="main-article post">
+              <section class="post-content">
+                <div class="text">
+                  <p>最近收到一个新的需求，有一个Angular项目需要兼容到 IE7 以上版本，实在让我又惊又喜，惊的是都 2020年了，还甩不掉 IE7 这颗烫手山芋；喜的是第一次接触 Angular项目，不知道又会学到什么新的知识呢。拉到项目代码后，本地启动，果然给我来了迎头痛击。<br>
+首先确认本地安装有Node.js环境后，全局安装 Angular-cli ，也就是Angular脚手架,命令行输入：</p>
+<pre><code>cnpm install -g @angular/cli
+</code></pre>
+<p>然后就是老步骤，下载node_modules 依赖包</p>
+<pre><code>cnpm install
+</code></pre>
+<p>之后直接 ng serve 启动命令有点别具一格的简洁，直接芜湖🛫️🛫️🛫️</p>
+<pre><code>ng serve
+</code></pre>
+<p>接下来，就是见证 奇迹（打脸）的时刻<br>
+<img src="https://qinyu312.github.io/post-images/1606213638697.png" alt="" loading="lazy"><br>
+我敲完命令一回车，啪的一下满屏飙红报错，很快啊，我就看到是依赖包的问题，按照传统功夫的看到为止，我没有看下去，上去就是一个卸载依赖，一个 cnpm install ，我大意了，没有删，接着又是飙红报错。Angular 不讲武德，欺负我入行一年多点的小前端，希望它以后耗子尾汁！<br>
+<img src="https://qinyu312.github.io/post-images/1606228631691.png" alt="" loading="lazy"><br>
+最后在 node_modules 下的 less-loader 加上一句  javascriptEnabled: true  ，问题得到解决<br>
+<img src="https://qinyu312.github.io/post-images/1606228810583.png" alt="" loading="lazy"></p>
 
-          <div class="widget_tag_cloud tagcloud">
-          
+                </div>
+                <div class="clear"></div>
+              </section>
+            </article>
+            <div class="clear"></div>
+
+            <section class="related section">
+              
+              
+              <article class="next grid-50 tablet-grid-50 grid-parent">
+                <div class="thumb cover lazy loaded" style="background-image: url('https://qinyu312.github.io/media/images/zGTOL8kaS.jpg');"></div>
+                 <a href="https://qinyu312.github.io/post/vue-router-lu-you-shou-wei/" class="full-link"></a>
+                 <div class="info">
+                  <time datetime="2020-11-23">2020-11-23</time>
+                  <h4 class="title white no-margin">vue-router 路由守卫</h4>
+                </div>
+                 <span class="epcl-button red">
+                  <img src="https://qinyu312.github.io/media/images/right-arrow.svg" width="15" alt="Left Arrow">
+                </span>
+                <div class="overlay"></div>
+              </article>
+              
+
+                <div class="clear"></div>
+            </section>
+
+              <div class="clear"></div>
+              
             
-          
-          </div>
-        </div>
+              <div id="comments" class="bg-white hosted ">
+                <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+              </div>
+              <div class="clear"></div>
+            
 
-        </div>
+            </div>
           </div>
-        </div>
       </main>
 
-        <footer id="footer" class="grid-container">
+          <footer id="footer" class="grid-container">
         <div class="widgets row gradient-effect">
             <div class="default-sidebar border-effect">
               <div class="grid-33 tablet-grid-50 mobile-grid-100">
@@ -234,6 +302,9 @@
     <div class="clear"></div>
 
         
+
+      
+    <script src="https://qinyu312.github.io/media/js/functions-post.js"></script>
 
     </div>
     <!-- end: #wrapper -->

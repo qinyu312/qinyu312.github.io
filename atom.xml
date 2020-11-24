@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qinyu312.github.io</id>
     <title>҉҉҈淸鷠҉҉҈、</title>
-    <updated>2020-11-23T02:37:41.986Z</updated>
+    <updated>2020-11-24T14:41:05.088Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qinyu312.github.io"/>
     <link rel="self" href="https://qinyu312.github.io/atom.xml"/>
@@ -10,6 +10,30 @@
     <logo>https://qinyu312.github.io/images/avatar.png</logo>
     <icon>https://qinyu312.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, ҉҉҈淸鷠҉҉҈、</rights>
+    <entry>
+        <title type="html"><![CDATA[Angular项目避坑指南]]></title>
+        <id>https://qinyu312.github.io/post/angular-xiang-mu-bi-keng-zhi-nan/</id>
+        <link href="https://qinyu312.github.io/post/angular-xiang-mu-bi-keng-zhi-nan/">
+        </link>
+        <updated>2020-11-24T10:15:01.000Z</updated>
+        <content type="html"><![CDATA[<p>最近收到一个新的需求，有一个Angular项目需要兼容到 IE7 以上版本，实在让我又惊又喜，惊的是都 2020年了，还甩不掉 IE7 这颗烫手山芋；喜的是第一次接触 Angular项目，不知道又会学到什么新的知识呢。拉到项目代码后，本地启动，果然给我来了迎头痛击。<br>
+首先确认本地安装有Node.js环境后，全局安装 Angular-cli ，也就是Angular脚手架,命令行输入：</p>
+<pre><code>cnpm install -g @angular/cli
+</code></pre>
+<p>然后就是老步骤，下载node_modules 依赖包</p>
+<pre><code>cnpm install
+</code></pre>
+<p>之后直接 ng serve 启动命令有点别具一格的简洁，直接芜湖🛫️🛫️🛫️</p>
+<pre><code>ng serve
+</code></pre>
+<p>接下来，就是见证 奇迹（打脸）的时刻<br>
+<img src="https://qinyu312.github.io/post-images/1606213638697.png" alt="" loading="lazy"><br>
+我敲完命令一回车，啪的一下满屏飙红报错，很快啊，我就看到是依赖包的问题，按照传统功夫的看到为止，我没有看下去，上去就是一个卸载依赖，一个 cnpm install ，我大意了，没有删，接着又是飙红报错。Angular 不讲武德，欺负我入行一年多点的小前端，希望它以后耗子尾汁！<br>
+<img src="https://qinyu312.github.io/post-images/1606228631691.png" alt="" loading="lazy"><br>
+最后在 node_modules 下的 less-loader 加上一句  javascriptEnabled: true  ，问题得到解决<br>
+<img src="https://qinyu312.github.io/post-images/1606228810583.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[vue-router 路由守卫]]></title>
         <id>https://qinyu312.github.io/post/vue-router-lu-you-shou-wei/</id>
