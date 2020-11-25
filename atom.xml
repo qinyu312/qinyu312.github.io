@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qinyu312.github.io</id>
     <title>҉҉҈淸鷠҉҉҈、</title>
-    <updated>2020-11-24T14:41:31.629Z</updated>
+    <updated>2020-11-25T09:32:11.543Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qinyu312.github.io"/>
     <link rel="self" href="https://qinyu312.github.io/atom.xml"/>
@@ -23,12 +23,18 @@
 <p>然后就是老步骤，下载node_modules 依赖包</p>
 <pre><code>cnpm install
 </code></pre>
-<p>之后直接 ng serve 启动命令有点别具一格的简洁，直接芜湖🛫️🛫️🛫️</p>
+<p>之后直接 ng serve 启动命令有点别具一格的简洁，直接芜湖🛫️<br>
+▬▬▬▬.◙.▬▬▬▬<br>
+▂▄▄▓▄▄▂<br>
+◢◤ █▀▀████▄▄▄▄◢◤┃<br>
+█ 芜湖芜湖芜湖！█▀……╬<br>
+◥██████◤<br>
+══╩══╩═══</p>
 <pre><code>ng serve
 </code></pre>
 <p>接下来，就是见证 奇迹（打脸）的时刻<br>
 <img src="https://qinyu312.github.io/post-images/1606213638697.png" alt="" loading="lazy"><br>
-我敲完命令一回车，啪的一下满屏飙红报错，很快啊，我就看到是依赖包的问题，按照传统功夫的看到为止，我没有看下去，上去就是一个卸载依赖，一个 cnpm install ，我大意了，没有删，接着又是飙红报错。Angular 不讲武德，欺负我入行一年多点的小前端，希望它以后耗子尾汁！<br>
+我敲完命令一回车，啪的一下满屏飙红报错，很快啊，我就看到是依赖包的问题，按照传统功夫的看到为止，我没有看下去，上去就是一个卸载依赖，一个 cnpm install ，我大意了啊，没有删完，接着又是飙红报错。Angular 不讲武德，来欺，为难我入行一年多点的小前端，希望它以后耗子尾汁！<br>
 <img src="https://qinyu312.github.io/post-images/1606228631691.png" alt="" loading="lazy"><br>
 最后在 node_modules 下的 less-loader 加上一句  javascriptEnabled: true  ，问题得到解决<br>
 <img src="https://qinyu312.github.io/post-images/1606228810583.png" alt="" loading="lazy"></p>
