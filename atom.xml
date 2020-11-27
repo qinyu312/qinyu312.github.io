@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qinyu312.github.io</id>
     <title>҉҉҈淸鷠҉҉҈、</title>
-    <updated>2020-11-25T09:32:11.543Z</updated>
+    <updated>2020-11-27T07:32:43.783Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qinyu312.github.io"/>
     <link rel="self" href="https://qinyu312.github.io/atom.xml"/>
@@ -23,13 +23,7 @@
 <p>然后就是老步骤，下载node_modules 依赖包</p>
 <pre><code>cnpm install
 </code></pre>
-<p>之后直接 ng serve 启动命令有点别具一格的简洁，直接芜湖🛫️<br>
-▬▬▬▬.◙.▬▬▬▬<br>
-▂▄▄▓▄▄▂<br>
-◢◤ █▀▀████▄▄▄▄◢◤┃<br>
-█ 芜湖芜湖芜湖！█▀……╬<br>
-◥██████◤<br>
-══╩══╩═══</p>
+<p>之后直接 ng serve 启动命令有点别具一格的简洁，直接芜湖🛫️</p>
 <pre><code>ng serve
 </code></pre>
 <p>接下来，就是见证 奇迹（打脸）的时刻<br>
@@ -38,6 +32,16 @@
 <img src="https://qinyu312.github.io/post-images/1606228631691.png" alt="" loading="lazy"><br>
 最后在 node_modules 下的 less-loader 加上一句  javascriptEnabled: true  ，问题得到解决<br>
 <img src="https://qinyu312.github.io/post-images/1606228810583.png" alt="" loading="lazy"></p>
+<p>项目成功启动，再来解决兼容IE7的问题，(Angular)[https://angular.cn/guide/browser-support]，官方文档浏览器兼容部分我们可以看到， IE 10, 11, 9，也就是说连官方都放弃去做IE9一下的兼容了。<br>
+<img src="https://qinyu312.github.io/post-images/1606461891938.png" alt="" loading="lazy"><br>
+忍不住又想吐槽IE一把，但是客户需求在身，只能硬着头皮做了，因为Angular在国内市场的使用还不是特别频繁，所以我在百度没有什么收获之后，决定翻墙去 Google ，Angular 也不亏是 Google的亲儿子。方案当然是有的。需要将Angular版本降低至 1.2一下才可以对IE8进行兼容适配。然后就是传统功夫的卸载新版本，安装旧版本。</p>
+<pre><code>&lt;!-- 卸载新版本 --&gt;
+cnpm uninstall -g @angular/cli
+&lt;!-- 安装新版本 --&gt;
+cnpm install -g @angular/cli/1.1
+</code></pre>
+<p>问题得到解决，兼容是好了，样式又乱的简直是乱他妈妈给乱开门 -- 乱到家了。不说了，我要去调样式了！<br>
+<img src="https://qinyu312.github.io/post-images/1606462146562.jpg" alt="" loading="lazy"></p>
 ]]></content>
     </entry>
     <entry>
@@ -308,6 +312,10 @@ export defaul{t class Father React.Component {
 <li>conponentWillReveiceProps: props发生改变时执行的生命周期函数</li>
 <li>conponentWillUnMount: 组件卸载前执行</li>
 </ol>
+<h2 id="探讨关于-setstate-更新是同步操作还是异步操作的问题">探讨关于 setState 更新是同步操作还是异步操作的问题</h2>
+<pre><code>setState会引起视图的重绘
+官方文档解答:在可控的情况下是异步的，在不可控的情况下是同步的
+</code></pre>
 ]]></content>
     </entry>
     <entry>
