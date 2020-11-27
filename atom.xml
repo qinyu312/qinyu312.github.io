@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qinyu312.github.io</id>
     <title>҉҉҈淸鷠҉҉҈、</title>
-    <updated>2020-11-27T07:32:43.783Z</updated>
+    <updated>2020-11-27T07:34:33.602Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qinyu312.github.io"/>
     <link rel="self" href="https://qinyu312.github.io/atom.xml"/>
@@ -32,7 +32,7 @@
 <img src="https://qinyu312.github.io/post-images/1606228631691.png" alt="" loading="lazy"><br>
 最后在 node_modules 下的 less-loader 加上一句  javascriptEnabled: true  ，问题得到解决<br>
 <img src="https://qinyu312.github.io/post-images/1606228810583.png" alt="" loading="lazy"></p>
-<p>项目成功启动，再来解决兼容IE7的问题，(Angular)[https://angular.cn/guide/browser-support]，官方文档浏览器兼容部分我们可以看到， IE 10, 11, 9，也就是说连官方都放弃去做IE9一下的兼容了。<br>
+<p>项目成功启动，再来解决兼容IE7的问题，<a href="https://angular.cn/guide/browser-support">Angular</a>，官方文档浏览器兼容部分我们可以看到， IE 10, 11, 9，也就是说连官方都放弃去做IE9一下的兼容了。<br>
 <img src="https://qinyu312.github.io/post-images/1606461891938.png" alt="" loading="lazy"><br>
 忍不住又想吐槽IE一把，但是客户需求在身，只能硬着头皮做了，因为Angular在国内市场的使用还不是特别频繁，所以我在百度没有什么收获之后，决定翻墙去 Google ，Angular 也不亏是 Google的亲儿子。方案当然是有的。需要将Angular版本降低至 1.2一下才可以对IE8进行兼容适配。然后就是传统功夫的卸载新版本，安装旧版本。</p>
 <pre><code>&lt;!-- 卸载新版本 --&gt;
