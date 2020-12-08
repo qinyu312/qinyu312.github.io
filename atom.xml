@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qinyu312.github.io</id>
     <title>҉҉҈淸鷠҉҉҈、</title>
-    <updated>2020-12-08T14:55:45.273Z</updated>
+    <updated>2020-12-08T15:48:38.482Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qinyu312.github.io"/>
     <link rel="self" href="https://qinyu312.github.io/atom.xml"/>
@@ -11,7 +11,7 @@
     <icon>https://qinyu312.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, ҉҉҈淸鷠҉҉҈、</rights>
     <entry>
-        <title type="html"><![CDATA[Fetch数据接口请求]]></title>
+        <title type="html"><![CDATA[Fetch querystring  跨域解决]]></title>
         <id>https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/</id>
         <link href="https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/">
         </link>
@@ -42,6 +42,38 @@ fetch(&quot;http://iwenwiki.com/api/blueberrypai/login.php&quot;, {
     })
 })
 </code></pre>
+<h2 id="跨域的解决方案">跨域的解决方案</h2>
+<p>跨域一般分为两种场景： 开发环境下的跨域问题和生产环境下的跨域问题<br>
+此处以React项目开发环境下为例</p>
+<pre><code>componentDidMount() {
+    fetch(&quot;http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billList&amp;type=1&amp;size=10&amp;offset=0&quot;)
+    .then(res =&gt; res.json())
+    .then(data =&gt; {
+        console.log(data)
+    })
+    .catch(error =&gt; {
+        console.log(new Error(error))
+    })
+}
+</code></pre>
+<p><img src="https://qinyu312.github.io/post-images/1607442245412.png" alt="" loading="lazy"><br>
+此处请求会跨域<br>
+需要在 package.json 文件中配置 proxy 代理解决<br>
+<img src="https://qinyu312.github.io/post-images/1607442296763.png" alt="" loading="lazy"><br>
+配置完成 package.json 文件后需要将请求接口前面的已经被代理的地址去掉如下</p>
+<pre><code>componentDidMount() {
+    fetch(&quot;/v1/restserver/ting?method=baidu.ting.billboard.billList&amp;type=1&amp;size=10&amp;offset=0&quot;)
+    .then(res =&gt; res.json())
+    .then(data =&gt; {
+        console.log(data)
+    })
+    .catch(error =&gt; {
+        console.log(new Error(error))
+    })
+}
+</code></pre>
+<p>然后终止此项目进程，重新运行该项目即可使用代理解决跨域问题。打开浏览器调试，接口数据正常请求得到。<br>
+<img src="https://qinyu312.github.io/post-images/1607442458895.png" alt="" loading="lazy"></p>
 ]]></content>
     </entry>
     <entry>

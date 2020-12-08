@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Fetch数据接口请求 | ҉҉҈淸鷠҉҉҈、</title>
+<title>Fetch querystring  跨域解决 | ҉҉҈淸鷠҉҉҈、</title>
 <meta name="description" content="万般皆苦，唯有自渡" />
 <link rel="shortcut icon" href="https://qinyu312.github.io/favicon.ico">
 <link rel="stylesheet" href="https://qinyu312.github.io/styles/main.css">
@@ -79,7 +79,7 @@ import qs from 'querystring'
       <div class="hide-on-mobile hide-on-tablet hide-on-desktop">
         <div id="search-lightbox" class="grid-container grid-small grid-parent mfp-hide">
           <div class="search-wrapper section">
-            <form id="gridea-search-form" data-update="1607439339398" action="/search/index.html" class="search-form" _lpchecked="1">
+            <form id="gridea-search-form" data-update="1607442513408" action="/search/index.html" class="search-form" _lpchecked="1">
               <input type="text" name="q" id="s" value="" class="search-field" placeholder="搜点啥..." aria-label="搜点啥..." required="">
               <button type="submit" class="submit" aria-label="Submit">
                 <i class="fa fa-search-line"></i>
@@ -94,7 +94,7 @@ import qs from 'querystring'
         <div class="center content">
           <div class="featured-image cover" style="background-image: url('/media/images/custom-featureImage.jpeg');">
             <div class="meta top"> 
-              <time class="meta-info" style="float:left;" datetime="2020-12-08"><i class="fa fa-calendar"></i><span class="lately">17 分钟前</span></time>
+              <time class="meta-info" style="float:left;" datetime="2020-12-08"><i class="fa fa-calendar"></i><span class="lately">1 小时前</span></time>
               
               <a href="https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/#comments" class="comments meta-info" title="">
                 <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/fetch-shu-ju-jie-kou-qing-qiu/"> </span>
@@ -106,7 +106,7 @@ import qs from 'querystring'
               <div class="tags ">
                 
               </div>
-              <h1 class="title ularge white bold">Fetch数据接口请求</h1>
+              <h1 class="title ularge white bold">Fetch querystring  跨域解决</h1>
             </div>
           </div>
         </div>  
@@ -142,6 +142,38 @@ fetch(&quot;http://iwenwiki.com/api/blueberrypai/login.php&quot;, {
     })
 })
 </code></pre>
+<h2 id="跨域的解决方案">跨域的解决方案</h2>
+<p>跨域一般分为两种场景： 开发环境下的跨域问题和生产环境下的跨域问题<br>
+此处以React项目开发环境下为例</p>
+<pre><code>componentDidMount() {
+    fetch(&quot;http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billList&amp;type=1&amp;size=10&amp;offset=0&quot;)
+    .then(res =&gt; res.json())
+    .then(data =&gt; {
+        console.log(data)
+    })
+    .catch(error =&gt; {
+        console.log(new Error(error))
+    })
+}
+</code></pre>
+<p><img src="https://qinyu312.github.io/post-images/1607442245412.png" alt="" loading="lazy"><br>
+此处请求会跨域<br>
+需要在 package.json 文件中配置 proxy 代理解决<br>
+<img src="https://qinyu312.github.io/post-images/1607442296763.png" alt="" loading="lazy"><br>
+配置完成 package.json 文件后需要将请求接口前面的已经被代理的地址去掉如下</p>
+<pre><code>componentDidMount() {
+    fetch(&quot;/v1/restserver/ting?method=baidu.ting.billboard.billList&amp;type=1&amp;size=10&amp;offset=0&quot;)
+    .then(res =&gt; res.json())
+    .then(data =&gt; {
+        console.log(data)
+    })
+    .catch(error =&gt; {
+        console.log(new Error(error))
+    })
+}
+</code></pre>
+<p>然后终止此项目进程，重新运行该项目即可使用代理解决跨域问题。打开浏览器调试，接口数据正常请求得到。<br>
+<img src="https://qinyu312.github.io/post-images/1607442458895.png" alt="" loading="lazy"></p>
 
                 </div>
                 <div class="clear"></div>
@@ -197,7 +229,7 @@ fetch(&quot;http://iwenwiki.com/api/blueberrypai/login.php&quot;, {
                     <div class="info gradient-effect">
                       <time datetime="2020-12-08">2020-12-08</time>
                       <h4 class="title usmall">
-                        <a href="https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/">Fetch数据接口请求</a>
+                        <a href="https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/">Fetch querystring  跨域解决</a>
                       </h4>
                     </div>
                     <div class="clear"></div>
