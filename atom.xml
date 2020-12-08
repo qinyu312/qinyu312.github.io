@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qinyu312.github.io</id>
     <title>҉҉҈淸鷠҉҉҈、</title>
-    <updated>2020-11-27T07:34:33.602Z</updated>
+    <updated>2020-12-08T14:55:45.273Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qinyu312.github.io"/>
     <link rel="self" href="https://qinyu312.github.io/atom.xml"/>
@@ -11,12 +11,72 @@
     <icon>https://qinyu312.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, ҉҉҈淸鷠҉҉҈、</rights>
     <entry>
+        <title type="html"><![CDATA[Fetch数据接口请求]]></title>
+        <id>https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/</id>
+        <link href="https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/">
+        </link>
+        <updated>2020-12-08T14:38:43.000Z</updated>
+        <content type="html"><![CDATA[<p>以前写数据接口，对接请求都是使用的Ajax，或者Axios之类的，最近在使用React进行开发，用到了<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch">fetch</a>, 和<a href="http://nodejs.cn/api/querystring.html">querystring</a></p>
+<pre><code>import qs from 'querystring'
+&lt;!-- get请求 --&gt;
+fetch(&quot;http://iwenwiki.com/api/blueberrypai/getChengpinInfo.php&quot;)
+.then(res =&gt; res.json())
+.then(data =&gt; {
+    console.log(data)
+})
+
+&lt;!-- post请求 --&gt;
+fetch(&quot;http://iwenwiki.com/api/blueberrypai/login.php&quot;, {
+    method: 'POST' ,   // 请求方式
+    headers: {            // 请求头
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json, text/plain, */*',
+    },
+    &lt;!-- body: &quot;user_id=iwen@qq.com&amp;password=iwen123&amp;verification_code=crfvw&quot; --&gt;
+    &lt;!-- 此处传参使用字符串传参的方式，所以需要参数间 &amp; 分隔拼串 --&gt;
+    &lt;!-- 如果不想写拼串，也可以直接引入 querystring来进行转换操作如下 --&gt;
+    body: qs.stringify({
+        'user_id': 'iwen@qq.com',
+        'password': 'iwen123',
+        'verification_code': 'crfvw'
+    })
+})
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[关于各种IE兼容(持续更新中)]]></title>
+        <id>https://qinyu312.github.io/post/guan-yu-ge-chong-ie-jian-rong/</id>
+        <link href="https://qinyu312.github.io/post/guan-yu-ge-chong-ie-jian-rong/">
+        </link>
+        <updated>2020-12-04T10:07:51.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="条件注释">条件注释</h2>
+<p>IE10以下版本可用，IE11已经取消支持</p>
+<pre><code>&lt;!--[if lte IE 8]&gt; 	
+        &lt;script src=&quot;/js/html5.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;/js/css3-mediaqueries.js&quot;&gt;&lt;/script&gt;
+        &lt;link href=&quot;/css/ie8.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;![endif]--&gt;
+</code></pre>
+<p>因为IE11不支持条件注释，可以使用正则判断</p>
+<pre><code>var browser = navigator.appName;
+var ie11 = !!navigator.userAgent.match(/Trident\/7\./);
+if (browser == 'Microsoft Internet Explorer' || ie11 == true) {
+    //do something
+}
+</code></pre>
+<h2 id="ie9部分页面不显示的问题">IE9部分页面不显示的问题</h2>
+<pre><code>IE9是不支持 console.log 打印输出语句的，在非开发者模式下会阻塞不会执行后面的内容
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Angular项目避坑指南]]></title>
         <id>https://qinyu312.github.io/post/angular-xiang-mu-bi-keng-zhi-nan/</id>
         <link href="https://qinyu312.github.io/post/angular-xiang-mu-bi-keng-zhi-nan/">
         </link>
         <updated>2020-11-24T10:15:01.000Z</updated>
-        <content type="html"><![CDATA[<p>最近收到一个新的需求，有一个Angular项目需要兼容到 IE7 以上版本，实在让我又惊又喜，惊的是都 2020年了，还甩不掉 IE7 这颗烫手山芋；喜的是第一次接触 Angular项目，不知道又会学到什么新的知识呢。拉到项目代码后，本地启动，果然给我来了迎头痛击。<br>
+        <content type="html"><![CDATA[<p>最近收到一个新的需求，有一个Angular项目需要兼容到 IE8 以上版本，实在让我又惊又喜，惊的是都 2020年了，还甩不掉 IE8 这颗烫手山芋；喜的是第一次接触 Angular项目，不知道又会学到什么新的知识呢。拉到项目代码后，本地启动，果然给我来了迎头痛击。<br>
 首先确认本地安装有Node.js环境后，全局安装 Angular-cli ，也就是Angular脚手架,命令行输入：</p>
 <pre><code>cnpm install -g @angular/cli
 </code></pre>
@@ -32,15 +92,15 @@
 <img src="https://qinyu312.github.io/post-images/1606228631691.png" alt="" loading="lazy"><br>
 最后在 node_modules 下的 less-loader 加上一句  javascriptEnabled: true  ，问题得到解决<br>
 <img src="https://qinyu312.github.io/post-images/1606228810583.png" alt="" loading="lazy"></p>
-<p>项目成功启动，再来解决兼容IE7的问题，<a href="https://angular.cn/guide/browser-support">Angular</a>，官方文档浏览器兼容部分我们可以看到， IE 10, 11, 9，也就是说连官方都放弃去做IE9一下的兼容了。<br>
+<p>项目成功启动，再来解决兼容IE8的问题，<a href="https://angular.cn/guide/browser-support">Angular</a>，官方文档浏览器兼容部分我们可以看到， IE 10, 11, 9，也就是说连官方都放弃去做IE9一下的兼容了。<br>
 <img src="https://qinyu312.github.io/post-images/1606461891938.png" alt="" loading="lazy"><br>
-忍不住又想吐槽IE一把，但是客户需求在身，只能硬着头皮做了，因为Angular在国内市场的使用还不是特别频繁，所以我在百度没有什么收获之后，决定翻墙去 Google ，Angular 也不亏是 Google的亲儿子。方案当然是有的。需要将Angular版本降低至 1.2一下才可以对IE8进行兼容适配。然后就是传统功夫的卸载新版本，安装旧版本。</p>
+忍不住又想吐槽IE一把，但是客户需求在身，只能硬着头皮做了，因为Angular在国内市场的使用还不是特别频繁，所以我在百度没有什么收获之后，决定翻墙去 Google ，Angular 也不亏是 Google的亲儿子。方案当然是有的。需要将Angular版本降低至 1.2一以下可以对IE8进行兼容适配。然后就是传统功夫的卸载新版本，安装旧版本。</p>
 <pre><code>&lt;!-- 卸载新版本 --&gt;
 cnpm uninstall -g @angular/cli
 &lt;!-- 安装新版本 --&gt;
 cnpm install -g @angular/cli/1.1
 </code></pre>
-<p>问题得到解决，兼容是好了，样式又乱的简直是乱他妈妈给乱开门 -- 乱到家了。不说了，我要去调样式了！<br>
+<p>问题得到解决，兼容是好了，样式又乱的简直是乱他妈妈给乱开门  -  乱到家了。不说了，我要去调样式了！<br>
 <img src="https://qinyu312.github.io/post-images/1606462146562.jpg" alt="" loading="lazy"></p>
 ]]></content>
     </entry>
@@ -316,6 +376,12 @@ export defaul{t class Father React.Component {
 <pre><code>setState会引起视图的重绘
 官方文档解答:在可控的情况下是异步的，在不可控的情况下是同步的
 </code></pre>
+<h2 id="create-react-app-按需加载antd-组件">create-react-app 按需加载Antd 组件</h2>
+<ol>
+<li>命令行输入 cnpm run eject  拉取React的配置文件</li>
+<li>文件被修改时，会抛出异常，由于GIt的原因导致,此时找到文件目录，按下shift + command + . 显示隐藏文件，删除 .git 文件，重新 cnpm run eject即可，安装完成后目录多出了两个文件，分别是config和script文件，config文件就是webpack配置文件</li>
+<li>安装一个依赖文件 cnpm install babel-plugin-import --save-dev</li>
+</ol>
 ]]></content>
     </entry>
     <entry>

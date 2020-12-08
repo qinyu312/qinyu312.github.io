@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>vue-router 路由守卫 | ҉҉҈淸鷠҉҉҈、</title>
+<title>关于各种IE兼容(持续更新中) | ҉҉҈淸鷠҉҉҈、</title>
 <meta name="description" content="万般皆苦，唯有自渡" />
 <link rel="shortcut icon" href="https://qinyu312.github.io/favicon.ico">
 <link rel="stylesheet" href="https://qinyu312.github.io/styles/main.css">
@@ -15,10 +15,11 @@
 <script src="https://qinyu312.github.io/media/js/jquery.magnific-popup.min.js"></script>
 <script src="https://qinyu312.github.io/media/js/functions.js"></script>
     <meta name="referrer" content="never">
-    <meta name="description" content="有一段时间没有写过 vue 的项目了，最近工作中需要自己搭建，所以简单分享一下vue-router路由守卫!
-
-项目中很常见的一种场景，需求是，用户打开网址进入线上地址，首先是登录页面，用户需要账号密码验证码等手段通过验证和赋权，才可以进入..." />
-    <meta name="keywords" content="Vue.js" />
+    <meta name="description" content="条件注释
+IE10以下版本可用，IE11已经取消支持
+&lt;!--[if lte IE 8]&gt; 	
+        &lt;script src=&quot;/js/html5.js&quot;&gt;&lt;/script&gt;..." />
+    <meta name="keywords" content="兼容" />
     <script src="https://qinyu312.github.io/media/js/waterfall.min.js"></script>
     <script src="https://qinyu312.github.io/media/js/prism.min.js"></script>
   </head>
@@ -94,21 +95,21 @@
         <div class="center content">
           <div class="featured-image cover" style="background-image: url('/media/images/custom-featureImage.jpeg');">
             <div class="meta top"> 
-              <time class="meta-info" style="float:left;" datetime="2020-11-23"><i class="fa fa-calendar"></i><span class="lately">16 天前</span></time>
+              <time class="meta-info" style="float:left;" datetime="2020-12-04"><i class="fa fa-calendar"></i><span class="lately">4 天前</span></time>
               
-              <a href="https://qinyu312.github.io/post/vue-router-lu-you-shou-wei/#comments" class="comments meta-info" title="">
-                <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/vue-router-lu-you-shou-wei/"> </span>
+              <a href="https://qinyu312.github.io/post/guan-yu-ge-chong-ie-jian-rong/#comments" class="comments meta-info" title="">
+                <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/guan-yu-ge-chong-ie-jian-rong/"> </span>
               </a>
-              <span id="/vue-router-lu-you-shou-wei/" class="leancloud_visitors views-counter meta-info" title=""><i class="fa fa-leancloud remixicon"></i><span class="leancloud-visitors-count"></span></span>
+              <span id="/guan-yu-ge-chong-ie-jian-rong/" class="leancloud_visitors views-counter meta-info" title=""><i class="fa fa-leancloud remixicon"></i><span class="leancloud-visitors-count"></span></span>
               
             </div>
             <div class="info">
               <div class="tags ">
                 
-                      <a href="https://qinyu312.github.io/tag/jR-y9fSIb/" class="ctag ctag-0 ctag-jR-y9fSIb" aria-label="">Vue.js</a>
+                      <a href="https://qinyu312.github.io/tag/glhfgA99X/" class="ctag ctag-0 ctag-glhfgA99X" aria-label="">兼容</a>
                     
               </div>
-              <h1 class="title ularge white bold">vue-router 路由守卫</h1>
+              <h1 class="title ularge white bold">关于各种IE兼容(持续更新中)</h1>
             </div>
           </div>
         </div>  
@@ -118,62 +119,24 @@
             <article class="main-article post">
               <section class="post-content">
                 <div class="text">
-                  <pre><code>有一段时间没有写过 vue 的项目了，最近工作中需要自己搭建，所以简单分享一下vue-router路由守卫!
+                  <h2 id="条件注释">条件注释</h2>
+<p>IE10以下版本可用，IE11已经取消支持</p>
+<pre><code>&lt;!--[if lte IE 8]&gt; 	
+        &lt;script src=&quot;/js/html5.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;/js/css3-mediaqueries.js&quot;&gt;&lt;/script&gt;
+        &lt;link href=&quot;/css/ie8.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;![endif]--&gt;
 </code></pre>
-<p>项目中很常见的一种场景，需求是，用户打开网址进入线上地址，首先是登录页面，用户需要账号密码验证码等手段通过验证和赋权，才可以进入到包括首页，各种管理等内容页面，未登录之前，通过修改路由来进行跳转，如果确实存在此路由，会跳转到登录页面进行登录，如果没有这个路由，会跳转到 404 页面。而成功完成登录后再进行路由地址修改则可以正常跳转！<br>
-这里就需要用到通配符匹配和 路由守卫等操作了</p>
-<h2 id="通配符">通配符 *</h2>
-<p>一般用于菜单路由匹配的最后面，为什么要放在最后面呢？因为放在前面会把写在它之后的路由菜单全部匹配进去，就相当于在小河的上游筑起水坝蓄水，那下游自然就没水了，所以通配符相当于确保没有漏网之鱼的作用，凡是没有被定义的路由，都会被它拦截，转而跳转到首页或者404等页面。</p>
-<pre><code>&lt;!-- router 下的 index.js --&gt;
-export default new Router({
-  routes: [
-    {
-      path:'/home',
-      name:'home',
-      component:home
-    },
-    //通配符的使用
-    {
-      path: '/detail-*',
-      component:detail
-    },
-    {
-      path: '/*',
-      component:notFound
-    }
-  ]
-})
-</code></pre>
-<h2 id="beforeeach-前置路由守卫">beforeEach() 前置路由守卫</h2>
-<p>当你随意修改路由地址上的路由菜单进行跳转，比如在 '/login' 修改为 '/home'却可以正常跳转时，在尚未登录赋权的情况下就可以进入程序主页面，是一种很不安全的操作，就需要用到路由守卫了！全局前置路由守卫用于路由跳转之前执行，他有三个参数 'to' 参数，表示你当前正要跳转到哪里去，也就是目标页面路由， 'from'参数表示，从哪里来的，也就是当前页面， next() 方法，一定需要调用，继续往下执行的函数。</p>
-<pre><code>&lt;!-- 在 roter 文件下的路由配置处， 将meta下的 requireAuth 设置为 true作为此菜单不可不登录直接跳转的标记 --&gt;
-{
-    path: '/home',
-    meta:{ requireAuth: true }
+<p>因为IE11不支持条件注释，可以使用正则判断</p>
+<pre><code>var browser = navigator.appName;
+var ie11 = !!navigator.userAgent.match(/Trident\/7\./);
+if (browser == 'Microsoft Internet Explorer' || ie11 == true) {
+    //do something
 }
 </code></pre>
-<pre><code>&lt;!-- main.js --&gt;
-beforeEach((to, form, next) =&gt; {
-    console.log(to)
-    console.log(from)
-    &lt;!-- 如果要去的这个页面的路由配置中 meta.requireAuth 为 true的话 --&gt;
-    if(to.meta.requireAuth) {
-        &lt;!-- 判断本地存储是否有token令牌，如果有并且令牌合法，调用 next() 方法继续执行 --&gt;
-        if(localStorage.getItem('access_token')) {
-            next();
-        } else {
-            &lt;!-- 否则就直接调用next()方法跳转回登录页面重新登录 --&gt;
-            next({
-                path: '/login'
-            })
-        }
-    } else {
-        next();
-    }
-})
+<h2 id="ie9部分页面不显示的问题">IE9部分页面不显示的问题</h2>
+<pre><code>IE9是不支持 console.log 打印输出语句的，在非开发者模式下会阻塞不会执行后面的内容
 </code></pre>
-<figure data-type="image" tabindex="1"><img src="https://qinyu312.github.io/post-images/1606098979481.png" alt="" loading="lazy"></figure>
-<p>设置完成之后保存并运行项目就会发现，在路径处修改路由不会直接跳转而是会自动拦截。</p>
 
                 </div>
                 <div class="clear"></div>
@@ -184,11 +147,11 @@ beforeEach((to, form, next) =&gt; {
             <section class="related section">
               
               <article class="prev grid-50 tablet-grid-50 grid-parent">
-                <div class="thumb cover lazy loaded" style="background-image: url('https://qinyu312.github.io/media/images/lRh7oE3Ar.jpg');"></div>
-                 <a href="https://qinyu312.github.io/post/angular-xiang-mu-bi-keng-zhi-nan/" class="full-link"></a>
+                <div class="thumb cover lazy loaded" style="background-image: url('https://qinyu312.github.io/media/images/gridea.jpg');"></div>
+                 <a href="https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/" class="full-link"></a>
                  <div class="info">
-                  <time datetime="2020-11-24">2020-11-24</time>
-                  <h4 class="title white no-margin">Angular项目避坑指南</h4>
+                  <time datetime="2020-12-08">2020-12-08</time>
+                  <h4 class="title white no-margin">Fetch数据接口请求</h4>
                 </div>
                  <span class="epcl-button red">
                   <img src="https://qinyu312.github.io/media/images/left-arrow.svg" width="15" alt="Left Arrow">
@@ -198,11 +161,11 @@ beforeEach((to, form, next) =&gt; {
               
               
               <article class="next grid-50 tablet-grid-50 grid-parent">
-                <div class="thumb cover lazy loaded" style="background-image: url('https://qinyu312.github.io/media/images/PP9Y5sIbi.jpg');"></div>
-                 <a href="https://qinyu312.github.io/post/chu-shi-react/" class="full-link"></a>
+                <div class="thumb cover lazy loaded" style="background-image: url('https://qinyu312.github.io/media/images/lRh7oE3Ar.jpg');"></div>
+                 <a href="https://qinyu312.github.io/post/angular-xiang-mu-bi-keng-zhi-nan/" class="full-link"></a>
                  <div class="info">
-                  <time datetime="2020-11-18">2020-11-18</time>
-                  <h4 class="title white no-margin">初识React</h4>
+                  <time datetime="2020-11-24">2020-11-24</time>
+                  <h4 class="title white no-margin">Angular项目避坑指南</h4>
                 </div>
                  <span class="epcl-button red">
                   <img src="https://qinyu312.github.io/media/images/right-arrow.svg" width="15" alt="Left Arrow">

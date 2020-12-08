@@ -15,8 +15,8 @@
 <script src="https://qinyu312.github.io/media/js/jquery.magnific-popup.min.js"></script>
 <script src="https://qinyu312.github.io/media/js/functions.js"></script>
     <meta name="referrer" content="never">
-    <meta name="description" content="最近收到一个新的需求，有一个Angular项目需要兼容到 IE7 以上版本，实在让我又惊又喜，惊的是都 2020年了，还甩不掉 IE7 这颗烫手山芋；喜的是第一次接触 Angular项目，不知道又会学到什么新的知识呢。拉到项目代码后，本地启..." />
-    <meta name="keywords" content="Angular" />
+    <meta name="description" content="最近收到一个新的需求，有一个Angular项目需要兼容到 IE8 以上版本，实在让我又惊又喜，惊的是都 2020年了，还甩不掉 IE8 这颗烫手山芋；喜的是第一次接触 Angular项目，不知道又会学到什么新的知识呢。拉到项目代码后，本地启..." />
+    <meta name="keywords" content="Angular.js" />
     <script src="https://qinyu312.github.io/media/js/waterfall.min.js"></script>
     <script src="https://qinyu312.github.io/media/js/prism.min.js"></script>
   </head>
@@ -77,7 +77,7 @@
       <div class="hide-on-mobile hide-on-tablet hide-on-desktop">
         <div id="search-lightbox" class="grid-container grid-small grid-parent mfp-hide">
           <div class="search-wrapper section">
-            <form id="gridea-search-form" data-update="1606462471251" action="/search/index.html" class="search-form" _lpchecked="1">
+            <form id="gridea-search-form" data-update="1607439339398" action="/search/index.html" class="search-form" _lpchecked="1">
               <input type="text" name="q" id="s" value="" class="search-field" placeholder="搜点啥..." aria-label="搜点啥..." required="">
               <button type="submit" class="submit" aria-label="Submit">
                 <i class="fa fa-search-line"></i>
@@ -92,7 +92,7 @@
         <div class="center content">
           <div class="featured-image cover" style="background-image: url('/media/images/custom-featureImage.jpeg');">
             <div class="meta top"> 
-              <time class="meta-info" style="float:left;" datetime="2020-11-24"><i class="fa fa-calendar"></i><span class="lately">3 天前</span></time>
+              <time class="meta-info" style="float:left;" datetime="2020-11-24"><i class="fa fa-calendar"></i><span class="lately">14 天前</span></time>
               
               <a href="https://qinyu312.github.io/post/angular-xiang-mu-bi-keng-zhi-nan/#comments" class="comments meta-info" title="">
                 <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/angular-xiang-mu-bi-keng-zhi-nan/"> </span>
@@ -103,7 +103,7 @@
             <div class="info">
               <div class="tags ">
                 
-                      <a href="https://qinyu312.github.io/tag/QXyz-fTYc/" class="ctag ctag-0 ctag-QXyz-fTYc" aria-label="">Angular</a>
+                      <a href="https://qinyu312.github.io/tag/lRh7oE3Ar/" class="ctag ctag-0 ctag-lRh7oE3Ar" aria-label="">Angular.js</a>
                     
               </div>
               <h1 class="title ularge white bold">Angular项目避坑指南</h1>
@@ -116,7 +116,7 @@
             <article class="main-article post">
               <section class="post-content">
                 <div class="text">
-                  <p>最近收到一个新的需求，有一个Angular项目需要兼容到 IE7 以上版本，实在让我又惊又喜，惊的是都 2020年了，还甩不掉 IE7 这颗烫手山芋；喜的是第一次接触 Angular项目，不知道又会学到什么新的知识呢。拉到项目代码后，本地启动，果然给我来了迎头痛击。<br>
+                  <p>最近收到一个新的需求，有一个Angular项目需要兼容到 IE8 以上版本，实在让我又惊又喜，惊的是都 2020年了，还甩不掉 IE8 这颗烫手山芋；喜的是第一次接触 Angular项目，不知道又会学到什么新的知识呢。拉到项目代码后，本地启动，果然给我来了迎头痛击。<br>
 首先确认本地安装有Node.js环境后，全局安装 Angular-cli ，也就是Angular脚手架,命令行输入：</p>
 <pre><code>cnpm install -g @angular/cli
 </code></pre>
@@ -132,15 +132,15 @@
 <img src="https://qinyu312.github.io/post-images/1606228631691.png" alt="" loading="lazy"><br>
 最后在 node_modules 下的 less-loader 加上一句  javascriptEnabled: true  ，问题得到解决<br>
 <img src="https://qinyu312.github.io/post-images/1606228810583.png" alt="" loading="lazy"></p>
-<p>项目成功启动，再来解决兼容IE7的问题，<a href="https://angular.cn/guide/browser-support">Angular</a>，官方文档浏览器兼容部分我们可以看到， IE 10, 11, 9，也就是说连官方都放弃去做IE9一下的兼容了。<br>
+<p>项目成功启动，再来解决兼容IE8的问题，<a href="https://angular.cn/guide/browser-support">Angular</a>，官方文档浏览器兼容部分我们可以看到， IE 10, 11, 9，也就是说连官方都放弃去做IE9一下的兼容了。<br>
 <img src="https://qinyu312.github.io/post-images/1606461891938.png" alt="" loading="lazy"><br>
-忍不住又想吐槽IE一把，但是客户需求在身，只能硬着头皮做了，因为Angular在国内市场的使用还不是特别频繁，所以我在百度没有什么收获之后，决定翻墙去 Google ，Angular 也不亏是 Google的亲儿子。方案当然是有的。需要将Angular版本降低至 1.2一下才可以对IE8进行兼容适配。然后就是传统功夫的卸载新版本，安装旧版本。</p>
+忍不住又想吐槽IE一把，但是客户需求在身，只能硬着头皮做了，因为Angular在国内市场的使用还不是特别频繁，所以我在百度没有什么收获之后，决定翻墙去 Google ，Angular 也不亏是 Google的亲儿子。方案当然是有的。需要将Angular版本降低至 1.2一以下可以对IE8进行兼容适配。然后就是传统功夫的卸载新版本，安装旧版本。</p>
 <pre><code>&lt;!-- 卸载新版本 --&gt;
 cnpm uninstall -g @angular/cli
 &lt;!-- 安装新版本 --&gt;
 cnpm install -g @angular/cli/1.1
 </code></pre>
-<p>问题得到解决，兼容是好了，样式又乱的简直是乱他妈妈给乱开门 -- 乱到家了。不说了，我要去调样式了！<br>
+<p>问题得到解决，兼容是好了，样式又乱的简直是乱他妈妈给乱开门  -  乱到家了。不说了，我要去调样式了！<br>
 <img src="https://qinyu312.github.io/post-images/1606462146562.jpg" alt="" loading="lazy"></p>
 
                 </div>
@@ -151,9 +151,22 @@ cnpm install -g @angular/cli/1.1
 
             <section class="related section">
               
+              <article class="prev grid-50 tablet-grid-50 grid-parent">
+                <div class="thumb cover lazy loaded" style="background-image: url('https://qinyu312.github.io/media/images/glhfgA99X.jpg');"></div>
+                 <a href="https://qinyu312.github.io/post/guan-yu-ge-chong-ie-jian-rong/" class="full-link"></a>
+                 <div class="info">
+                  <time datetime="2020-12-04">2020-12-04</time>
+                  <h4 class="title white no-margin">关于各种IE兼容(持续更新中)</h4>
+                </div>
+                 <span class="epcl-button red">
+                  <img src="https://qinyu312.github.io/media/images/left-arrow.svg" width="15" alt="Left Arrow">
+                </span>
+                <div class="overlay"></div>
+              </article>
+              
               
               <article class="next grid-50 tablet-grid-50 grid-parent">
-                <div class="thumb cover lazy loaded" style="background-image: url('https://qinyu312.github.io/media/images/zGTOL8kaS.jpg');"></div>
+                <div class="thumb cover lazy loaded" style="background-image: url('https://qinyu312.github.io/media/images/jR-y9fSIb.jpg');"></div>
                  <a href="https://qinyu312.github.io/post/vue-router-lu-you-shou-wei/" class="full-link"></a>
                  <div class="info">
                   <time datetime="2020-11-23">2020-11-23</time>
@@ -191,6 +204,36 @@ cnpm install -g @angular/cli/1.1
                   
                   
                   <article class="item post-0 post type-post status-publish format-standard has-post-thumbnail hentry">
+                    <a href="https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/" class="thumb hover-effect">
+                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/custom-featureImage.jpeg');"></span>
+                    </a>
+                    <div class="info gradient-effect">
+                      <time datetime="2020-12-08">2020-12-08</time>
+                      <h4 class="title usmall">
+                        <a href="https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/">Fetch数据接口请求</a>
+                      </h4>
+                    </div>
+                    <div class="clear"></div>
+                  </article>
+                  
+                  
+                  
+                  <article class="item post-1 post type-post status-publish format-standard has-post-thumbnail hentry">
+                    <a href="https://qinyu312.github.io/post/guan-yu-ge-chong-ie-jian-rong/" class="thumb hover-effect">
+                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/custom-featureImage.jpeg');"></span>
+                    </a>
+                    <div class="info gradient-effect">
+                      <time datetime="2020-12-04">2020-12-04</time>
+                      <h4 class="title usmall">
+                        <a href="https://qinyu312.github.io/post/guan-yu-ge-chong-ie-jian-rong/">关于各种IE兼容(持续更新中)</a>
+                      </h4>
+                    </div>
+                    <div class="clear"></div>
+                  </article>
+                  
+                  
+                  
+                  <article class="item post-2 post type-post status-publish format-standard has-post-thumbnail hentry">
                     <a href="https://qinyu312.github.io/post/angular-xiang-mu-bi-keng-zhi-nan/" class="thumb hover-effect">
                       <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/custom-featureImage.jpeg');"></span>
                     </a>
@@ -205,33 +248,7 @@ cnpm install -g @angular/cli/1.1
                   
                   
                   
-                  <article class="item post-1 post type-post status-publish format-standard has-post-thumbnail hentry">
-                    <a href="https://qinyu312.github.io/post/vue-router-lu-you-shou-wei/" class="thumb hover-effect">
-                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/custom-featureImage.jpeg');"></span>
-                    </a>
-                    <div class="info gradient-effect">
-                      <time datetime="2020-11-23">2020-11-23</time>
-                      <h4 class="title usmall">
-                        <a href="https://qinyu312.github.io/post/vue-router-lu-you-shou-wei/">vue-router 路由守卫</a>
-                      </h4>
-                    </div>
-                    <div class="clear"></div>
-                  </article>
                   
-                  
-                  
-                  <article class="item post-2 post type-post status-publish format-standard has-post-thumbnail hentry">
-                    <a href="https://qinyu312.github.io/post/chu-shi-react/" class="thumb hover-effect">
-                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/custom-featureImage.jpeg');"></span>
-                    </a>
-                    <div class="info gradient-effect">
-                      <time datetime="2020-11-18">2020-11-18</time>
-                      <h4 class="title usmall">
-                        <a href="https://qinyu312.github.io/post/chu-shi-react/">初识React</a>
-                      </h4>
-                    </div>
-                    <div class="clear"></div>
-                  </article>
                   
                   
                   
@@ -253,13 +270,15 @@ cnpm install -g @angular/cli/1.1
                   <h4 class="widget-title title white bordered">标签云</h4>
                   <div class="tagcloud">
                     
-                      <a href="https://qinyu312.github.io/tag/QXyz-fTYc/" class="ctag ctag-0 ctag-QXyz-fTYc" aria-label="">Angular</a>
+                      <a href="https://qinyu312.github.io/tag/glhfgA99X/" class="ctag ctag-0 ctag-glhfgA99X" aria-label="">兼容</a>
                     
-                      <a href="https://qinyu312.github.io/tag/zGTOL8kaS/" class="ctag ctag-1 ctag-zGTOL8kaS" aria-label="">vue</a>
+                      <a href="https://qinyu312.github.io/tag/lRh7oE3Ar/" class="ctag ctag-1 ctag-lRh7oE3Ar" aria-label="">Angular.js</a>
                     
-                      <a href="https://qinyu312.github.io/tag/react/" class="ctag ctag-2 ctag-react" aria-label="">React</a>
+                      <a href="https://qinyu312.github.io/tag/jR-y9fSIb/" class="ctag ctag-2 ctag-jR-y9fSIb" aria-label="">Vue.js</a>
                     
-                      <a href="https://qinyu312.github.io/tag/RAus8PL4V/" class="ctag ctag-3 ctag-RAus8PL4V" aria-label="">blog</a>
+                      <a href="https://qinyu312.github.io/tag/PP9Y5sIbi/" class="ctag ctag-3 ctag-PP9Y5sIbi" aria-label="">React.js</a>
+                    
+                      <a href="https://qinyu312.github.io/tag/RAus8PL4V/" class="ctag ctag-4 ctag-RAus8PL4V" aria-label="">blog</a>
                     
                   </div>
                   <div class="clear"></div>
@@ -303,7 +322,7 @@ cnpm install -g @angular/cli/1.1
           <a href="https://qinyu312.github.io"><img src="/media/images/custom-footerLogo.jpeg" alt=""></a>
         </div>
         <p class="published border-effect">
-          ©2019 共 8 篇文章
+          ©2019 共 10 篇文章
           <br/>
           Theme <a href="https://gridea.dev/" target="_blank">「breek」</a> Powered by <a href="https://gridea.dev/" target="_blank">「Gridea」</a>
         </p>
