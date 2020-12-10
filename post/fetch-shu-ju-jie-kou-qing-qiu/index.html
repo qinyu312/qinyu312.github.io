@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Fetch querystring  跨域解决 | ҉҉҈淸鷠҉҉҈、</title>
+<title>Fetch querystring  跨域解决 封装请求 | ҉҉҈淸鷠҉҉҈、</title>
 <meta name="description" content="万般皆苦，唯有自渡" />
 <link rel="shortcut icon" href="https://qinyu312.github.io/favicon.ico">
 <link rel="stylesheet" href="https://qinyu312.github.io/styles/main.css">
@@ -79,7 +79,7 @@ import qs from 'querystring'
       <div class="hide-on-mobile hide-on-tablet hide-on-desktop">
         <div id="search-lightbox" class="grid-container grid-small grid-parent mfp-hide">
           <div class="search-wrapper section">
-            <form id="gridea-search-form" data-update="1607442513408" action="/search/index.html" class="search-form" _lpchecked="1">
+            <form id="gridea-search-form" data-update="1607615364004" action="/search/index.html" class="search-form" _lpchecked="1">
               <input type="text" name="q" id="s" value="" class="search-field" placeholder="搜点啥..." aria-label="搜点啥..." required="">
               <button type="submit" class="submit" aria-label="Submit">
                 <i class="fa fa-search-line"></i>
@@ -94,7 +94,7 @@ import qs from 'querystring'
         <div class="center content">
           <div class="featured-image cover" style="background-image: url('/media/images/custom-featureImage.jpeg');">
             <div class="meta top"> 
-              <time class="meta-info" style="float:left;" datetime="2020-12-08"><i class="fa fa-calendar"></i><span class="lately">1 小时前</span></time>
+              <time class="meta-info" style="float:left;" datetime="2020-12-08"><i class="fa fa-calendar"></i><span class="lately">2 天前</span></time>
               
               <a href="https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/#comments" class="comments meta-info" title="">
                 <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/fetch-shu-ju-jie-kou-qing-qiu/"> </span>
@@ -106,7 +106,7 @@ import qs from 'querystring'
               <div class="tags ">
                 
               </div>
-              <h1 class="title ularge white bold">Fetch querystring  跨域解决</h1>
+              <h1 class="title ularge white bold">Fetch querystring  跨域解决 封装请求</h1>
             </div>
           </div>
         </div>  
@@ -174,6 +174,69 @@ fetch(&quot;http://iwenwiki.com/api/blueberrypai/login.php&quot;, {
 </code></pre>
 <p>然后终止此项目进程，重新运行该项目即可使用代理解决跨域问题。打开浏览器调试，接口数据正常请求得到。<br>
 <img src="https://qinyu312.github.io/post-images/1607442458895.png" alt="" loading="lazy"></p>
+<h2 id="fetch-封装常用请求">fetch 封装常用请求</h2>
+<p>工具类文件utils下创建 http.js 用于封装常用的请求方法</p>
+<pre><code>import qs from 'querystring'
+
+&lt;!-- 导出封装的 get 请求 --&gt;
+export function httpGet(url) {
+    const result = fetch(url)
+    return result
+}
+
+&lt;!-- 导出封装的 post 请求 --&gt;
+export function httpPost(url, params) {
+    &lt;!-- params为post请求携带参数 --&gt;
+    const result = fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Accept': 'application/json, text/plain, */*',
+        },
+        body: qs.stringify(params)
+    })
+}
+</code></pre>
+<p>然后在 utils 同级创建一个 api 文件，用于管理接口，api 下新建一个 base.js ，用于向外暴露接口的前置接口地址公共部分(一般情况下接口地址的前半部分是一致的)，然后新建一个 index.js 用于定义业务接口请求统一管理，或者创建不同的功能分类 (如，登录的接口单独写在一个文件里，首页的接口单独写在一个文件里，便于维护)<br>
+base.js</p>
+<pre><code>const base = {
+    baseUrl: 'http://iwenwiki.com/api'
+}
+</code></pre>
+<p>index.js</p>
+<pre><code>import {httpGet, httpPost} from '../utils/http'
+import base from './base'
+
+&lt;!-- 在下面定义各种业务接口 --&gt;
+const api = {
+    &lt;!-- get请求 --&gt;
+    getUserId() {
+        return httpGet(base.baseUrl + '/blueberrypai/getChengpinInfo.php');
+    },
+    &lt;!-- post请求 --&gt;
+    getLogin(params) {
+        return httpPost(baseUrl + '/blueberrypai/login.php', params);
+    }
+}
+
+&lt;!-- 定义完成后导出 api ,在需要调用处导入调用即可 --&gt;
+export default api
+</code></pre>
+<p>调用接口的文件下</p>
+<pre><code>import api from '../api'
+&lt;!-- get请求不用携带参数，直接获取并打印数据 --&gt;
+api.getUserId().then(res =&gt; res.json()).then(data =&gt; {
+    console.log(data)
+})
+&lt;!-- post请求调用接口时传入参数，获取并打印数据 --&gt;
+api.getLogin({
+    'user_id': 'iwen@qq.com',
+    'password': 'iwen123',
+    'verification_code': 'crfvw'
+}).then(res =&gt; res.json()).then(data =&gt; {
+    console.log(data)
+})
+</code></pre>
 
                 </div>
                 <div class="clear"></div>
@@ -182,6 +245,19 @@ fetch(&quot;http://iwenwiki.com/api/blueberrypai/login.php&quot;, {
             <div class="clear"></div>
 
             <section class="related section">
+              
+              <article class="prev grid-50 tablet-grid-50 grid-parent">
+                <div class="thumb cover lazy loaded" style="background-image: url('https://qinyu312.github.io/media/images/gridea.jpg');"></div>
+                 <a href="https://qinyu312.github.io/post/js-ge-chong-ling-sui-zhi-shi-he-ji/" class="full-link"></a>
+                 <div class="info">
+                  <time datetime="2020-12-09">2020-12-09</time>
+                  <h4 class="title white no-margin">JS各种零碎知识合集</h4>
+                </div>
+                 <span class="epcl-button red">
+                  <img src="https://qinyu312.github.io/media/images/left-arrow.svg" width="15" alt="Left Arrow">
+                </span>
+                <div class="overlay"></div>
+              </article>
               
               
               <article class="next grid-50 tablet-grid-50 grid-parent">
@@ -223,13 +299,13 @@ fetch(&quot;http://iwenwiki.com/api/blueberrypai/login.php&quot;, {
                   
                   
                   <article class="item post-0 post type-post status-publish format-standard has-post-thumbnail hentry">
-                    <a href="https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/" class="thumb hover-effect">
+                    <a href="https://qinyu312.github.io/post/js-ge-chong-ling-sui-zhi-shi-he-ji/" class="thumb hover-effect">
                       <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/custom-featureImage.jpeg');"></span>
                     </a>
                     <div class="info gradient-effect">
-                      <time datetime="2020-12-08">2020-12-08</time>
+                      <time datetime="2020-12-09">2020-12-09</time>
                       <h4 class="title usmall">
-                        <a href="https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/">Fetch querystring  跨域解决</a>
+                        <a href="https://qinyu312.github.io/post/js-ge-chong-ling-sui-zhi-shi-he-ji/">JS各种零碎知识合集</a>
                       </h4>
                     </div>
                     <div class="clear"></div>
@@ -238,6 +314,21 @@ fetch(&quot;http://iwenwiki.com/api/blueberrypai/login.php&quot;, {
                   
                   
                   <article class="item post-1 post type-post status-publish format-standard has-post-thumbnail hentry">
+                    <a href="https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/" class="thumb hover-effect">
+                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/custom-featureImage.jpeg');"></span>
+                    </a>
+                    <div class="info gradient-effect">
+                      <time datetime="2020-12-08">2020-12-08</time>
+                      <h4 class="title usmall">
+                        <a href="https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/">Fetch querystring  跨域解决 封装请求</a>
+                      </h4>
+                    </div>
+                    <div class="clear"></div>
+                  </article>
+                  
+                  
+                  
+                  <article class="item post-2 post type-post status-publish format-standard has-post-thumbnail hentry">
                     <a href="https://qinyu312.github.io/post/guan-yu-ge-chong-ie-jian-rong/" class="thumb hover-effect">
                       <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/custom-featureImage.jpeg');"></span>
                     </a>
@@ -251,19 +342,6 @@ fetch(&quot;http://iwenwiki.com/api/blueberrypai/login.php&quot;, {
                   </article>
                   
                   
-                  
-                  <article class="item post-2 post type-post status-publish format-standard has-post-thumbnail hentry">
-                    <a href="https://qinyu312.github.io/post/angular-xiang-mu-bi-keng-zhi-nan/" class="thumb hover-effect">
-                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/custom-featureImage.jpeg');"></span>
-                    </a>
-                    <div class="info gradient-effect">
-                      <time datetime="2020-11-24">2020-11-24</time>
-                      <h4 class="title usmall">
-                        <a href="https://qinyu312.github.io/post/angular-xiang-mu-bi-keng-zhi-nan/">Angular项目避坑指南</a>
-                      </h4>
-                    </div>
-                    <div class="clear"></div>
-                  </article>
                   
                   
                   
@@ -341,7 +419,7 @@ fetch(&quot;http://iwenwiki.com/api/blueberrypai/login.php&quot;, {
           <a href="https://qinyu312.github.io"><img src="/media/images/custom-footerLogo.jpeg" alt=""></a>
         </div>
         <p class="published border-effect">
-          ©2019 共 10 篇文章
+          ©2019 共 11 篇文章
           <br/>
           Theme <a href="https://gridea.dev/" target="_blank">「breek」</a> Powered by <a href="https://gridea.dev/" target="_blank">「Gridea」</a>
         </p>

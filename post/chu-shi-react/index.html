@@ -84,7 +84,7 @@ src文件下的index.js是项目的入口文件，文件中..." />
       <div class="hide-on-mobile hide-on-tablet hide-on-desktop">
         <div id="search-lightbox" class="grid-container grid-small grid-parent mfp-hide">
           <div class="search-wrapper section">
-            <form id="gridea-search-form" data-update="1607442513408" action="/search/index.html" class="search-form" _lpchecked="1">
+            <form id="gridea-search-form" data-update="1607615364004" action="/search/index.html" class="search-form" _lpchecked="1">
               <input type="text" name="q" id="s" value="" class="search-field" placeholder="搜点啥..." aria-label="搜点啥..." required="">
               <button type="submit" class="submit" aria-label="Submit">
                 <i class="fa fa-search-line"></i>
@@ -99,7 +99,7 @@ src文件下的index.js是项目的入口文件，文件中..." />
         <div class="center content">
           <div class="featured-image cover" style="background-image: url('/media/images/custom-featureImage.jpeg');">
             <div class="meta top"> 
-              <time class="meta-info" style="float:left;" datetime="2020-11-18"><i class="fa fa-calendar"></i><span class="lately">20 天前</span></time>
+              <time class="meta-info" style="float:left;" datetime="2020-11-18"><i class="fa fa-calendar"></i><span class="lately">22 天前</span></time>
               
               <a href="https://qinyu312.github.io/post/chu-shi-react/#comments" class="comments meta-info" title="">
                 <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/chu-shi-react/"> </span>
@@ -331,6 +331,37 @@ export defaul{t class Father React.Component {
 <li>文件被修改时，会抛出异常，由于GIt的原因导致,此时找到文件目录，按下shift + command + . 显示隐藏文件，删除 .git 文件，重新 cnpm run eject即可，安装完成后目录多出了两个文件，分别是config和script文件，config文件就是webpack配置文件</li>
 <li>安装一个依赖文件 cnpm install babel-plugin-import --save-dev</li>
 </ol>
+<h2 id="react-router">React-Router</h2>
+<p>React路由也分为两种路由模式： BrowserRouter 和 HashRouter<br>
+两者的区别在于 HashRouter使用的是锚点链接的形式，表现为 # 的形式， # 号后面为跳转的二级路由地址 而BrowserRouter 则使用了HTML5的新特性，主要是 history.push() 实现。<br>
+实际开发中， BrowserRouter 会在项目上线之后存在一些问题，就是需要后台配合做一些配置处理和重定向，否则会很容易跳转到 404 页面，而 HashRouter 则不会有这个问题。</p>
+<pre><code>&lt;!-- 安装 react-router --&gt;
+cnpm install react-router-dom -save
+
+&lt;!-- 使用 react-router --&gt;
+import {BrowserRouter as Router, Link, Route} from &quot;react-router-dom&quot;
+&lt;!-- 引入  react-router 相关的组件 --&gt;
+
+function App() {
+    render() {
+        return(
+            &lt;div&gt;
+            &lt;!-- 在 Router盒子中嵌套 Route盒子，在Route中定义路由路径和路径对应的页面 --&gt;
+                &lt;Router&gt;
+                    &lt;Route path=&quot;/login&quot; component={ Login }&gt;&lt;/Route&gt;
+                    &lt;Route path=&quot;/home&quot; component={ Home }&gt;&lt;/Route&gt;
+
+                    &lt;Route path=&quot;/home/detail&quot; exact={ true } component={ detail }&gt;&lt;/Route&gt;
+                    &lt;!-- 路由匹配规则之，如果一个页面上同时存在 路径为 /home 和 /home/detail 两个组件，两个组件都会显示，因为 /home 是包含 /home/detail , 但是正常情况下访问 /home下的/detail是不应该显示上一级组件也就是 /home的，这个时候就需要使用到 路由规则的精准匹配， 使用 exace = { true } 即可开启精准匹配，就不会匹配到下一级路由，只会匹配到 /home 这一个 --&gt;
+
+                    &lt;Link to=&quot;/login&quot;&gt;go login now&lt;/Link&gt;
+                    &lt;!-- Link 点击跳转到 to 后面的路由页面 --&gt;
+                &lt;/Router&gt;
+            &lt;/div&gt; 
+        )
+    }
+}
+</code></pre>
 
                 </div>
                 <div class="clear"></div>
@@ -393,13 +424,13 @@ export defaul{t class Father React.Component {
                   
                   
                   <article class="item post-0 post type-post status-publish format-standard has-post-thumbnail hentry">
-                    <a href="https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/" class="thumb hover-effect">
+                    <a href="https://qinyu312.github.io/post/js-ge-chong-ling-sui-zhi-shi-he-ji/" class="thumb hover-effect">
                       <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/custom-featureImage.jpeg');"></span>
                     </a>
                     <div class="info gradient-effect">
-                      <time datetime="2020-12-08">2020-12-08</time>
+                      <time datetime="2020-12-09">2020-12-09</time>
                       <h4 class="title usmall">
-                        <a href="https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/">Fetch querystring  跨域解决</a>
+                        <a href="https://qinyu312.github.io/post/js-ge-chong-ling-sui-zhi-shi-he-ji/">JS各种零碎知识合集</a>
                       </h4>
                     </div>
                     <div class="clear"></div>
@@ -408,6 +439,21 @@ export defaul{t class Father React.Component {
                   
                   
                   <article class="item post-1 post type-post status-publish format-standard has-post-thumbnail hentry">
+                    <a href="https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/" class="thumb hover-effect">
+                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/custom-featureImage.jpeg');"></span>
+                    </a>
+                    <div class="info gradient-effect">
+                      <time datetime="2020-12-08">2020-12-08</time>
+                      <h4 class="title usmall">
+                        <a href="https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/">Fetch querystring  跨域解决 封装请求</a>
+                      </h4>
+                    </div>
+                    <div class="clear"></div>
+                  </article>
+                  
+                  
+                  
+                  <article class="item post-2 post type-post status-publish format-standard has-post-thumbnail hentry">
                     <a href="https://qinyu312.github.io/post/guan-yu-ge-chong-ie-jian-rong/" class="thumb hover-effect">
                       <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/custom-featureImage.jpeg');"></span>
                     </a>
@@ -421,19 +467,6 @@ export defaul{t class Father React.Component {
                   </article>
                   
                   
-                  
-                  <article class="item post-2 post type-post status-publish format-standard has-post-thumbnail hentry">
-                    <a href="https://qinyu312.github.io/post/angular-xiang-mu-bi-keng-zhi-nan/" class="thumb hover-effect">
-                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/custom-featureImage.jpeg');"></span>
-                    </a>
-                    <div class="info gradient-effect">
-                      <time datetime="2020-11-24">2020-11-24</time>
-                      <h4 class="title usmall">
-                        <a href="https://qinyu312.github.io/post/angular-xiang-mu-bi-keng-zhi-nan/">Angular项目避坑指南</a>
-                      </h4>
-                    </div>
-                    <div class="clear"></div>
-                  </article>
                   
                   
                   
@@ -511,7 +544,7 @@ export defaul{t class Father React.Component {
           <a href="https://qinyu312.github.io"><img src="/media/images/custom-footerLogo.jpeg" alt=""></a>
         </div>
         <p class="published border-effect">
-          ©2019 共 10 篇文章
+          ©2019 共 11 篇文章
           <br/>
           Theme <a href="https://gridea.dev/" target="_blank">「breek」</a> Powered by <a href="https://gridea.dev/" target="_blank">「Gridea」</a>
         </p>

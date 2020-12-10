@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qinyu312.github.io</id>
     <title>҉҉҈淸鷠҉҉҈、</title>
-    <updated>2020-12-08T15:48:38.482Z</updated>
+    <updated>2020-12-10T15:49:27.080Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qinyu312.github.io"/>
     <link rel="self" href="https://qinyu312.github.io/atom.xml"/>
@@ -11,7 +11,32 @@
     <icon>https://qinyu312.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, ҉҉҈淸鷠҉҉҈、</rights>
     <entry>
-        <title type="html"><![CDATA[Fetch querystring  跨域解决]]></title>
+        <title type="html"><![CDATA[JS各种零碎知识合集]]></title>
+        <id>https://qinyu312.github.io/post/js-ge-chong-ling-sui-zhi-shi-he-ji/</id>
+        <link href="https://qinyu312.github.io/post/js-ge-chong-ling-sui-zhi-shi-he-ji/">
+        </link>
+        <updated>2020-12-09T02:37:30.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="react里的事件">React里的事件</h2>
+<pre><code>&lt;!-- onChange事件 --&gt;
+this.handleChange = this.handleChange.bind(this)
+handleChange(event) {
+    this.setState({value: event.target.value})
+}
+&lt;textarea onChange={ this.handleChange } /&gt;  
+
+&lt;!-- onSubmit事件 --&gt;
+this.handleSubmit = this,handleSubmit(this)
+handleSubmit(event) {
+    alert('提交' + this.state.value + '成功!')
+    event.preventDefault()    
+    &lt;!-- 清除默认事件 --&gt;
+}
+&lt;form onSubmit= { this.handleSubmit }&gt;&lt;/form&gt;
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fetch querystring  跨域解决 封装请求]]></title>
         <id>https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/</id>
         <link href="https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/">
         </link>
@@ -74,6 +99,69 @@ fetch(&quot;http://iwenwiki.com/api/blueberrypai/login.php&quot;, {
 </code></pre>
 <p>然后终止此项目进程，重新运行该项目即可使用代理解决跨域问题。打开浏览器调试，接口数据正常请求得到。<br>
 <img src="https://qinyu312.github.io/post-images/1607442458895.png" alt="" loading="lazy"></p>
+<h2 id="fetch-封装常用请求">fetch 封装常用请求</h2>
+<p>工具类文件utils下创建 http.js 用于封装常用的请求方法</p>
+<pre><code>import qs from 'querystring'
+
+&lt;!-- 导出封装的 get 请求 --&gt;
+export function httpGet(url) {
+    const result = fetch(url)
+    return result
+}
+
+&lt;!-- 导出封装的 post 请求 --&gt;
+export function httpPost(url, params) {
+    &lt;!-- params为post请求携带参数 --&gt;
+    const result = fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Accept': 'application/json, text/plain, */*',
+        },
+        body: qs.stringify(params)
+    })
+}
+</code></pre>
+<p>然后在 utils 同级创建一个 api 文件，用于管理接口，api 下新建一个 base.js ，用于向外暴露接口的前置接口地址公共部分(一般情况下接口地址的前半部分是一致的)，然后新建一个 index.js 用于定义业务接口请求统一管理，或者创建不同的功能分类 (如，登录的接口单独写在一个文件里，首页的接口单独写在一个文件里，便于维护)<br>
+base.js</p>
+<pre><code>const base = {
+    baseUrl: 'http://iwenwiki.com/api'
+}
+</code></pre>
+<p>index.js</p>
+<pre><code>import {httpGet, httpPost} from '../utils/http'
+import base from './base'
+
+&lt;!-- 在下面定义各种业务接口 --&gt;
+const api = {
+    &lt;!-- get请求 --&gt;
+    getUserId() {
+        return httpGet(base.baseUrl + '/blueberrypai/getChengpinInfo.php');
+    },
+    &lt;!-- post请求 --&gt;
+    getLogin(params) {
+        return httpPost(baseUrl + '/blueberrypai/login.php', params);
+    }
+}
+
+&lt;!-- 定义完成后导出 api ,在需要调用处导入调用即可 --&gt;
+export default api
+</code></pre>
+<p>调用接口的文件下</p>
+<pre><code>import api from '../api'
+&lt;!-- get请求不用携带参数，直接获取并打印数据 --&gt;
+api.getUserId().then(res =&gt; res.json()).then(data =&gt; {
+    console.log(data)
+})
+&lt;!-- post请求调用接口时传入参数，获取并打印数据 --&gt;
+api.getLogin({
+    'user_id': 'iwen@qq.com',
+    'password': 'iwen123',
+    'verification_code': 'crfvw'
+}).then(res =&gt; res.json()).then(data =&gt; {
+    console.log(data)
+})
+</code></pre>
 ]]></content>
     </entry>
     <entry>
@@ -99,6 +187,16 @@ if (browser == 'Microsoft Internet Explorer' || ie11 == true) {
 </code></pre>
 <h2 id="ie9部分页面不显示的问题">IE9部分页面不显示的问题</h2>
 <pre><code>IE9是不支持 console.log 打印输出语句的，在非开发者模式下会阻塞不会执行后面的内容
+</code></pre>
+<h2 id="ie9-及以下-ie浏览器不支持placeholder属性">IE9 及以下 IE浏览器不支持placeholder属性</h2>
+<pre><code>引入 jquery和用于解决这个属性兼容的CDN
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://www.ijquery.cn/js/jquery-1.7.2.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://www.ijquery.cn/js/jquery.placeholder.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;%--兼容IE9及以下input输入框，textarea文本框不支持提示文本placeholder属性的问题--%&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    $(function(){ $('input, textarea').placeholder(); });
+&lt;/script&gt;
 </code></pre>
 ]]></content>
     </entry>
@@ -414,6 +512,37 @@ export defaul{t class Father React.Component {
 <li>文件被修改时，会抛出异常，由于GIt的原因导致,此时找到文件目录，按下shift + command + . 显示隐藏文件，删除 .git 文件，重新 cnpm run eject即可，安装完成后目录多出了两个文件，分别是config和script文件，config文件就是webpack配置文件</li>
 <li>安装一个依赖文件 cnpm install babel-plugin-import --save-dev</li>
 </ol>
+<h2 id="react-router">React-Router</h2>
+<p>React路由也分为两种路由模式： BrowserRouter 和 HashRouter<br>
+两者的区别在于 HashRouter使用的是锚点链接的形式，表现为 # 的形式， # 号后面为跳转的二级路由地址 而BrowserRouter 则使用了HTML5的新特性，主要是 history.push() 实现。<br>
+实际开发中， BrowserRouter 会在项目上线之后存在一些问题，就是需要后台配合做一些配置处理和重定向，否则会很容易跳转到 404 页面，而 HashRouter 则不会有这个问题。</p>
+<pre><code>&lt;!-- 安装 react-router --&gt;
+cnpm install react-router-dom -save
+
+&lt;!-- 使用 react-router --&gt;
+import {BrowserRouter as Router, Link, Route} from &quot;react-router-dom&quot;
+&lt;!-- 引入  react-router 相关的组件 --&gt;
+
+function App() {
+    render() {
+        return(
+            &lt;div&gt;
+            &lt;!-- 在 Router盒子中嵌套 Route盒子，在Route中定义路由路径和路径对应的页面 --&gt;
+                &lt;Router&gt;
+                    &lt;Route path=&quot;/login&quot; component={ Login }&gt;&lt;/Route&gt;
+                    &lt;Route path=&quot;/home&quot; component={ Home }&gt;&lt;/Route&gt;
+
+                    &lt;Route path=&quot;/home/detail&quot; exact={ true } component={ detail }&gt;&lt;/Route&gt;
+                    &lt;!-- 路由匹配规则之，如果一个页面上同时存在 路径为 /home 和 /home/detail 两个组件，两个组件都会显示，因为 /home 是包含 /home/detail , 但是正常情况下访问 /home下的/detail是不应该显示上一级组件也就是 /home的，这个时候就需要使用到 路由规则的精准匹配， 使用 exace = { true } 即可开启精准匹配，就不会匹配到下一级路由，只会匹配到 /home 这一个 --&gt;
+
+                    &lt;Link to=&quot;/login&quot;&gt;go login now&lt;/Link&gt;
+                    &lt;!-- Link 点击跳转到 to 后面的路由页面 --&gt;
+                &lt;/Router&gt;
+            &lt;/div&gt; 
+        )
+    }
+}
+</code></pre>
 ]]></content>
     </entry>
     <entry>
