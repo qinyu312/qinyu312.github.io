@@ -80,7 +80,7 @@ IE10以下版本可用，IE11已经取消支持
       <div class="hide-on-mobile hide-on-tablet hide-on-desktop">
         <div id="search-lightbox" class="grid-container grid-small grid-parent mfp-hide">
           <div class="search-wrapper section">
-            <form id="gridea-search-form" data-update="1607615364004" action="/search/index.html" class="search-form" _lpchecked="1">
+            <form id="gridea-search-form" data-update="1608278317273" action="/search/index.html" class="search-form" _lpchecked="1">
               <input type="text" name="q" id="s" value="" class="search-field" placeholder="搜点啥..." aria-label="搜点啥..." required="">
               <button type="submit" class="submit" aria-label="Submit">
                 <i class="fa fa-search-line"></i>
@@ -95,7 +95,7 @@ IE10以下版本可用，IE11已经取消支持
         <div class="center content">
           <div class="featured-image cover" style="background-image: url('/media/images/custom-featureImage.jpeg');">
             <div class="meta top"> 
-              <time class="meta-info" style="float:left;" datetime="2020-12-04"><i class="fa fa-calendar"></i><span class="lately">6 天前</span></time>
+              <time class="meta-info" style="float:left;" datetime="2020-12-04"><i class="fa fa-calendar"></i><span class="lately">14 天前</span></time>
               
               <a href="https://qinyu312.github.io/post/guan-yu-ge-chong-ie-jian-rong/#comments" class="comments meta-info" title="">
                 <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/guan-yu-ge-chong-ie-jian-rong/"> </span>
@@ -146,6 +146,49 @@ if (browser == 'Microsoft Internet Explorer' || ie11 == true) {
 &lt;script type=&quot;text/javascript&quot;&gt;
     $(function(){ $('input, textarea').placeholder(); });
 &lt;/script&gt;
+</code></pre>
+<p>上面这种方法在HTML文件中亲测有效，但是不知道为什么在前后端不分离JSP项目中不会生效，以某国企老项目为例，需要在每个页面的JS代码中加上</p>
+<pre><code>	&lt;!-- css代码 --&gt;
+    .phcolor{ 
+			color:#999;
+	}
+
+    &lt;!-- js代码 --&gt;
+	// placeholder兼容IE9
+	$(function(){
+	  //判断浏览器是否支持placeholder属性
+	  supportPlaceholder='placeholder'in document.createElement('input'),
+	  placeholder=function(input){
+	    var text = input.attr('placeholder'),
+	    defaultValue = input.defaultValue;
+	    if(!defaultValue){
+	      input.val(text).addClass(&quot;phcolor&quot;);
+	    }
+	    input.focus(function(){
+	      if(input.val() == text){
+	        $(this).val(&quot;&quot;);
+	      }
+	    });
+	    input.blur(function(){
+	      if(input.val() == &quot;&quot;){
+	        $(this).val(text).addClass(&quot;phcolor&quot;);
+	      }
+	    });
+	    //输入的字符不为灰色
+	    input.keydown(function(){
+	      $(this).removeClass(&quot;phcolor&quot;);
+	    });
+	  };
+	  //当浏览器不支持placeholder属性时，调用placeholder函数
+	  if(!supportPlaceholder){
+	    $('input').each(function(){
+	      text = $(this).attr(&quot;placeholder&quot;);
+	      if($(this).attr(&quot;type&quot;) == &quot;text&quot;){
+	        placeholder($(this));
+	      }
+	    });
+	  }
+	});
 </code></pre>
 
                 </div>

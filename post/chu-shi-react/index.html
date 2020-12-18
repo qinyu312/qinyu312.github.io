@@ -84,7 +84,7 @@ src文件下的index.js是项目的入口文件，文件中..." />
       <div class="hide-on-mobile hide-on-tablet hide-on-desktop">
         <div id="search-lightbox" class="grid-container grid-small grid-parent mfp-hide">
           <div class="search-wrapper section">
-            <form id="gridea-search-form" data-update="1607615364004" action="/search/index.html" class="search-form" _lpchecked="1">
+            <form id="gridea-search-form" data-update="1608278317273" action="/search/index.html" class="search-form" _lpchecked="1">
               <input type="text" name="q" id="s" value="" class="search-field" placeholder="搜点啥..." aria-label="搜点啥..." required="">
               <button type="submit" class="submit" aria-label="Submit">
                 <i class="fa fa-search-line"></i>
@@ -99,7 +99,7 @@ src文件下的index.js是项目的入口文件，文件中..." />
         <div class="center content">
           <div class="featured-image cover" style="background-image: url('/media/images/custom-featureImage.jpeg');">
             <div class="meta top"> 
-              <time class="meta-info" style="float:left;" datetime="2020-11-18"><i class="fa fa-calendar"></i><span class="lately">22 天前</span></time>
+              <time class="meta-info" style="float:left;" datetime="2020-11-18"><i class="fa fa-calendar"></i><span class="lately">1 个月前</span></time>
               
               <a href="https://qinyu312.github.io/post/chu-shi-react/#comments" class="comments meta-info" title="">
                 <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/chu-shi-react/"> </span>
@@ -339,7 +339,7 @@ export defaul{t class Father React.Component {
 cnpm install react-router-dom -save
 
 &lt;!-- 使用 react-router --&gt;
-import {BrowserRouter as Router, Link, Route} from &quot;react-router-dom&quot;
+import {BrowserRouter as Router, Link,NavLink, Route, Redirect} from &quot;react-router-dom&quot;
 &lt;!-- 引入  react-router 相关的组件 --&gt;
 
 function App() {
@@ -348,20 +348,41 @@ function App() {
             &lt;div&gt;
             &lt;!-- 在 Router盒子中嵌套 Route盒子，在Route中定义路由路径和路径对应的页面 --&gt;
                 &lt;Router&gt;
-                    &lt;Route path=&quot;/login&quot; component={ Login }&gt;&lt;/Route&gt;
-                    &lt;Route path=&quot;/home&quot; component={ Home }&gt;&lt;/Route&gt;
-
-                    &lt;Route path=&quot;/home/detail&quot; exact={ true } component={ detail }&gt;&lt;/Route&gt;
-                    &lt;!-- 路由匹配规则之，如果一个页面上同时存在 路径为 /home 和 /home/detail 两个组件，两个组件都会显示，因为 /home 是包含 /home/detail , 但是正常情况下访问 /home下的/detail是不应该显示上一级组件也就是 /home的，这个时候就需要使用到 路由规则的精准匹配， 使用 exace = { true } 即可开启精准匹配，就不会匹配到下一级路由，只会匹配到 /home 这一个 --&gt;
+                    &lt;switch&gt;
+                        &lt;Route path=&quot;/login&quot; component={ Login }&gt;&lt;/Route&gt;
+                        &lt;Route path=&quot;/home&quot; component={ Home }&gt;&lt;/Route&gt;
+                        &lt;Route path=&quot;/home/detail&quot; exact={ true } component={ detail }&gt;&lt;/Route&gt;         
+                        &lt;Route path=&quot;/demo&quot; render={ () =&gt; &lt;div&gt;简约写法，不需要创建页面和组件，直接路由显示render函数中定义路由页面内容即可&lt;/div&gt;}&lt;/Route&gt;
+                        &lt;!-- 简约写法，不需要创建页面和组件，直接路由显示render函数中定义路由页面内容即可 --&gt;
+                    &lt;/switch&gt;
+                    &lt;!-- 当路由规则包裹在switch内的时，路由就不会同时显示多个，而是按照当前路径进行匹配 --&gt;
+                &lt;/Router&gt;
+                    &lt;!-- 路由匹配规则之，如果一个页面上同时存在 路径为 /home 和 /home/detail 两个组件，两个组件都会显示，因为 /home 是包含 /home/detail , 但是正常情况下访问 /home下的/detail是不应该显示上一级组件也就是 /home的，这个时候就需要使用到 路由规则的精准匹配， 使用 exace = { true } 即可开启精准匹配，就不会匹配到下一级路由，只会匹配到 /home 这一个, strict = { true } 可以更加精确的匹配路由，而且使用的时候strice需要和exace一起使用才可以生效，而exace不需要组合使用也可以生效 --&gt;
 
                     &lt;Link to=&quot;/login&quot;&gt;go login now&lt;/Link&gt;
                     &lt;!-- Link 点击跳转到 to 后面的路由页面 --&gt;
+
+                    &lt;NavLink to=&quot;/login&quot; activeClassName=&quot;setActive&quot;&gt;&lt;/NavLink&gt;
+                    &lt;!-- NavLink顾名思义，导航跳转，后为当前选中的菜单导航添加一个名为active的class样式，给你这个样式添加颜色或者背景选中时便会添加该样式,activeClassName可以修改样式名称，默认是active --&gt;
+
+                    &lt;Redirect from=&quot;/happy&quot; to=&quot;/login&quot;&gt;&lt;/Redirect&gt;
+                    &lt;!-- Redirect可以实现路由重新向，当你访问 的地址是属性中的from，也就是要去的路由为 ‘/happy',他会直接重定向到 to所给定的路由地址 --&gt;
+
+
                 &lt;/Router&gt;
             &lt;/div&gt; 
         )
     }
 }
+&lt;!-- 处于用户体验方面的考虑，我们一般还会在路由匹配中加入 404 等页面，将不存在的路径以更友好地方式提醒用户 --&gt;
 </code></pre>
+<pre><code>&lt;button&gt;跳转&lt;/button&gt;
+
+&lt;!-- 跳转的方法有 两种  props.history.push('/home')   和 props.history.replace('/home')
+区别在于， push方法的页面跳转是叠加的，也就是说点击浏览器左上角的返回上一个页面依然有效，因为历史数据被保留； 而replace方法是替换的，所以不会存有历史跳转记录
+ --&gt;
+</code></pre>
+<h2 id="redux数据管理方案-类似于vuex">Redux数据管理方案  (类似于Vuex)</h2>
 
                 </div>
                 <div class="clear"></div>
