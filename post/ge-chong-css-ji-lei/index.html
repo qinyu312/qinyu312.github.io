@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>搜索结果 | ҉҉҈淸鷠҉҉҈、</title>
+<title>各种CSS积累 | ҉҉҈淸鷠҉҉҈、</title>
 <meta name="description" content="万般皆苦，唯有自渡" />
 <link rel="shortcut icon" href="https://qinyu312.github.io/favicon.ico">
 <link rel="stylesheet" href="https://qinyu312.github.io/styles/main.css">
@@ -14,16 +14,19 @@
 <script src="https://qinyu312.github.io/media/js/view-image.min.js"></script>
 <script src="https://qinyu312.github.io/media/js/jquery.magnific-popup.min.js"></script>
 <script src="https://qinyu312.github.io/media/js/functions.js"></script>
-    <script src="/media/gridea-search/fuse.js"></script>
-    <script src="/media/gridea-search/ejs.min.js"></script>
-    <script src="/media/gridea-search/gridea-search.js"></script>
-    <script src="/media/gridea-search/result-template.ejs" type="text/ejs"></script>
-</head>
+    <meta name="referrer" content="never">
+    <meta name="description" content="隐藏textarea input等输入框边框和选中出现边框
+textarea {
+    border: solid 0px;
+	outline:none;
+}
 
+textarea 输入时光标直接定位到后面，且不会展示placeholder..." />
+    <meta name="keywords" content="" />
+    <script src="https://qinyu312.github.io/media/js/waterfall.min.js"></script>
+    <script src="https://qinyu312.github.io/media/js/prism.min.js"></script>
+  </head>
   <body>
-    <!-- start: #wrapper -->
-    <div class="wrapper">
-      
             <header id="header" class="grid-container">
         <!-- start: .menu-wrapper -->
         <div class="menu-mobile"> 
@@ -90,22 +93,128 @@
         </div>
       </div>
 
-      <main id="home" class="main fullcover no-sidebar content">
-        <div class="grid-container module-wrapper enable-masonry aos-init aos-animate" data-aos="fade-up">
-        <div class="epcl-page-wrapper">
-          <div class="left-content grid-70 np-mobile widget_epcl_related_articles">
-          <div class="main-article post">
-            <div id="gridea-search-result">
-              <h2 class="searching">搜索中......</h2>
-              <h2 class="no-result" style="display:none">未搜索到相关文章</h2>
+      <main id="single" class="main grid-container fullcover no-sidebar aos-init aos-animate" data-aos="fade">
+
+        <div class="center content">
+          <div class="featured-image cover" style="background-image: url('/media/images/custom-featureImage.jpeg');">
+            <div class="meta top"> 
+              <time class="meta-info" style="float:left;" datetime="2020-12-21"><i class="fa fa-calendar"></i><span class="lately">2 天前</span></time>
+              
+              <a href="https://qinyu312.github.io/post/ge-chong-css-ji-lei/#comments" class="comments meta-info" title="">
+                <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/ge-chong-css-ji-lei/"> </span>
+              </a>
+              <span id="/ge-chong-css-ji-lei/" class="leancloud_visitors views-counter meta-info" title=""><i class="fa fa-leancloud remixicon"></i><span class="leancloud-visitors-count"></span></span>
+              
+            </div>
+            <div class="info">
+              <div class="tags ">
+                
+              </div>
+              <h1 class="title ularge white bold">各种CSS积累</h1>
             </div>
           </div>
+        </div>  
+
+        <div class="epcl-page-wrapper">
+          <div class="left-content grid-70 np-mobile">
+            <article class="main-article post">
+              <section class="post-content">
+                <div class="text">
+                  <h2 id="隐藏textarea-input等输入框边框和选中出现边框">隐藏textarea input等输入框边框和选中出现边框</h2>
+<pre><code>textarea {
+    border: solid 0px;
+	outline:none;
+}
+</code></pre>
+<h2 id="textarea-输入时光标直接定位到后面且不会展示placeholder文本">textarea 输入时光标直接定位到后面，且不会展示placeholder文本</h2>
+<p>这种情况是默认有空格在输入框中，解决方案比较奇葩，需要将<textarea>标签写在同一行即可解决问题</p>
+<pre><code>&lt;!-- 错误写法 --&gt;
+&lt;textarea placeholder=&quot;请输入文本&quot;&gt;
+&lt;/textarea&gt;
+&lt;!-- 正确写法 --&gt;
+&lt;textarea placeholder=&quot;请输入文本&quot;&gt;&lt;/textarea&gt;
+</code></pre>
+<h2 id="图片或者页面-bulingbuling闪动效果">图片或者页面 bulingbuling闪动效果</h2>
+<pre><code>.flicker {
+	    /*width: 300px;  */                                  /* 宽度 */
+	    /*height: 300px; */                                   /* 高度 */
+	    /*border:#666 1px solid;*/
+	    /*border-radius:50%;*/
+	    opacity: 0.1;                                   /* 不透明度 */
+	    overflow: hidden;                               /* 溢出隐藏 */
+	   /* margin: 25% auto; */                              /* 外边距 */
+	  
+	    /* IE10、Firefox and Opera，IE9以及更早的版本不支持 */
+	    animation-name: breath;                         /* 动画名称 */
+	    animation-duration: 700ms;                         /* 动画时长3秒 */
+	    animation-timing-function: ease-in-out;         /* 动画速度曲线：以低速开始和结束 */
+	    animation-iteration-count: infinite;            /* 播放次数：无限 */
+	 
+	    /* Safari and Chrome */
+	    -webkit-animation-name: breath;                 /* 动画名称 */
+	    -webkit-animation-duration: 3000ms;                 /* 动画时长3秒 */
+	    -webkit-animation-timing-function: ease-in-out; /* 动画速度曲线：以低速开始和结束 */
+	    -webkit-animation-iteration-count: infinite;    /* 播放次数：无限 */
+	}
+	 
+	@keyframes breath {
+	    from { opacity: 0.1; }                          /* 动画开始时的不透明度 */
+	    50%  { opacity:   1; }                          /* 动画50% 时的不透明度 */
+	    to   { opacity: 0.1; }                          /* 动画结束时的不透明度 */    
+	}
+	 
+	@-webkit-keyframes breath {
+	    from { opacity: 0.1; }                          /* 动画开始时的不透明度 */
+	    50%  { opacity:   1; }                          /* 动画50% 时的不透明度 */
+	    to   { opacity: 0.1; }                          /* 动画结束时的不透明度 */
+	}
+</code></pre>
+<h2 id="去除textarea右下角角标">去除textarea右下角角标</h2>
+<pre><code>textarea {
+	resize : none;
+} 
+</code></pre>
+
+                </div>
+                <div class="clear"></div>
+              </section>
+            </article>
+            <div class="clear"></div>
+
+            <section class="related section">
+              
+              
+              <article class="next grid-50 tablet-grid-50 grid-parent">
+                <div class="thumb cover lazy loaded" style="background-image: url('https://qinyu312.github.io/media/images/gridea.jpg');"></div>
+                 <a href="https://qinyu312.github.io/post/js-ge-chong-ling-sui-zhi-shi-he-ji/" class="full-link"></a>
+                 <div class="info">
+                  <time datetime="2020-12-09">2020-12-09</time>
+                  <h4 class="title white no-margin">JS各种零碎知识合集</h4>
+                </div>
+                 <span class="epcl-button red">
+                  <img src="https://qinyu312.github.io/media/images/right-arrow.svg" width="15" alt="Left Arrow">
+                </span>
+                <div class="overlay"></div>
+              </article>
+              
+
+                <div class="clear"></div>
+            </section>
+
+              <div class="clear"></div>
+              
+            
+              <div id="comments" class="bg-white hosted ">
+                <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+              </div>
+              <div class="clear"></div>
+            
+
+            </div>
           </div>
-        </div>
-        </div>
       </main>
 
-        <footer id="footer" class="grid-container">
+          <footer id="footer" class="grid-container">
         <div class="widgets row gradient-effect">
             <div class="default-sidebar border-effect">
               <div class="grid-33 tablet-grid-50 mobile-grid-100">
@@ -249,6 +358,9 @@
     <div class="clear"></div>
 
         
+
+      
+    <script src="https://qinyu312.github.io/media/js/functions-post.js"></script>
 
     </div>
     <!-- end: #wrapper -->

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qinyu312.github.io</id>
     <title>҉҉҈淸鷠҉҉҈、</title>
-    <updated>2020-12-18T07:58:40.608Z</updated>
+    <updated>2020-12-23T02:01:49.509Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qinyu312.github.io"/>
     <link rel="self" href="https://qinyu312.github.io/atom.xml"/>
@@ -10,6 +10,68 @@
     <logo>https://qinyu312.github.io/images/avatar.png</logo>
     <icon>https://qinyu312.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, ҉҉҈淸鷠҉҉҈、</rights>
+    <entry>
+        <title type="html"><![CDATA[各种CSS积累]]></title>
+        <id>https://qinyu312.github.io/post/ge-chong-css-ji-lei/</id>
+        <link href="https://qinyu312.github.io/post/ge-chong-css-ji-lei/">
+        </link>
+        <updated>2020-12-21T08:44:24.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="隐藏textarea-input等输入框边框和选中出现边框">隐藏textarea input等输入框边框和选中出现边框</h2>
+<pre><code>textarea {
+    border: solid 0px;
+	outline:none;
+}
+</code></pre>
+<h2 id="textarea-输入时光标直接定位到后面且不会展示placeholder文本">textarea 输入时光标直接定位到后面，且不会展示placeholder文本</h2>
+<p>这种情况是默认有空格在输入框中，解决方案比较奇葩，需要将<textarea>标签写在同一行即可解决问题</p>
+<pre><code>&lt;!-- 错误写法 --&gt;
+&lt;textarea placeholder=&quot;请输入文本&quot;&gt;
+&lt;/textarea&gt;
+&lt;!-- 正确写法 --&gt;
+&lt;textarea placeholder=&quot;请输入文本&quot;&gt;&lt;/textarea&gt;
+</code></pre>
+<h2 id="图片或者页面-bulingbuling闪动效果">图片或者页面 bulingbuling闪动效果</h2>
+<pre><code>.flicker {
+	    /*width: 300px;  */                                  /* 宽度 */
+	    /*height: 300px; */                                   /* 高度 */
+	    /*border:#666 1px solid;*/
+	    /*border-radius:50%;*/
+	    opacity: 0.1;                                   /* 不透明度 */
+	    overflow: hidden;                               /* 溢出隐藏 */
+	   /* margin: 25% auto; */                              /* 外边距 */
+	  
+	    /* IE10、Firefox and Opera，IE9以及更早的版本不支持 */
+	    animation-name: breath;                         /* 动画名称 */
+	    animation-duration: 700ms;                         /* 动画时长3秒 */
+	    animation-timing-function: ease-in-out;         /* 动画速度曲线：以低速开始和结束 */
+	    animation-iteration-count: infinite;            /* 播放次数：无限 */
+	 
+	    /* Safari and Chrome */
+	    -webkit-animation-name: breath;                 /* 动画名称 */
+	    -webkit-animation-duration: 3000ms;                 /* 动画时长3秒 */
+	    -webkit-animation-timing-function: ease-in-out; /* 动画速度曲线：以低速开始和结束 */
+	    -webkit-animation-iteration-count: infinite;    /* 播放次数：无限 */
+	}
+	 
+	@keyframes breath {
+	    from { opacity: 0.1; }                          /* 动画开始时的不透明度 */
+	    50%  { opacity:   1; }                          /* 动画50% 时的不透明度 */
+	    to   { opacity: 0.1; }                          /* 动画结束时的不透明度 */    
+	}
+	 
+	@-webkit-keyframes breath {
+	    from { opacity: 0.1; }                          /* 动画开始时的不透明度 */
+	    50%  { opacity:   1; }                          /* 动画50% 时的不透明度 */
+	    to   { opacity: 0.1; }                          /* 动画结束时的不透明度 */
+	}
+</code></pre>
+<h2 id="去除textarea右下角角标">去除textarea右下角角标</h2>
+<pre><code>textarea {
+	resize : none;
+} 
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[JS各种零碎知识合集]]></title>
         <id>https://qinyu312.github.io/post/js-ge-chong-ling-sui-zhi-shi-he-ji/</id>
