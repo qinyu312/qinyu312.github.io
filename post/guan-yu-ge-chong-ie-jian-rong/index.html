@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>关于各种IE兼容(持续更新中) | ҉҉҈淸鷠҉҉҈、</title>
+<title>关于各种浏览器兼容(持续更新中) | ҉҉҈淸鷠҉҉҈、</title>
 <meta name="description" content="万般皆苦，唯有自渡" />
 <link rel="shortcut icon" href="https://qinyu312.github.io/favicon.ico">
 <link rel="stylesheet" href="https://qinyu312.github.io/styles/main.css">
@@ -15,10 +15,10 @@
 <script src="https://qinyu312.github.io/media/js/jquery.magnific-popup.min.js"></script>
 <script src="https://qinyu312.github.io/media/js/functions.js"></script>
     <meta name="referrer" content="never">
-    <meta name="description" content="条件注释
+    <meta name="description" content="IE条件注释
 IE10以下版本可用，IE11已经取消支持
 &lt;!--[if lte IE 8]&gt; 	
-        &lt;script src=&quot;/js/html5.js&quot;&gt;&lt;/script&gt;..." />
+        &lt;script src=&quot;/js/html5.js&quot;&gt;&lt;/script&g..." />
     <meta name="keywords" content="兼容" />
     <script src="https://qinyu312.github.io/media/js/waterfall.min.js"></script>
     <script src="https://qinyu312.github.io/media/js/prism.min.js"></script>
@@ -80,7 +80,7 @@ IE10以下版本可用，IE11已经取消支持
       <div class="hide-on-mobile hide-on-tablet hide-on-desktop">
         <div id="search-lightbox" class="grid-container grid-small grid-parent mfp-hide">
           <div class="search-wrapper section">
-            <form id="gridea-search-form" data-update="1608689037667" action="/search/index.html" class="search-form" _lpchecked="1">
+            <form id="gridea-search-form" data-update="1611302215673" action="/search/index.html" class="search-form" _lpchecked="1">
               <input type="text" name="q" id="s" value="" class="search-field" placeholder="搜点啥..." aria-label="搜点啥..." required="">
               <button type="submit" class="submit" aria-label="Submit">
                 <i class="fa fa-search-line"></i>
@@ -95,7 +95,7 @@ IE10以下版本可用，IE11已经取消支持
         <div class="center content">
           <div class="featured-image cover" style="background-image: url('/media/images/custom-featureImage.jpg');">
             <div class="meta top"> 
-              <time class="meta-info" style="float:left;" datetime="2020-12-04"><i class="fa fa-calendar"></i><span class="lately">19 天前</span></time>
+              <time class="meta-info" style="float:left;" datetime="2020-12-04"><i class="fa fa-calendar"></i><span class="lately">2 个月前</span></time>
               
               <a href="https://qinyu312.github.io/post/guan-yu-ge-chong-ie-jian-rong/#comments" class="comments meta-info" title="">
                 <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/guan-yu-ge-chong-ie-jian-rong/"> </span>
@@ -109,7 +109,7 @@ IE10以下版本可用，IE11已经取消支持
                       <a href="https://qinyu312.github.io/tag/glhfgA99X/" class="ctag ctag-0 ctag-glhfgA99X" aria-label="">兼容</a>
                     
               </div>
-              <h1 class="title ularge white bold">关于各种IE兼容(持续更新中)</h1>
+              <h1 class="title ularge white bold">关于各种浏览器兼容(持续更新中)</h1>
             </div>
           </div>
         </div>  
@@ -119,7 +119,7 @@ IE10以下版本可用，IE11已经取消支持
             <article class="main-article post">
               <section class="post-content">
                 <div class="text">
-                  <h2 id="条件注释">条件注释</h2>
+                  <h2 id="ie条件注释">IE条件注释</h2>
 <p>IE10以下版本可用，IE11已经取消支持</p>
 <pre><code>&lt;!--[if lte IE 8]&gt; 	
         &lt;script src=&quot;/js/html5.js&quot;&gt;&lt;/script&gt;
@@ -190,6 +190,17 @@ if (browser == 'Microsoft Internet Explorer' || ie11 == true) {
 	  }
 	});
 </code></pre>
+<h2 id="换行word-wrap与word-break兼容ie和火狐-chrome">换行word-wrap与word-break兼容ie和火狐、chrome</h2>
+<ol>
+<li>word-wrap控制换行，使用break-word时，会强制进行换行，中文没问题，英文语句没问题，长串的英文不会生效。</li>
+<li>word-break控制是否断词<br>
+normal是默认情况，英文单词不被拆开<br>
+break-all，是断开单词。在单词到边界时，下个字母自动到下一行。主要解决了长串英文的问题。<br>
+keep-all，是指Chinese, Japanese, and Korean不断词。即只用此时，不用word-wrap，中文就不会换行了。（英文语句正常。）<br>
+所以，要做到英文和中文等强制换行，需要组合使用如下</li>
+</ol>
+<pre><code>&lt;p style=&quot;word-wrap: break-word; word-break: break-all&quot;&gt;&lt;/p&gt;
+</code></pre>
 
                 </div>
                 <div class="clear"></div>
@@ -252,13 +263,13 @@ if (browser == 'Microsoft Internet Explorer' || ie11 == true) {
                   
                   
                   <article class="item post-0 post type-post status-publish format-standard has-post-thumbnail hentry">
-                    <a href="https://qinyu312.github.io/post/ge-chong-css-ji-lei/" class="thumb hover-effect">
+                    <a href="https://qinyu312.github.io/post/wei-xin-xiao-cheng-xu-kai-fa/" class="thumb hover-effect">
                       <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/custom-featureImage.jpg');"></span>
                     </a>
                     <div class="info gradient-effect">
-                      <time datetime="2020-12-21">2020-12-21</time>
+                      <time datetime="2021-01-22">2021-01-22</time>
                       <h4 class="title usmall">
-                        <a href="https://qinyu312.github.io/post/ge-chong-css-ji-lei/">各种CSS积累</a>
+                        <a href="https://qinyu312.github.io/post/wei-xin-xiao-cheng-xu-kai-fa/">微信小程序开发</a>
                       </h4>
                     </div>
                     <div class="clear"></div>
@@ -267,13 +278,13 @@ if (browser == 'Microsoft Internet Explorer' || ie11 == true) {
                   
                   
                   <article class="item post-1 post type-post status-publish format-standard has-post-thumbnail hentry">
-                    <a href="https://qinyu312.github.io/post/js-ge-chong-ling-sui-zhi-shi-he-ji/" class="thumb hover-effect">
+                    <a href="https://qinyu312.github.io/post/zhu-liu-ji-xing-fen-bian-lu/" class="thumb hover-effect">
                       <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/custom-featureImage.jpg');"></span>
                     </a>
                     <div class="info gradient-effect">
-                      <time datetime="2020-12-09">2020-12-09</time>
+                      <time datetime="2020-12-31">2020-12-31</time>
                       <h4 class="title usmall">
-                        <a href="https://qinyu312.github.io/post/js-ge-chong-ling-sui-zhi-shi-he-ji/">JS各种零碎知识合集</a>
+                        <a href="https://qinyu312.github.io/post/zhu-liu-ji-xing-fen-bian-lu/">主流机型分辨率</a>
                       </h4>
                     </div>
                     <div class="clear"></div>
@@ -282,17 +293,23 @@ if (browser == 'Microsoft Internet Explorer' || ie11 == true) {
                   
                   
                   <article class="item post-2 post type-post status-publish format-standard has-post-thumbnail hentry">
-                    <a href="https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/" class="thumb hover-effect">
+                    <a href="https://qinyu312.github.io/post/qi-xing-guai-zhuang-bug-shou-ji/" class="thumb hover-effect">
                       <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/custom-featureImage.jpg');"></span>
                     </a>
                     <div class="info gradient-effect">
-                      <time datetime="2020-12-08">2020-12-08</time>
+                      <time datetime="2020-12-26">2020-12-26</time>
                       <h4 class="title usmall">
-                        <a href="https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/">Fetch querystring  跨域解决 封装请求</a>
+                        <a href="https://qinyu312.github.io/post/qi-xing-guai-zhuang-bug-shou-ji/">奇形怪状bug收集</a>
                       </h4>
                     </div>
                     <div class="clear"></div>
                   </article>
+                  
+                  
+                  
+                  
+                  
+                  
                   
                   
                   
@@ -378,7 +395,7 @@ if (browser == 'Microsoft Internet Explorer' || ie11 == true) {
           <a href="https://qinyu312.github.io"><img src="/media/images/custom-footerLogo.jpeg" alt=""></a>
         </div>
         <p class="published border-effect">
-          ©2019 共 12 篇文章
+          ©2019 共 15 篇文章
           <br/>
           Theme <a href="https://gridea.dev/" target="_blank">「breek」</a> Powered by <a href="https://gridea.dev/" target="_blank">「Gridea」</a>
         </p>

@@ -2,14 +2,56 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qinyu312.github.io</id>
     <title>҉҉҈淸鷠҉҉҈、</title>
-    <updated>2020-12-23T02:04:02.124Z</updated>
+    <updated>2021-01-22T07:56:58.954Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qinyu312.github.io"/>
     <link rel="self" href="https://qinyu312.github.io/atom.xml"/>
     <subtitle>万般皆苦，唯有自渡</subtitle>
     <logo>https://qinyu312.github.io/images/avatar.png</logo>
     <icon>https://qinyu312.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, ҉҉҈淸鷠҉҉҈、</rights>
+    <rights>All rights reserved 2021, ҉҉҈淸鷠҉҉҈、</rights>
+    <entry>
+        <title type="html"><![CDATA[微信小程序开发]]></title>
+        <id>https://qinyu312.github.io/post/wei-xin-xiao-cheng-xu-kai-fa/</id>
+        <link href="https://qinyu312.github.io/post/wei-xin-xiao-cheng-xu-kai-fa/">
+        </link>
+        <updated>2021-01-22T07:53:22.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="button-无法设置宽高">button 无法设置宽高</h2>
+<p>当前版本的微信小程序，在.wxss文件里设置Button宽度无效,调整不会被应用到元素上</p>
+<pre><code>.btn {
+    width: 80%;
+    height: 80rpx;
+}
+</code></pre>
+<p>第一种方式是把 app.json里的  style: v2语句删掉。<br>
+这样虽然也可以解决问题，但会导致全局的样式变化。<br>
+第二种方式可以很便捷的解决问题，就是直接在 button标签的行内添加样式</p>
+<pre><code>&lt;button style=&quot;width: 80%; height: 80rpx&quot;&gt;提交&lt;/button&gt;
+</code></pre>
+<p>按钮宽高生效</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[主流机型分辨率]]></title>
+        <id>https://qinyu312.github.io/post/zhu-liu-ji-xing-fen-bian-lu/</id>
+        <link href="https://qinyu312.github.io/post/zhu-liu-ji-xing-fen-bian-lu/">
+        </link>
+        <updated>2020-12-31T01:52:52.000Z</updated>
+        <content type="html"><![CDATA[<p>iphone主流机型<br>
+<img src="https://qinyu312.github.io/post-images/1609379604225.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[奇形怪状bug收集]]></title>
+        <id>https://qinyu312.github.io/post/qi-xing-guai-zhuang-bug-shou-ji/</id>
+        <link href="https://qinyu312.github.io/post/qi-xing-guai-zhuang-bug-shou-ji/">
+        </link>
+        <updated>2020-12-26T09:27:34.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="pageslider无法触发默认事件解决">pageSlider无法触发默认事件解决</h2>
+<p>最近在做原生内嵌的H5年报页面，需求是上下滚动翻页，于是用上了 pageSlider.js插件进行实现，写到最后一个页面，有一个收集反馈意见的文本框，这边使用到 <textarea>标签，但是开发完后发现，输入框并不能聚焦和输入，通过对比得出结论，是因为引用pageSlider的缘故，最后在 pageSlider.js文件的源码中，将移动鼠标后的默认事件清除给注释掉，问题得到解决<br>
+<img src="https://qinyu312.github.io/post-images/1609211243421.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[各种CSS积累]]></title>
         <id>https://qinyu312.github.io/post/ge-chong-css-ji-lei/</id>
@@ -227,12 +269,12 @@ api.getLogin({
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[关于各种IE兼容(持续更新中)]]></title>
+        <title type="html"><![CDATA[关于各种浏览器兼容(持续更新中)]]></title>
         <id>https://qinyu312.github.io/post/guan-yu-ge-chong-ie-jian-rong/</id>
         <link href="https://qinyu312.github.io/post/guan-yu-ge-chong-ie-jian-rong/">
         </link>
         <updated>2020-12-04T10:07:51.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="条件注释">条件注释</h2>
+        <content type="html"><![CDATA[<h2 id="ie条件注释">IE条件注释</h2>
 <p>IE10以下版本可用，IE11已经取消支持</p>
 <pre><code>&lt;!--[if lte IE 8]&gt; 	
         &lt;script src=&quot;/js/html5.js&quot;&gt;&lt;/script&gt;
@@ -302,6 +344,17 @@ if (browser == 'Microsoft Internet Explorer' || ie11 == true) {
 	    });
 	  }
 	});
+</code></pre>
+<h2 id="换行word-wrap与word-break兼容ie和火狐-chrome">换行word-wrap与word-break兼容ie和火狐、chrome</h2>
+<ol>
+<li>word-wrap控制换行，使用break-word时，会强制进行换行，中文没问题，英文语句没问题，长串的英文不会生效。</li>
+<li>word-break控制是否断词<br>
+normal是默认情况，英文单词不被拆开<br>
+break-all，是断开单词。在单词到边界时，下个字母自动到下一行。主要解决了长串英文的问题。<br>
+keep-all，是指Chinese, Japanese, and Korean不断词。即只用此时，不用word-wrap，中文就不会换行了。（英文语句正常。）<br>
+所以，要做到英文和中文等强制换行，需要组合使用如下</li>
+</ol>
+<pre><code>&lt;p style=&quot;word-wrap: break-word; word-break: break-all&quot;&gt;&lt;/p&gt;
 </code></pre>
 ]]></content>
     </entry>
@@ -669,39 +722,6 @@ function App() {
  --&gt;
 </code></pre>
 <h2 id="redux数据管理方案-类似于vuex">Redux数据管理方案  (类似于Vuex)</h2>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[记个人博客之旅]]></title>
-        <id>https://qinyu312.github.io/post/ji-yi-ci-bu-tong-xun-chang-de-ge-ren-blog-da-jian/</id>
-        <link href="https://qinyu312.github.io/post/ji-yi-ci-bu-tong-xun-chang-de-ge-ren-blog-da-jian/">
-        </link>
-        <updated>2020-11-15T12:29:35.000Z</updated>
-        <content type="html"><![CDATA[<pre><code>前端开发小菜🐦，借助Gridea平台搭建属于自己的个人博客正式通🚗，🎉🎉🎉🎉🎉🎉🎉🎉🎉  
-在这里，我将不定时分享不定时内容，更多的是对工作👨🏻‍🔧 技术👨🏻‍💻 生活🚶🏻等方面的积累收获与感悟，期待与你共同进步！
-</code></pre>
-<p><img src="https://w.wallhaven.cc/full/5w/wallhaven-5w26x1.jpg" alt="avatar" loading="lazy"><br>
-饮水思源，第一次写博客的内容就决定是分享Gridea + Github快速搭建个人博客类网站！</p>
-<h2 id="安装gridea">安装Gridea</h2>
-<p>首先需要安装Gridea客户端，附官网地址 <a href="https://gridea.dev/">Gridea</a><br>
-因为只满足于日常个人写作轻量级使用，所以选择使用最简单的Github Pages部署，这边就不详细讲解域名，服务器，备案等等配置，感兴趣的建议参考这位大佬的博客观看学习<a href="https://aoizz.com/post/sha-gua-shi-cong-wu-dao-you-jian-li-yi-ge-bo-ke/">https://aoizz.com</a></p>
-<figure data-type="image" tabindex="1"><img src="https://qinyu312.github.io/post-images/1605677874498.png" alt="" loading="lazy"></figure>
-<h2 id="创建git仓库">创建git仓库</h2>
-<p>Gridea安装完成后，登录Github，创建一个空白仓库，用于存储个人博客内容。</p>
-<figure data-type="image" tabindex="2"><img src="https://qinyu312.github.io/post-images/1605680193617.png" alt="" loading="lazy"></figure>
-<h2 id="配置gridea">配置Gridea</h2>
-<p>打开Gridea客户端，在远程菜单中，对Github Pages进行配置如下，平台选择Github Pages，如果需要使用自己的服务器和域名也可以选择SFTP，这里不做赘述，域名直接填写之前创建的Github空白仓库的地址即可，仓库名称同上，分支，仓库用户名，邮箱几项按自己的填写即可，<a href="https://github.com/settings/tokens/new">令牌创建地址</a> 创建完成的令牌复制到令牌选项框。CNAME处填写自己的仓库名称。至此，Gridea中的Github Pages配置基本完成，点击保存和同步后，就可以输入你的域名进行访问了！</p>
-<figure data-type="image" tabindex="3"><img src="https://qinyu312.github.io/post-images/1605681597177.png" alt="" loading="lazy"></figure>
-<h2 id="芜湖起飞">芜湖！起飞</h2>
-<p>更加贴心的是， Gridea还为广大个人博主提供了各种风格迥异的博客模版，可以让大家更加专注于写出高质量博客，而不用过于关注样式布局方面的问题。当然，如果你追求极致和个性化，也可以自己定制你的博客。<a href="https://gridea.dev/themes/">更多主题</a></p>
-<figure data-type="image" tabindex="4"><img src="https://qinyu312.github.io/post-images/1605682923167.png" alt="" loading="lazy"></figure>
-<h2 id="使用主题">使用主题</h2>
-<p>进入官网下载主题到本地，然后解压后将文件放到Gridea所在的本地地址路径下的themes文件夹下</p>
-<figure data-type="image" tabindex="5"><img src="https://qinyu312.github.io/post-images/1605683290929.png" alt="" loading="lazy"></figure>
-<p>然后在Gridea客户端的主题菜单里就可以看到你下载的新主题啦。选中后即可同步预览效果！</p>
-<figure data-type="image" tabindex="6"><img src="https://qinyu312.github.io/post-images/1605683207314.png" alt="" loading="lazy"></figure>
-<p>那关于个人博客的简单搭建就介绍完了，有兴趣的小伙伴可以动手尝试一下，期待你们精美的博客和优质的作品！</p>
-<p>ヽ｀、ヽ｀｀、ヽ｀ヽ｀、、ヽ ｀ヽ 、ヽ｀🌙｀ヽヽ｀ヽ、ヽ｀ヽ｀、ヽ｀｀、ヽ 、｀｀、 ｀、ヽ｀ 、｀ ヽ｀ヽ、ヽ ｀、ヽ｀｀、ヽ、｀｀、｀、ヽ｀｀、 、ヽヽ｀、｀、、ヽヽ、｀｀、 、 ヽ｀、ヽ｀｀、ヽ｀ヽ｀、、ヽ ｀ヽ 、ヽ｀｀ヽ、｀🏡｀ヽ｀、、🚶｀ヽ｀、</p>
 ]]></content>
     </entry>
 </feed>

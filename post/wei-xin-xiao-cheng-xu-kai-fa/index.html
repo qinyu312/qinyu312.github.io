@@ -1,9 +1,8 @@
-<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>我的阅读 | ҉҉҈淸鷠҉҉҈、</title>
+<title>微信小程序开发 | ҉҉҈淸鷠҉҉҈、</title>
 <meta name="description" content="万般皆苦，唯有自渡" />
 <link rel="shortcut icon" href="https://qinyu312.github.io/favicon.ico">
 <link rel="stylesheet" href="https://qinyu312.github.io/styles/main.css">
@@ -16,13 +15,19 @@
 <script src="https://qinyu312.github.io/media/js/jquery.magnific-popup.min.js"></script>
 <script src="https://qinyu312.github.io/media/js/functions.js"></script>
     <meta name="referrer" content="never">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iMuFeng/bmdb@1.8.0/dist/Bmdb.min.css">
-    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/iMuFeng/bmdb@1.8.0/dist/Bmdb.min.js'></script>
+    <meta name="description" content="button 无法设置宽高
+当前版本的微信小程序，在.wxss文件里设置Button宽度无效,调整不会被应用到元素上
+.btn {
+    width: 80%;
+    height: 80rpx;
+}
+
+第一种方式是把 app.json..." />
+    <meta name="keywords" content="" />
+    <script src="https://qinyu312.github.io/media/js/waterfall.min.js"></script>
+    <script src="https://qinyu312.github.io/media/js/prism.min.js"></script>
   </head>
   <body>
-    <!-- start: #wrapper -->
-    <div class="wrapper">
-      
             <header id="header" class="grid-container">
         <!-- start: .menu-wrapper -->
         <div class="menu-mobile"> 
@@ -89,14 +94,87 @@
         </div>
       </div>
 
-      <main id="friends" class="main fullcover no-sidebar content">
-        <div class="grid-container module-wrapper enable-masonry aos-init aos-animate" data-aos="fade-up">
+      <main id="single" class="main grid-container fullcover no-sidebar aos-init aos-animate" data-aos="fade">
+
+        <div class="center content">
+          <div class="featured-image cover" style="background-image: url('/media/images/custom-featureImage.jpg');">
+            <div class="meta top"> 
+              <time class="meta-info" style="float:left;" datetime="2021-01-22"><i class="fa fa-calendar"></i><span class="lately">4 分钟前</span></time>
+              
+              <a href="https://qinyu312.github.io/post/wei-xin-xiao-cheng-xu-kai-fa/#comments" class="comments meta-info" title="">
+                <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/wei-xin-xiao-cheng-xu-kai-fa/"> </span>
+              </a>
+              <span id="/wei-xin-xiao-cheng-xu-kai-fa/" class="leancloud_visitors views-counter meta-info" title=""><i class="fa fa-leancloud remixicon"></i><span class="leancloud-visitors-count"></span></span>
+              
+            </div>
+            <div class="info">
+              <div class="tags ">
+                
+              </div>
+              <h1 class="title ularge white bold">微信小程序开发</h1>
+            </div>
+          </div>
+        </div>  
+
         <div class="epcl-page-wrapper">
-          <div class="section-content" style="margin-top:3em;"></div>
-        </div>
-        </div>
+          <div class="left-content grid-70 np-mobile">
+            <article class="main-article post">
+              <section class="post-content">
+                <div class="text">
+                  <h2 id="button-无法设置宽高">button 无法设置宽高</h2>
+<p>当前版本的微信小程序，在.wxss文件里设置Button宽度无效,调整不会被应用到元素上</p>
+<pre><code>.btn {
+    width: 80%;
+    height: 80rpx;
+}
+</code></pre>
+<p>第一种方式是把 app.json里的  style: v2语句删掉。<br>
+这样虽然也可以解决问题，但会导致全局的样式变化。<br>
+第二种方式可以很便捷的解决问题，就是直接在 button标签的行内添加样式</p>
+<pre><code>&lt;button style=&quot;width: 80%; height: 80rpx&quot;&gt;提交&lt;/button&gt;
+</code></pre>
+<p>按钮宽高生效</p>
+
+                </div>
+                <div class="clear"></div>
+              </section>
+            </article>
+            <div class="clear"></div>
+
+            <section class="related section">
+              
+              
+              <article class="next grid-50 tablet-grid-50 grid-parent">
+                <div class="thumb cover lazy loaded" style="background-image: url('https://qinyu312.github.io/media/images/gridea.jpg');"></div>
+                 <a href="https://qinyu312.github.io/post/zhu-liu-ji-xing-fen-bian-lu/" class="full-link"></a>
+                 <div class="info">
+                  <time datetime="2020-12-31">2020-12-31</time>
+                  <h4 class="title white no-margin">主流机型分辨率</h4>
+                </div>
+                 <span class="epcl-button red">
+                  <img src="https://qinyu312.github.io/media/images/right-arrow.svg" width="15" alt="Left Arrow">
+                </span>
+                <div class="overlay"></div>
+              </article>
+              
+
+                <div class="clear"></div>
+            </section>
+
+              <div class="clear"></div>
+              
+            
+              <div id="comments" class="bg-white hosted ">
+                <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+              </div>
+              <div class="clear"></div>
+            
+
+            </div>
+          </div>
       </main>
-        <footer id="footer" class="grid-container">
+
+          <footer id="footer" class="grid-container">
         <div class="widgets row gradient-effect">
             <div class="default-sidebar border-effect">
               <div class="grid-33 tablet-grid-50 mobile-grid-100">
@@ -251,15 +329,9 @@
 
         
 
-    <script>
-    new Bmdb({
-      type: 'books',
-      selector: '.section-content',
-      secret: '',
-      noMoreText: '没有更多数据了',
-      limit: 30
-    })
-    </script>
+      
+    <script src="https://qinyu312.github.io/media/js/functions-post.js"></script>
+
     </div>
     <!-- end: #wrapper -->
   </body>
