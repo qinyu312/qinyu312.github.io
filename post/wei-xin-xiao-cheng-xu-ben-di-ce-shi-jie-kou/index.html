@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Vue.js | ҉҉҈淸鷠҉҉҈、</title>
+<title>微信小程序本地接口调用 | ҉҉҈淸鷠҉҉҈、</title>
 <meta name="description" content="万般皆苦，唯有自渡" />
 <link rel="shortcut icon" href="https://qinyu312.github.io/favicon.ico">
 <link rel="stylesheet" href="https://qinyu312.github.io/styles/main.css">
@@ -14,11 +14,20 @@
 <script src="https://qinyu312.github.io/media/js/view-image.min.js"></script>
 <script src="https://qinyu312.github.io/media/js/jquery.magnific-popup.min.js"></script>
 <script src="https://qinyu312.github.io/media/js/functions.js"></script>
+    <meta name="referrer" content="never">
+    <meta name="description" content="以Mac环境为例，需要下载安装 Tomcat 来运行一个war包
+
+将后端项目代码中已经配置好的 xxx.war 文件拷贝至 tomcat文件目录下的 webapps下
+
+命令行进入到 Tomcat 下的 bin 目录
+
+
+命令行启动 st..." />
+    <meta name="keywords" content="" />
+    <script src="https://qinyu312.github.io/media/js/waterfall.min.js"></script>
+    <script src="https://qinyu312.github.io/media/js/prism.min.js"></script>
   </head>
   <body>
-    <!-- start: #wrapper -->
-    <div class="wrapper">
-      
             <header id="header" class="grid-container">
         <!-- start: .menu-wrapper -->
         <div class="menu-mobile"> 
@@ -85,45 +94,96 @@
         </div>
       </div>
 
-      <main id="home" class="main fullcover no-sidebar content">
-        <div class="grid-container module-wrapper enable-masonry aos-init aos-animate" data-aos="fade-up">
-        <div class="epcl-page-wrapper">
-          <div class="left-content grid-70 np-mobile widget_epcl_related_articles">
-                
-            <!-- start: .articles -->
-            <div class="main-article post">
-  <h2 class="year"># Vue.js</h2>
-    
-      <article class="item default grid-33 tablet-grid-50 np-mobile">
-        <a href="https://qinyu312.github.io/post/vue-router-lu-you-shou-wei/" class="thumb hover-effect">
-          <span class="fullimage cover" style="display: block;background-image: url('/media/images/custom-featureImage.jpg');"></span>
-        </a>
-        <div class="info gradient-effect">
-          <time datetime="2020-11-23">2020-11-23</time>
-          <h4 class="title usmall">
-            <a href="https://qinyu312.github.io/post/vue-router-lu-you-shou-wei/">vue-router 路由守卫</a>
-          </h4>
-        </div>
-      </article>
+      <main id="single" class="main grid-container fullcover no-sidebar aos-init aos-animate" data-aos="fade">
 
-    
-    <div class="clear"></div>
-</div>
-            <!-- end: .articles -->
-            
-                        <div class="epcl-pagination section">
-              <div class="nav">
-                
+        <div class="center content">
+          <div class="featured-image cover" style="background-image: url('/media/images/custom-featureImage.jpg');">
+            <div class="meta top"> 
+              <time class="meta-info" style="float:left;" datetime="2021-01-28"><i class="fa fa-calendar"></i><span class="lately">18 分钟前</span></time>
+              
+              <a href="https://qinyu312.github.io/post/wei-xin-xiao-cheng-xu-ben-di-ce-shi-jie-kou/#comments" class="comments meta-info" title="">
+                <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/wei-xin-xiao-cheng-xu-ben-di-ce-shi-jie-kou/"> </span>
+              </a>
+              <span id="/wei-xin-xiao-cheng-xu-ben-di-ce-shi-jie-kou/" class="leancloud_visitors views-counter meta-info" title=""><i class="fa fa-leancloud remixicon"></i><span class="leancloud-visitors-count"></span></span>
+              
+            </div>
+            <div class="info">
+              <div class="tags ">
                 
               </div>
+              <h1 class="title ularge white bold">微信小程序本地接口调用</h1>
             </div>
+          </div>
+        </div>  
+
+        <div class="epcl-page-wrapper">
+          <div class="left-content grid-70 np-mobile">
+            <article class="main-article post">
+              <section class="post-content">
+                <div class="text">
+                  <p>以Mac环境为例，需要下载安装 Tomcat 来运行一个war包</p>
+<ol>
+<li>将后端项目代码中已经配置好的 xxx.war 文件拷贝至 tomcat文件目录下的 webapps下<br>
+<img src="https://qinyu312.github.io/post-images/1611799120504.png" alt="" loading="lazy"></li>
+<li>命令行进入到 Tomcat 下的 bin 目录</li>
+<li></li>
+</ol>
+<p>命令行启动 startup.sh<br>
+<img src="https://qinyu312.github.io/post-images/1611799131274.png" alt="" loading="lazy"><br>
+<code>sudo sh ./startup.sh</code><br>
+命令行结束运行<br>
+<img src="https://qinyu312.github.io/post-images/1611799138646.png" alt="" loading="lazy"><br>
+<code>sudo sh ./shutdown.sh</code><br>
+命令行查看 Tomcat所有进程<br>
+<img src="https://qinyu312.github.io/post-images/1611799147086.png" alt="" loading="lazy"><br>
+<code>ps -ef|grep java</code><br>
+命令行强制终止 某些 Tomcat进程<br>
+<code>kill -9 端口号</code></p>
+<ol start="4">
+<li>startup.sh 启动后就可以在浏览器输入 localhost:8080测试 Tomcat 启动的情况</li>
+<li>把接口调用处的测试地址换成 localhost:8080 调用接口测试，数据正常返回，本地调用成功</li>
+</ol>
+
+                </div>
+                <div class="clear"></div>
+              </section>
+            </article>
+            <div class="clear"></div>
+
+            <section class="related section">
+              
+              
+              <article class="next grid-50 tablet-grid-50 grid-parent">
+                <div class="thumb cover lazy loaded" style="background-image: url('https://qinyu312.github.io/media/images/gridea.jpg');"></div>
+                 <a href="https://qinyu312.github.io/post/wei-xin-xiao-cheng-xu-kai-fa/" class="full-link"></a>
+                 <div class="info">
+                  <time datetime="2021-01-22">2021-01-22</time>
+                  <h4 class="title white no-margin">微信小程序开发</h4>
+                </div>
+                 <span class="epcl-button red">
+                  <img src="https://qinyu312.github.io/media/images/right-arrow.svg" width="15" alt="Left Arrow">
+                </span>
+                <div class="overlay"></div>
+              </article>
+              
+
+                <div class="clear"></div>
+            </section>
+
+              <div class="clear"></div>
+              
             
+              <div id="comments" class="bg-white hosted ">
+                <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+              </div>
+              <div class="clear"></div>
+            
+
+            </div>
           </div>
-          </div>
-        </div>
       </main>
 
-        <footer id="footer" class="grid-container">
+          <footer id="footer" class="grid-container">
         <div class="widgets row gradient-effect">
             <div class="default-sidebar border-effect">
               <div class="grid-33 tablet-grid-50 mobile-grid-100">
@@ -279,6 +339,9 @@
     <div class="clear"></div>
 
         
+
+      
+    <script src="https://qinyu312.github.io/media/js/functions-post.js"></script>
 
     </div>
     <!-- end: #wrapper -->
