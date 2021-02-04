@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qinyu312.github.io</id>
     <title>҉҉҈淸鷠҉҉҈、</title>
-    <updated>2021-02-04T09:34:14.373Z</updated>
+    <updated>2021-02-04T09:36:37.109Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qinyu312.github.io"/>
     <link rel="self" href="https://qinyu312.github.io/atom.xml"/>
@@ -16,8 +16,8 @@
         <link href="https://qinyu312.github.io/post/jia-mi-cao-zuo/">
         </link>
         <updated>2021-02-04T09:12:12.000Z</updated>
-        <content type="html"><![CDATA[<p>aes前端加密<br>
-最近在开发微信小程序，由于是国企项目，上线前都需要做好几次安全漏洞扫描，所以数据接口都需要二次封装并进行加解密的操作来确保安全性，最后和后端同事商议，使用aes进行加密，原理是前端请求的后端接口，除统一域名前缀部分外，后面接口部分全部使用公共参数 例如common 进行替换，然后将接口名称，接口所需参数等信息，通过 aes 加密后传输给后端，后端拿到加密后的字符串，通过解密算法得到节后名称及参数，来调用对用的接口，然后将返回值同样经过加密后返回给前端，前端拿到加密串后解密，得到JSON对象，转换后得到接口数据进行页面渲染。</p>
+        <content type="html"><![CDATA[<h1 id="aes前端加密">aes前端加密</h1>
+<p>最近在开发微信小程序，由于是国企项目，上线前都需要做好几次安全漏洞扫描，所以数据接口都需要二次封装并进行加解密的操作来确保安全性，最后和后端同事商议，使用aes进行加密，原理是前端请求的后端接口，除统一域名前缀部分外，后面接口部分全部使用公共参数 例如common 进行替换，然后将接口名称，接口所需参数等信息，通过 aes 加密后传输给后端，后端拿到加密后的字符串，通过解密算法得到接口名称及参数，来调用对用的接口，然后将返回值同样经过加密后返回给前端，前端拿到加密串后解密，得到JSON对象，转换后得到接口数据进行页面渲染。</p>
 <p>具体操作如下：</p>
 <ol>
 <li>将加解密方法操作封装在 public.js 和 aes.js 两个文件中</li>
