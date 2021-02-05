@@ -9627,6 +9627,6 @@ photos .photo:last-child {
 }
 
       body {
-        background: fixed linear-gradient(to right bottom,#F7C2D6, #485DA6, #00a1ba, #01b18e, #6d327c);;
+        background: fixed linear-gradient(to right bottom,#F7C2D6, #485DA6, #cc99cc, #01b18e, #6d327c);;
       }
     

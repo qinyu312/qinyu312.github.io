@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qinyu312.github.io</id>
     <title>҉҉҈淸鷠҉҉҈、</title>
-    <updated>2021-02-05T06:22:51.984Z</updated>
+    <updated>2021-02-05T06:49:33.313Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qinyu312.github.io"/>
     <link rel="self" href="https://qinyu312.github.io/atom.xml"/>
@@ -11,7 +11,7 @@
     <icon>https://qinyu312.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, ҉҉҈淸鷠҉҉҈、</rights>
     <entry>
-        <title type="html"><![CDATA[加密操作]]></title>
+        <title type="html"><![CDATA[AES加密前端操作]]></title>
         <id>https://qinyu312.github.io/post/jia-mi-cao-zuo/</id>
         <link href="https://qinyu312.github.io/post/jia-mi-cao-zuo/">
         </link>
@@ -786,11 +786,664 @@ var data = '{&quot;url&quot;: &quot;/login/sendSMS&quot;, &quot;openid&quot;: &q
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[常用api集锦]]></title>
+        <title type="html"><![CDATA[后端代码本地打包运行]]></title>
+        <id>https://qinyu312.github.io/post/wei-xin-xiao-cheng-xu-ben-di-ce-shi-jie-kou/</id>
+        <link href="https://qinyu312.github.io/post/wei-xin-xiao-cheng-xu-ben-di-ce-shi-jie-kou/">
+        </link>
+        <updated>2021-01-28T01:41:32.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="后端-string-boot">后端 string boot</h2>
+<pre><code>zsh: command not found: mvn 解决命令
+source ~/.bash_profile
+</code></pre>
+<ol>
+<li>以Mac环境为例，需要先检查本地是否安装Maven</li>
+</ol>
+<pre><code>mvn -v  
+</code></pre>
+<ol start="2">
+<li>安装mvn后，由于下载较慢，建议配置阿里云打包，进入maven目录下的 conf 文件下，打开settings.xml 文件，添加以下代码</li>
+</ol>
+<pre><code>&lt;mirrors&gt;
+    &lt;mirror&gt;
+      &lt;id&gt;mirrorId&lt;/id&gt;
+      &lt;mirrorOf&gt;repositoryId&lt;/mirrorOf&gt;
+      &lt;name&gt;Human Readable Name for this Mirror.&lt;/name&gt;
+      &lt;url&gt;http://my.repository.com/repo/path&lt;/url&gt;
+    &lt;/mirror&gt;
+     --&gt;
+	 &lt;mirror&gt;
+	   &lt;id&gt;nexus-aliyun&lt;/id&gt;
+	   &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;
+	   &lt;name&gt;Nexus aliyun&lt;/name&gt;
+	   &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;
+	 &lt;/mirror&gt;
+  &lt;/mirrors&gt;
+</code></pre>
+<ol start="3">
+<li>进入后端代码所在的项目目录下，运行打包命令</li>
+</ol>
+<pre><code>mvn package -DskipTests
+</code></pre>
+<p>停止运行命令</p>
+<pre><code>mvn clean
+</code></pre>
+<p>运行完成命令后会在项目文件夹下得到一个target文件，target文件下的war就可以在本地 tomcat 运行了需要下载安装 Tomcat 来运行一个war包<br>
+4. 将后端项目代码中已经配置好的 xxx.war 文件拷贝至 tomcat文件目录下的 webapps下<br>
+<img src="https://qinyu312.github.io/post-images/1611799120504.png" alt="" loading="lazy"><br>
+5. 命令行进入到 Tomcat 下的 bin 目录</p>
+<p>命令行启动 startup.sh<br>
+<img src="https://qinyu312.github.io/post-images/1611799131274.png" alt="" loading="lazy"><br>
+<code>sudo sh ./startup.sh</code><br>
+命令行结束运行<br>
+<img src="https://qinyu312.github.io/post-images/1611799138646.png" alt="" loading="lazy"><br>
+<code>sudo sh ./shutdown.sh</code><br>
+命令行查看 Tomcat所有进程<br>
+<img src="https://qinyu312.github.io/post-images/1611799147086.png" alt="" loading="lazy"><br>
+<code>ps -ef|grep java</code><br>
+命令行强制终止 某些 Tomcat进程<br>
+<code>kill -9 端口号</code></p>
+<ol start="6">
+<li>startup.sh 启动后就可以在浏览器输入 localhost:8080测试 Tomcat 启动的情况</li>
+<li>把接口请求处的测试地址换成 localhost:8080 调用接口测试，数据正常返回，本地调用成功</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[微信小程序开发随记]]></title>
+        <id>https://qinyu312.github.io/post/wei-xin-xiao-cheng-xu-kai-fa/</id>
+        <link href="https://qinyu312.github.io/post/wei-xin-xiao-cheng-xu-kai-fa/">
+        </link>
+        <updated>2020-12-25T07:53:22.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="button-无法设置宽高">button 无法设置宽高</h2>
+<p>当前版本的微信小程序，在.wxss文件里设置Button宽度无效,调整不会被应用到元素上</p>
+<pre><code>.btn {
+    width: 80%;
+    height: 80rpx;
+}
+</code></pre>
+<p>第一种方式是把 app.json里的  style: v2语句删掉。<br>
+这样虽然也可以解决问题，但会导致全局的样式变化。<br>
+第二种方式可以很便捷的解决问题，就是直接在 button标签的行内添加样式</p>
+<pre><code>&lt;button style=&quot;width: 80%; height: 80rpx&quot;&gt;提交&lt;/button&gt;
+</code></pre>
+<p>按钮宽高生效</p>
+<h2 id="微信小程序跳转操作">微信小程序跳转操作</h2>
+<pre><code>&lt;!-- 1. 跳转到页面后左上角不会有返回角标及操作，但是不可以跳转到根级别的tab页面 --&gt;
+wx.redirectTo({
+    url: '/pages/oa_login/index',
+})
+
+&lt;!-- 2. 这个方法之能跳转到 app.json 里面定义的 主 tab页面，如首页，我的这种 --&gt;
+wx.switchTab({
+    url: '/pages/index/index',
+})
+
+&lt;!-- 3. 页面跳转且会有返回操作，但是不可以跳转到根级别的tab页面 --&gt;
+wx.navigataTo({
+    url: '/pages/oa_login/index',
+})
+</code></pre>
+<h2 id="微信小程序轻提示">微信小程序轻提示</h2>
+<pre><code>wx.showToast({
+    title: info.message,
+    icon: 'none',
+    duration: 1500
+})
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Angular项目避坑指南]]></title>
+        <id>https://qinyu312.github.io/post/angular-xiang-mu-bi-keng-zhi-nan/</id>
+        <link href="https://qinyu312.github.io/post/angular-xiang-mu-bi-keng-zhi-nan/">
+        </link>
+        <updated>2020-11-24T10:15:01.000Z</updated>
+        <content type="html"><![CDATA[<p>最近收到一个新的需求，有一个Angular项目需要兼容到 IE8 以上版本，实在让我又惊又喜，惊的是都 2020年了，还甩不掉 IE8 这颗烫手山芋；喜的是第一次接触 Angular项目，不知道又会学到什么新的知识呢。拉到项目代码后，本地启动，果然给我来了迎头痛击。<br>
+首先确认本地安装有Node.js环境后，全局安装 Angular-cli ，也就是Angular脚手架,命令行输入：</p>
+<pre><code>cnpm install -g @angular/cli
+</code></pre>
+<p>然后就是老步骤，下载node_modules 依赖包</p>
+<pre><code>cnpm install
+</code></pre>
+<p>之后直接 ng serve 启动命令有点别具一格的简洁，直接芜湖🛫️</p>
+<pre><code>ng serve
+</code></pre>
+<p>接下来，就是见证 奇迹（打脸）的时刻<br>
+<img src="https://qinyu312.github.io/post-images/1606213638697.png" alt="" loading="lazy"><br>
+我敲完命令一回车，啪的一下满屏飙红报错，很快啊，我就看到是依赖包的问题，按照传统功夫的看到为止，我没有看下去，上去就是一个卸载依赖，一个 cnpm install ，我大意了啊，没有删完，接着又是飙红报错。Angular 不讲武德，来欺，为难我入行一年多点的小前端，希望它以后耗子尾汁！<br>
+<img src="https://qinyu312.github.io/post-images/1606228631691.png" alt="" loading="lazy"><br>
+最后在 node_modules 下的 less-loader 加上一句  javascriptEnabled: true  ，问题得到解决<br>
+<img src="https://qinyu312.github.io/post-images/1606228810583.png" alt="" loading="lazy"></p>
+<p>项目成功启动，再来解决兼容IE8的问题，<a href="https://angular.cn/guide/browser-support">Angular</a>，官方文档浏览器兼容部分我们可以看到， IE 10, 11, 9，也就是说连官方都放弃去做IE9一下的兼容了。<br>
+<img src="https://qinyu312.github.io/post-images/1606461891938.png" alt="" loading="lazy"><br>
+忍不住又想吐槽IE一把，但是客户需求在身，只能硬着头皮做了，因为Angular在国内市场的使用还不是特别频繁，所以我在百度没有什么收获之后，决定翻墙去 Google ，Angular 也不亏是 Google的亲儿子。方案当然是有的。需要将Angular版本降低至 1.2一以下可以对IE8进行兼容适配。然后就是传统功夫的卸载新版本，安装旧版本。</p>
+<pre><code>&lt;!-- 卸载新版本 --&gt;
+cnpm uninstall -g @angular/cli
+&lt;!-- 安装新版本 --&gt;
+cnpm install -g @angular/cli/1.1
+</code></pre>
+<p>问题得到解决，兼容是好了，样式又乱的简直是乱他妈妈给乱开门  -  乱到家了。不说了，我要去调样式了！<br>
+<img src="https://qinyu312.github.io/post-images/1606462146562.jpg" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[初识React]]></title>
+        <id>https://qinyu312.github.io/post/chu-shi-react/</id>
+        <link href="https://qinyu312.github.io/post/chu-shi-react/">
+        </link>
+        <updated>2020-07-30T13:47:24.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="搭建react项目">搭建React项目</h2>
+<p>在装有node.js的基础上，命令行输入命令</p>
+<pre><code>npx create-react-app item-name
+</code></pre>
+<p>即可创建一个React项目，项目结构如下</p>
+<figure data-type="image" tabindex="1"><img src="https://qinyu312.github.io/post-images/1605707465716.png" alt="" loading="lazy"></figure>
+<h2 id="jsx语法">JSX语法</h2>
+<p>src文件下的index.js是项目的入口文件，文件中先后引入了react和react-dom两个库。</p>
+<pre><code>ReactDOM.render(&lt;h2&gt;hello react&lt;/h2&gt;, document.getElementById('root'));
+</code></pre>
+<p>ReactDOM实例通过render方法，将前面的h2标签元素，添加到root元素中，而id为root的元素是public文件的index.html文件的元素。<br>
+JSX语法由JavaScript语法 和 XML语法组成，通俗来说就是，当我们在JSX语句中遇到 &lt;&gt; 的形式的，按照XML的形式来解析，因为他们是标签；遇到 {} 按照javaScript来解析，表示JS语法。</p>
+<pre><code>const a = (
+        &lt;div&gt;
+            &lt;p&gt;hello react&lt;/p&gt;
+        &lt;/div&gt;
+) 
+</code></pre>
+<p>如果存在标签结构，并且标签结构需要换行的话，可以使用 （）的形式进行表示</p>
+<h2 id="react-元素渲染">React 元素渲染</h2>
+<p>这里通过一个实例了解react的元素渲染</p>
+<pre><code>&lt;!-- 首先定义一个方法 --&gt;
+function nowTime() {
+    const ele = (
+        &lt;!-- 使用()的形式，可以换行写标签语法 --&gt;
+        &lt;h2&gt;get now time&lt;/h2&gt;  
+        &lt;!-- 定义一个获取当前时间的方法 --&gt;
+        &lt;h1&gt;now time is { new Date().toLocalTimeString() } &lt;/h1&gt;
+    )
+    &lt;!-- 渲染这个获取当前时间的方法 --&gt;
+    reactDOM.render(ele, document.getElementById('root));
+}
+&lt;!-- 定时器每隔一秒会调用一次该方法，实现实时更新当前时间 --&gt;
+setInterval(() =&gt; {
+    nowTime()
+},1000)
+
+</code></pre>
+<h2 id="react-组件">React 组件</h2>
+<p>关于Ract组件，区别于vue的以 .vue为后缀结尾的文件，React的组件可以是以 .js 为后缀的文件，也可以是 .jsx 为后缀的文件命名。编写React组件的时候，创建 .js 的组件是没有代码语法提示的，而创建 .jsx 组件文件是有代码语法提示的。 创建React组件分别有两种方式，第一种是通过 类的形式创建组件，第二种是通过Hook的形式创建。并且组件之间是可以互相引入和使用的，以标签的形式存在！</p>
+<pre><code>&lt;!-- 第一种写法 --&gt;
+&lt;!-- 创建一个React组件首先需要引入 React 库 --&gt;
+import React from 'react'
+&lt;!-- 创建一个类App继承React所提供的Component组件的对象 --&gt;
+class App extends React Component {
+    &lt;!-- rander(){} 渲染函数 --&gt;
+    render() {
+        &lt;p&gt;渲染函数中写你需要这个组件展示的内容，或者要做什么&lt;/p&gt;
+    }
+}
+&lt;!-- 导出组件 --&gt;
+export default App
+
+&lt;!-- 第二种写法 --&gt;
+import React from 'react'
+
+export default class App extends React.Component{
+    render() {
+        return {
+            &lt;div&gt;
+                &lt;p&gt;直接导出并继承React下的Component对象&lt;/p&gt;
+            &lt;/div&gt;
+        }
+    }
+}
+</code></pre>
+<pre><code>&lt;!-- 函数组件 --&gt;
+function fun(props) {
+    return (
+        &lt;div&gt;
+            &lt;h3&gt;函数组件&lt;/h3&gt;
+        &lt;/div&gt;
+    )
+}
+&lt;!-- ES6 class类组件 --&gt;
+class App extends React.Component {
+    render() {
+        return (
+            &lt;div&gt;
+                &lt;h3&gt;ES6 class类创建组件&lt;/h3&gt;  
+            &lt;/div&gt;
+        )
+    }
+}
+</code></pre>
+<p>然后在需要使用的地方引入该组件,并将其放置在渲染函数中渲染即可。</p>
+<pre><code>import 'App' from './App.jsx'
+ReactDOM.render(&lt;App /&gt;, document.getElementById('root));
+
+</code></pre>
+<h3 id="props组件动态传参">Props组件动态传参</h3>
+<p>React里面的组件传参通过 props</p>
+<h3 id="父组件传递参数给子组件">父组件传递参数给子组件</h3>
+<pre><code>&lt;!-- 子组件 --&gt;
+import React from 'react'
+export default class Son extends React.Component {
+    render() {
+        return {
+            &lt;div&gt;
+                &lt;ul&gt;
+                    {
+                    &lt;!-- 子组件中 通过this.props的方式获取父组件传递过来的数据，也就是arr ,然后通过map来遍历获取到的数据--&gt;
+                        this.props.arr.map((element, index) =&gt; {
+                            &lt;!-- 将遍历得到的数据放在li标签中渲染返回，key值需要绑定index唯一值，否则会抛出语法error --&gt;
+                            return &lt;li key={ index }&gt;{ element }&lt;/li&gt;
+                        })
+                    }
+                &lt;/ul&gt;            
+            &lt;/div&gt;
+        }
+    }
+}
+</code></pre>
+<pre><code>import React from 'react'
+&lt;!-- 引入子组件 --&gt;
+import Son from './son'
+export default class Father extends React.Component {
+    render() {
+        &lt;!-- 父组件定义两个数组，用于传递给子组件使用 --&gt;
+        const arrOne = ['Vue' , 'React', 'Angular'],
+                 arrTwo = ['Java', 'Pythen', 'C++']
+        return (
+            &lt;!-- 在两个子组件中分别传入不同的数据 --&gt;
+            &lt;Son arr={ arrOne } /&gt;
+            &lt;Son arr={ arrTwo } /&gt;
+        )
+    }
+}
+</code></pre>
+<h3 id="子组件传递参数给父组件">子组件传递参数给父组件</h3>
+<pre><code>&lt;!-- 父组件 --&gt;
+import React from 'react'
+import Son from './son'
+export defaul{t class Father React.Component {
+    &lt;!-- 首先定义state用来存储title的状态 --&gt;
+    constructor() {
+        super();
+        this.state = {
+            title: ‘最初的标题’
+        }
+    }
+    clickChange = () =&gt; {
+        this.setState({
+            title: '最后的标题'
+        })
+    }
+    render()  {
+        return (    
+            &lt;div&gt;
+                父子组件传参
+            &lt;/div&gt;
+            &lt;!-- 使用子组件,title最开始为 ‘最初的标题’， changeFatherProps 被子组件中的点击事件触发从而执行父组件中的clickChange方法，完成对标题的修改 --&gt;
+            &lt;son title={ this.state.title } changeFatherProps={ this.clickChange } /&gt;
+        )
+    }
+}
+</code></pre>
+<pre><code>&lt;!-- 子组件 --&gt;
+import React from 'react'
+
+export defaul{t class Father React.Component {
+    changeFather = () =&gt; {
+        &lt;!-- 通过 this.props 的方式 --&gt;
+        this.prpos.changFatherProps()
+    }
+    render()  {
+        return &lt;div&gt;
+                    父子组件传参
+                    &lt;!-- 点击button事件会触发父组件中方法的执行，将标题修改 --&gt;
+                    &lt;button onClick={ this.changeFather }&gt;点击传参修改&lt;button&gt;
+                &lt;/div&gt;
+    }
+}
+</code></pre>
+<h2 id="state-状态">state 状态</h2>
+<pre><code>&lt;!-- 通过this.state定义保存数据和状态 --&gt;
+    this.state = {
+        flag: true,
+        count: 10,
+    }
+    &lt;!-- 需要修改状态值的时候通过 this.setState({})的方式进行修改 --&gt;
+    this.setState({
+        flag:  false,
+        count: this.state.count ++
+    })
+</code></pre>
+<h2 id="生命周期函数">生命周期函数</h2>
+<p>随着我们对React理解和使用的原来越多，生命周期会越来越有参考价值<br>
+生命周期函数包括:</p>
+<ol>
+<li>componentWillMount:  在组件创建之前执行</li>
+<li>componentDidMount: 在组件渲染之后执行</li>
+<li>shouldComponentUpdata: 返回 true 和 false, true代表允许改变， false代表不允许改变</li>
+<li>componentWillUpdata: 数据在改变之前执行（state, props）</li>
+<li>conponentDidUpdata: 代表数据修改完成（state, props）</li>
+<li>conponentWillReveiceProps: props发生改变时执行的生命周期函数</li>
+<li>conponentWillUnMount: 组件卸载前执行</li>
+</ol>
+<h2 id="探讨关于-setstate-更新是同步操作还是异步操作的问题">探讨关于 setState 更新是同步操作还是异步操作的问题</h2>
+<pre><code>setState会引起视图的重绘
+官方文档解答:在可控的情况下是异步的，在不可控的情况下是同步的
+</code></pre>
+<h2 id="create-react-app-按需加载antd-组件">create-react-app 按需加载Antd 组件</h2>
+<ol>
+<li>命令行输入 cnpm run eject  拉取React的配置文件</li>
+<li>文件被修改时，会抛出异常，由于GIt的原因导致,此时找到文件目录，按下shift + command + . 显示隐藏文件，删除 .git 文件，重新 cnpm run eject即可，安装完成后目录多出了两个文件，分别是config和script文件，config文件就是webpack配置文件</li>
+<li>安装一个依赖文件 cnpm install babel-plugin-import --save-dev</li>
+</ol>
+<h2 id="react-router">React-Router</h2>
+<p>React路由也分为两种路由模式： BrowserRouter 和 HashRouter<br>
+两者的区别在于 HashRouter使用的是锚点链接的形式，表现为 # 的形式， # 号后面为跳转的二级路由地址 而BrowserRouter 则使用了HTML5的新特性，主要是 history.push() 实现。<br>
+实际开发中， BrowserRouter 会在项目上线之后存在一些问题，就是需要后台配合做一些配置处理和重定向，否则会很容易跳转到 404 页面，而 HashRouter 则不会有这个问题。</p>
+<pre><code>&lt;!-- 安装 react-router --&gt;
+cnpm install react-router-dom -save
+
+&lt;!-- 使用 react-router --&gt;
+import {BrowserRouter as Router, Link,NavLink, Route, Redirect} from &quot;react-router-dom&quot;
+&lt;!-- 引入  react-router 相关的组件 --&gt;
+
+function App() {
+    render() {
+        return(
+            &lt;div&gt;
+            &lt;!-- 在 Router盒子中嵌套 Route盒子，在Route中定义路由路径和路径对应的页面 --&gt;
+                &lt;Router&gt;
+                    &lt;switch&gt;
+                        &lt;Route path=&quot;/login&quot; component={ Login }&gt;&lt;/Route&gt;
+                        &lt;Route path=&quot;/home&quot; component={ Home }&gt;&lt;/Route&gt;
+                        &lt;Route path=&quot;/home/detail&quot; exact={ true } component={ detail }&gt;&lt;/Route&gt;         
+                        &lt;Route path=&quot;/demo&quot; render={ () =&gt; &lt;div&gt;简约写法，不需要创建页面和组件，直接路由显示render函数中定义路由页面内容即可&lt;/div&gt;}&lt;/Route&gt;
+                        &lt;!-- 简约写法，不需要创建页面和组件，直接路由显示render函数中定义路由页面内容即可 --&gt;
+                    &lt;/switch&gt;
+                    &lt;!-- 当路由规则包裹在switch内的时，路由就不会同时显示多个，而是按照当前路径进行匹配 --&gt;
+                &lt;/Router&gt;
+                    &lt;!-- 路由匹配规则之，如果一个页面上同时存在 路径为 /home 和 /home/detail 两个组件，两个组件都会显示，因为 /home 是包含 /home/detail , 但是正常情况下访问 /home下的/detail是不应该显示上一级组件也就是 /home的，这个时候就需要使用到 路由规则的精准匹配， 使用 exace = { true } 即可开启精准匹配，就不会匹配到下一级路由，只会匹配到 /home 这一个, strict = { true } 可以更加精确的匹配路由，而且使用的时候strice需要和exace一起使用才可以生效，而exace不需要组合使用也可以生效 --&gt;
+
+                    &lt;Link to=&quot;/login&quot;&gt;go login now&lt;/Link&gt;
+                    &lt;!-- Link 点击跳转到 to 后面的路由页面 --&gt;
+
+                    &lt;NavLink to=&quot;/login&quot; activeClassName=&quot;setActive&quot;&gt;&lt;/NavLink&gt;
+                    &lt;!-- NavLink顾名思义，导航跳转，后为当前选中的菜单导航添加一个名为active的class样式，给你这个样式添加颜色或者背景选中时便会添加该样式,activeClassName可以修改样式名称，默认是active --&gt;
+
+                    &lt;Redirect from=&quot;/happy&quot; to=&quot;/login&quot;&gt;&lt;/Redirect&gt;
+                    &lt;!-- Redirect可以实现路由重新向，当你访问 的地址是属性中的from，也就是要去的路由为 ‘/happy',他会直接重定向到 to所给定的路由地址 --&gt;
+
+
+                &lt;/Router&gt;
+            &lt;/div&gt; 
+        )
+    }
+}
+&lt;!-- 处于用户体验方面的考虑，我们一般还会在路由匹配中加入 404 等页面，将不存在的路径以更友好地方式提醒用户 --&gt;
+</code></pre>
+<pre><code>&lt;button&gt;跳转&lt;/button&gt;
+
+&lt;!-- 跳转的方法有 两种  props.history.push('/home')   和 props.history.replace('/home')
+区别在于， push方法的页面跳转是叠加的，也就是说点击浏览器左上角的返回上一个页面依然有效，因为历史数据被保留； 而replace方法是替换的，所以不会存有历史跳转记录
+ --&gt;
+</code></pre>
+<h2 id="redux数据管理方案-类似于vuex">Redux数据管理方案  (类似于Vuex)</h2>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[React各种零碎知识合集]]></title>
+        <id>https://qinyu312.github.io/post/js-ge-chong-ling-sui-zhi-shi-he-ji/</id>
+        <link href="https://qinyu312.github.io/post/js-ge-chong-ling-sui-zhi-shi-he-ji/">
+        </link>
+        <updated>2020-07-28T02:37:30.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="react里的事件">React里的事件</h2>
+<pre><code>&lt;!-- onChange事件 --&gt;
+this.handleChange = this.handleChange.bind(this)
+handleChange(event) {
+    this.setState({value: event.target.value})
+}
+&lt;textarea onChange={ this.handleChange } /&gt;  
+
+&lt;!-- onSubmit事件 --&gt;
+this.handleSubmit = this,handleSubmit(this)
+handleSubmit(event) {
+    alert('提交' + this.state.value + '成功!')
+    event.preventDefault()    
+    &lt;!-- 清除默认事件 --&gt;
+}
+&lt;form onSubmit= { this.handleSubmit }&gt;&lt;/form&gt;
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[关于各种浏览器兼容(持续更新中)]]></title>
+        <id>https://qinyu312.github.io/post/guan-yu-ge-chong-ie-jian-rong/</id>
+        <link href="https://qinyu312.github.io/post/guan-yu-ge-chong-ie-jian-rong/">
+        </link>
+        <updated>2020-07-15T10:07:51.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="ie条件注释">IE条件注释</h2>
+<p>IE10以下版本可用，IE11已经取消支持</p>
+<pre><code>&lt;!--[if lte IE 8]&gt; 	
+        &lt;script src=&quot;/js/html5.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;/js/css3-mediaqueries.js&quot;&gt;&lt;/script&gt;
+        &lt;link href=&quot;/css/ie8.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;![endif]--&gt;
+</code></pre>
+<p>因为IE11不支持条件注释，可以使用正则判断</p>
+<pre><code>var browser = navigator.appName;
+var ie11 = !!navigator.userAgent.match(/Trident\/7\./);
+if (browser == 'Microsoft Internet Explorer' || ie11 == true) {
+    //do something
+}
+</code></pre>
+<h2 id="ie9部分页面不显示的问题">IE9部分页面不显示的问题</h2>
+<pre><code>IE9是不支持 console.log 打印输出语句的，在非开发者模式下会阻塞不会执行后面的内容
+</code></pre>
+<h2 id="ie9-及以下-ie浏览器不支持placeholder属性">IE9 及以下 IE浏览器不支持placeholder属性</h2>
+<pre><code>引入 jquery和用于解决这个属性兼容的CDN
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://www.ijquery.cn/js/jquery-1.7.2.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://www.ijquery.cn/js/jquery.placeholder.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;%--兼容IE9及以下input输入框，textarea文本框不支持提示文本placeholder属性的问题--%&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    $(function(){ $('input, textarea').placeholder(); });
+&lt;/script&gt;
+</code></pre>
+<p>上面这种方法在HTML文件中亲测有效，但是不知道为什么在前后端不分离JSP项目中不会生效，以某国企老项目为例，需要在每个页面的JS代码中加上</p>
+<pre><code>	&lt;!-- css代码 --&gt;
+    .phcolor{ 
+			color:#999;
+	}
+
+    &lt;!-- js代码 --&gt;
+	// placeholder兼容IE9
+	$(function(){
+	  //判断浏览器是否支持placeholder属性
+	  supportPlaceholder='placeholder'in document.createElement('input'),
+	  placeholder=function(input){
+	    var text = input.attr('placeholder'),
+	    defaultValue = input.defaultValue;
+	    if(!defaultValue){
+	      input.val(text).addClass(&quot;phcolor&quot;);
+	    }
+	    input.focus(function(){
+	      if(input.val() == text){
+	        $(this).val(&quot;&quot;);
+	      }
+	    });
+	    input.blur(function(){
+	      if(input.val() == &quot;&quot;){
+	        $(this).val(text).addClass(&quot;phcolor&quot;);
+	      }
+	    });
+	    //输入的字符不为灰色
+	    input.keydown(function(){
+	      $(this).removeClass(&quot;phcolor&quot;);
+	    });
+	  };
+	  //当浏览器不支持placeholder属性时，调用placeholder函数
+	  if(!supportPlaceholder){
+	    $('input').each(function(){
+	      text = $(this).attr(&quot;placeholder&quot;);
+	      if($(this).attr(&quot;type&quot;) == &quot;text&quot;){
+	        placeholder($(this));
+	      }
+	    });
+	  }
+	});
+</code></pre>
+<h2 id="换行word-wrap与word-break兼容ie和火狐-chrome">换行word-wrap与word-break兼容ie和火狐、chrome</h2>
+<ol>
+<li>word-wrap控制换行，使用break-word时，会强制进行换行，中文没问题，英文语句没问题，长串的英文不会生效。</li>
+<li>word-break控制是否断词<br>
+normal是默认情况，英文单词不被拆开<br>
+break-all，是断开单词。在单词到边界时，下个字母自动到下一行。主要解决了长串英文的问题。<br>
+keep-all，是指Chinese, Japanese, and Korean不断词。即只用此时，不用word-wrap，中文就不会换行了。（英文语句正常。）<br>
+所以，要做到英文和中文等强制换行，需要组合使用如下</li>
+</ol>
+<pre><code>&lt;p style=&quot;word-wrap: break-word; word-break: break-all&quot;&gt;&lt;/p&gt;
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Fetch querystring  跨域解决 封装请求]]></title>
+        <id>https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/</id>
+        <link href="https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/">
+        </link>
+        <updated>2020-06-11T14:38:43.000Z</updated>
+        <content type="html"><![CDATA[<p>以前写数据接口，对接请求都是使用的Ajax，或者Axios之类的，最近在使用React进行开发，用到了<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch">fetch</a>, 和<a href="http://nodejs.cn/api/querystring.html">querystring</a></p>
+<pre><code>import qs from 'querystring'
+&lt;!-- get请求 --&gt;
+fetch(&quot;http://iwenwiki.com/api/blueberrypai/getChengpinInfo.php&quot;)
+.then(res =&gt; res.json())
+.then(data =&gt; {
+    console.log(data)
+})
+
+&lt;!-- post请求 --&gt;
+fetch(&quot;http://iwenwiki.com/api/blueberrypai/login.php&quot;, {
+    method: 'POST' ,   // 请求方式
+    headers: {            // 请求头
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json, text/plain, */*',
+    },
+    &lt;!-- body: &quot;user_id=iwen@qq.com&amp;password=iwen123&amp;verification_code=crfvw&quot; --&gt;
+    &lt;!-- 此处传参使用字符串传参的方式，所以需要参数间 &amp; 分隔拼串 --&gt;
+    &lt;!-- 如果不想写拼串，也可以直接引入 querystring来进行转换操作如下 --&gt;
+    body: qs.stringify({
+        'user_id': 'iwen@qq.com',
+        'password': 'iwen123',
+        'verification_code': 'crfvw'
+    })
+})
+</code></pre>
+<h2 id="跨域的解决方案">跨域的解决方案</h2>
+<p>跨域一般分为两种场景： 开发环境下的跨域问题和生产环境下的跨域问题<br>
+此处以React项目开发环境下为例</p>
+<pre><code>componentDidMount() {
+    fetch(&quot;http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billList&amp;type=1&amp;size=10&amp;offset=0&quot;)
+    .then(res =&gt; res.json())
+    .then(data =&gt; {
+        console.log(data)
+    })
+    .catch(error =&gt; {
+        console.log(new Error(error))
+    })
+}
+</code></pre>
+<p><img src="https://qinyu312.github.io/post-images/1607442245412.png" alt="" loading="lazy"><br>
+此处请求会跨域<br>
+需要在 package.json 文件中配置 proxy 代理解决<br>
+<img src="https://qinyu312.github.io/post-images/1607442296763.png" alt="" loading="lazy"><br>
+配置完成 package.json 文件后需要将请求接口前面的已经被代理的地址去掉如下</p>
+<pre><code>componentDidMount() {
+    fetch(&quot;/v1/restserver/ting?method=baidu.ting.billboard.billList&amp;type=1&amp;size=10&amp;offset=0&quot;)
+    .then(res =&gt; res.json())
+    .then(data =&gt; {
+        console.log(data)
+    })
+    .catch(error =&gt; {
+        console.log(new Error(error))
+    })
+}
+</code></pre>
+<p>然后终止此项目进程，重新运行该项目即可使用代理解决跨域问题。打开浏览器调试，接口数据正常请求得到。<br>
+<img src="https://qinyu312.github.io/post-images/1607442458895.png" alt="" loading="lazy"></p>
+<h2 id="fetch-封装常用请求">fetch 封装常用请求</h2>
+<p>工具类文件utils下创建 http.js 用于封装常用的请求方法</p>
+<pre><code>import qs from 'querystring'
+
+&lt;!-- 导出封装的 get 请求 --&gt;
+export function httpGet(url) {
+    const result = fetch(url)
+    return result
+}
+
+&lt;!-- 导出封装的 post 请求 --&gt;
+export function httpPost(url, params) {
+    &lt;!-- params为post请求携带参数 --&gt;
+    const result = fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Accept': 'application/json, text/plain, */*',
+        },
+        body: qs.stringify(params)
+    })
+}
+</code></pre>
+<p>然后在 utils 同级创建一个 api 文件，用于管理接口，api 下新建一个 base.js ，用于向外暴露接口的前置接口地址公共部分(一般情况下接口地址的前半部分是一致的)，然后新建一个 index.js 用于定义业务接口请求统一管理，或者创建不同的功能分类 (如，登录的接口单独写在一个文件里，首页的接口单独写在一个文件里，便于维护)<br>
+base.js</p>
+<pre><code>const base = {
+    baseUrl: 'http://iwenwiki.com/api'
+}
+</code></pre>
+<p>index.js</p>
+<pre><code>import {httpGet, httpPost} from '../utils/http'
+import base from './base'
+
+&lt;!-- 在下面定义各种业务接口 --&gt;
+const api = {
+    &lt;!-- get请求 --&gt;
+    getUserId() {
+        return httpGet(base.baseUrl + '/blueberrypai/getChengpinInfo.php');
+    },
+    &lt;!-- post请求 --&gt;
+    getLogin(params) {
+        return httpPost(baseUrl + '/blueberrypai/login.php', params);
+    }
+}
+
+&lt;!-- 定义完成后导出 api ,在需要调用处导入调用即可 --&gt;
+export default api
+</code></pre>
+<p>调用接口的文件下</p>
+<pre><code>import api from '../api'
+&lt;!-- get请求不用携带参数，直接获取并打印数据 --&gt;
+api.getUserId().then(res =&gt; res.json()).then(data =&gt; {
+    console.log(data)
+})
+&lt;!-- post请求调用接口时传入参数，获取并打印数据 --&gt;
+api.getLogin({
+    'user_id': 'iwen@qq.com',
+    'password': 'iwen123',
+    'verification_code': 'crfvw'
+}).then(res =&gt; res.json()).then(data =&gt; {
+    console.log(data)
+})
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[js常用api集锦]]></title>
         <id>https://qinyu312.github.io/post/chang-yong-api-ji-jin/</id>
         <link href="https://qinyu312.github.io/post/chang-yong-api-ji-jin/">
         </link>
-        <updated>2021-01-29T09:10:57.000Z</updated>
+        <updated>2020-02-12T09:10:57.000Z</updated>
         <content type="html"><![CDATA[<p>##数组API：<br>
 var pageIds = new Array();<br>
 pageIds.push('A');<br>
@@ -1024,140 +1677,11 @@ var str = decodeURI(code); //结果: &quot;hello all&quot;<br>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[微信小程序后端部分本地打包及接口调试]]></title>
-        <id>https://qinyu312.github.io/post/wei-xin-xiao-cheng-xu-ben-di-ce-shi-jie-kou/</id>
-        <link href="https://qinyu312.github.io/post/wei-xin-xiao-cheng-xu-ben-di-ce-shi-jie-kou/">
-        </link>
-        <updated>2021-01-28T01:41:32.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="后端-string-boot">后端 string boot</h2>
-<pre><code>zsh: command not found: mvn 解决命令
-source ~/.bash_profile
-</code></pre>
-<ol>
-<li>以Mac环境为例，需要先检查本地是否安装Maven</li>
-</ol>
-<pre><code>mvn -v  
-</code></pre>
-<ol start="2">
-<li>安装mvn后，由于下载较慢，建议配置阿里云打包，进入maven目录下的 conf 文件下，打开settings.xml 文件，添加以下代码</li>
-</ol>
-<pre><code>&lt;mirrors&gt;
-    &lt;mirror&gt;
-      &lt;id&gt;mirrorId&lt;/id&gt;
-      &lt;mirrorOf&gt;repositoryId&lt;/mirrorOf&gt;
-      &lt;name&gt;Human Readable Name for this Mirror.&lt;/name&gt;
-      &lt;url&gt;http://my.repository.com/repo/path&lt;/url&gt;
-    &lt;/mirror&gt;
-     --&gt;
-	 &lt;mirror&gt;
-	   &lt;id&gt;nexus-aliyun&lt;/id&gt;
-	   &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;
-	   &lt;name&gt;Nexus aliyun&lt;/name&gt;
-	   &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;
-	 &lt;/mirror&gt;
-  &lt;/mirrors&gt;
-</code></pre>
-<ol start="3">
-<li>进入后端代码所在的项目目录下，运行打包命令</li>
-</ol>
-<pre><code>mvn package -DskipTests
-</code></pre>
-<p>停止运行命令</p>
-<pre><code>mvn clean
-</code></pre>
-<p>运行完成命令后会在项目文件夹下得到一个target文件，target文件下的war就可以在本地 tomcat 运行了需要下载安装 Tomcat 来运行一个war包<br>
-4. 将后端项目代码中已经配置好的 xxx.war 文件拷贝至 tomcat文件目录下的 webapps下<br>
-<img src="https://qinyu312.github.io/post-images/1611799120504.png" alt="" loading="lazy"><br>
-5. 命令行进入到 Tomcat 下的 bin 目录</p>
-<p>命令行启动 startup.sh<br>
-<img src="https://qinyu312.github.io/post-images/1611799131274.png" alt="" loading="lazy"><br>
-<code>sudo sh ./startup.sh</code><br>
-命令行结束运行<br>
-<img src="https://qinyu312.github.io/post-images/1611799138646.png" alt="" loading="lazy"><br>
-<code>sudo sh ./shutdown.sh</code><br>
-命令行查看 Tomcat所有进程<br>
-<img src="https://qinyu312.github.io/post-images/1611799147086.png" alt="" loading="lazy"><br>
-<code>ps -ef|grep java</code><br>
-命令行强制终止 某些 Tomcat进程<br>
-<code>kill -9 端口号</code></p>
-<ol start="6">
-<li>startup.sh 启动后就可以在浏览器输入 localhost:8080测试 Tomcat 启动的情况</li>
-<li>把接口请求处的测试地址换成 localhost:8080 调用接口测试，数据正常返回，本地调用成功</li>
-</ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[微信小程序开发]]></title>
-        <id>https://qinyu312.github.io/post/wei-xin-xiao-cheng-xu-kai-fa/</id>
-        <link href="https://qinyu312.github.io/post/wei-xin-xiao-cheng-xu-kai-fa/">
-        </link>
-        <updated>2021-01-22T07:53:22.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="button-无法设置宽高">button 无法设置宽高</h2>
-<p>当前版本的微信小程序，在.wxss文件里设置Button宽度无效,调整不会被应用到元素上</p>
-<pre><code>.btn {
-    width: 80%;
-    height: 80rpx;
-}
-</code></pre>
-<p>第一种方式是把 app.json里的  style: v2语句删掉。<br>
-这样虽然也可以解决问题，但会导致全局的样式变化。<br>
-第二种方式可以很便捷的解决问题，就是直接在 button标签的行内添加样式</p>
-<pre><code>&lt;button style=&quot;width: 80%; height: 80rpx&quot;&gt;提交&lt;/button&gt;
-</code></pre>
-<p>按钮宽高生效</p>
-<h2 id="微信小程序跳转操作">微信小程序跳转操作</h2>
-<pre><code>&lt;!-- 1. 跳转到页面后左上角不会有返回角标及操作，但是不可以跳转到根级别的tab页面 --&gt;
-wx.redirectTo({
-    url: '/pages/oa_login/index',
-})
-
-&lt;!-- 2. 这个方法之能跳转到 app.json 里面定义的 主 tab页面，如首页，我的这种 --&gt;
-wx.switchTab({
-    url: '/pages/index/index',
-})
-
-&lt;!-- 3. 页面跳转且会有返回操作，但是不可以跳转到根级别的tab页面 --&gt;
-wx.navigataTo({
-    url: '/pages/oa_login/index',
-})
-</code></pre>
-<h2 id="微信小程序轻提示">微信小程序轻提示</h2>
-<pre><code>wx.showToast({
-    title: info.message,
-    icon: 'none',
-    duration: 1500
-})
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[主流机型分辨率]]></title>
-        <id>https://qinyu312.github.io/post/zhu-liu-ji-xing-fen-bian-lu/</id>
-        <link href="https://qinyu312.github.io/post/zhu-liu-ji-xing-fen-bian-lu/">
-        </link>
-        <updated>2020-12-31T01:52:52.000Z</updated>
-        <content type="html"><![CDATA[<p>iphone主流机型<br>
-<img src="https://qinyu312.github.io/post-images/1609379604225.png" alt="" loading="lazy"></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[奇形怪状bug收集]]></title>
-        <id>https://qinyu312.github.io/post/qi-xing-guai-zhuang-bug-shou-ji/</id>
-        <link href="https://qinyu312.github.io/post/qi-xing-guai-zhuang-bug-shou-ji/">
-        </link>
-        <updated>2020-12-26T09:27:34.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="pageslider无法触发默认事件解决">pageSlider无法触发默认事件解决</h2>
-<pre><code>最近在做原生内嵌的H5年报页面，需求是上下滚动翻页，于是用上了 pageSlider.js插件进行实现，写到最后一个页面，有一个收集反馈意见的文本框，这边使用到 &lt;textarea&gt;标签，但是开发完后发现，输入框并不能聚焦和输入，通过对比得出结论，是因为引用pageSlider的缘故，最后在 pageSlider.js文件的源码中，将移动鼠标后的默认事件清除给注释掉，问题得到解决
-</code></pre>
-<figure data-type="image" tabindex="1"><img src="https://qinyu312.github.io/post-images/1609211243421.png" alt="" loading="lazy"></figure>
-]]></content>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[各种CSS积累]]></title>
         <id>https://qinyu312.github.io/post/ge-chong-css-ji-lei/</id>
         <link href="https://qinyu312.github.io/post/ge-chong-css-ji-lei/">
         </link>
-        <updated>2020-12-21T08:44:24.000Z</updated>
+        <updated>2019-12-22T08:44:24.000Z</updated>
         <content type="html"><![CDATA[<h2 id="隐藏textarea-input等输入框边框和选中出现边框">隐藏textarea input等输入框边框和选中出现边框</h2>
 <pre><code>textarea {
     border: solid 0px;
@@ -1211,250 +1735,6 @@ wx.navigataTo({
 <pre><code>textarea {
 	resize : none;
 } 
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[JS各种零碎知识合集]]></title>
-        <id>https://qinyu312.github.io/post/js-ge-chong-ling-sui-zhi-shi-he-ji/</id>
-        <link href="https://qinyu312.github.io/post/js-ge-chong-ling-sui-zhi-shi-he-ji/">
-        </link>
-        <updated>2020-12-09T02:37:30.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="react里的事件">React里的事件</h2>
-<pre><code>&lt;!-- onChange事件 --&gt;
-this.handleChange = this.handleChange.bind(this)
-handleChange(event) {
-    this.setState({value: event.target.value})
-}
-&lt;textarea onChange={ this.handleChange } /&gt;  
-
-&lt;!-- onSubmit事件 --&gt;
-this.handleSubmit = this,handleSubmit(this)
-handleSubmit(event) {
-    alert('提交' + this.state.value + '成功!')
-    event.preventDefault()    
-    &lt;!-- 清除默认事件 --&gt;
-}
-&lt;form onSubmit= { this.handleSubmit }&gt;&lt;/form&gt;
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Fetch querystring  跨域解决 封装请求]]></title>
-        <id>https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/</id>
-        <link href="https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/">
-        </link>
-        <updated>2020-12-08T14:38:43.000Z</updated>
-        <content type="html"><![CDATA[<p>以前写数据接口，对接请求都是使用的Ajax，或者Axios之类的，最近在使用React进行开发，用到了<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch">fetch</a>, 和<a href="http://nodejs.cn/api/querystring.html">querystring</a></p>
-<pre><code>import qs from 'querystring'
-&lt;!-- get请求 --&gt;
-fetch(&quot;http://iwenwiki.com/api/blueberrypai/getChengpinInfo.php&quot;)
-.then(res =&gt; res.json())
-.then(data =&gt; {
-    console.log(data)
-})
-
-&lt;!-- post请求 --&gt;
-fetch(&quot;http://iwenwiki.com/api/blueberrypai/login.php&quot;, {
-    method: 'POST' ,   // 请求方式
-    headers: {            // 请求头
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json, text/plain, */*',
-    },
-    &lt;!-- body: &quot;user_id=iwen@qq.com&amp;password=iwen123&amp;verification_code=crfvw&quot; --&gt;
-    &lt;!-- 此处传参使用字符串传参的方式，所以需要参数间 &amp; 分隔拼串 --&gt;
-    &lt;!-- 如果不想写拼串，也可以直接引入 querystring来进行转换操作如下 --&gt;
-    body: qs.stringify({
-        'user_id': 'iwen@qq.com',
-        'password': 'iwen123',
-        'verification_code': 'crfvw'
-    })
-})
-</code></pre>
-<h2 id="跨域的解决方案">跨域的解决方案</h2>
-<p>跨域一般分为两种场景： 开发环境下的跨域问题和生产环境下的跨域问题<br>
-此处以React项目开发环境下为例</p>
-<pre><code>componentDidMount() {
-    fetch(&quot;http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billList&amp;type=1&amp;size=10&amp;offset=0&quot;)
-    .then(res =&gt; res.json())
-    .then(data =&gt; {
-        console.log(data)
-    })
-    .catch(error =&gt; {
-        console.log(new Error(error))
-    })
-}
-</code></pre>
-<p><img src="https://qinyu312.github.io/post-images/1607442245412.png" alt="" loading="lazy"><br>
-此处请求会跨域<br>
-需要在 package.json 文件中配置 proxy 代理解决<br>
-<img src="https://qinyu312.github.io/post-images/1607442296763.png" alt="" loading="lazy"><br>
-配置完成 package.json 文件后需要将请求接口前面的已经被代理的地址去掉如下</p>
-<pre><code>componentDidMount() {
-    fetch(&quot;/v1/restserver/ting?method=baidu.ting.billboard.billList&amp;type=1&amp;size=10&amp;offset=0&quot;)
-    .then(res =&gt; res.json())
-    .then(data =&gt; {
-        console.log(data)
-    })
-    .catch(error =&gt; {
-        console.log(new Error(error))
-    })
-}
-</code></pre>
-<p>然后终止此项目进程，重新运行该项目即可使用代理解决跨域问题。打开浏览器调试，接口数据正常请求得到。<br>
-<img src="https://qinyu312.github.io/post-images/1607442458895.png" alt="" loading="lazy"></p>
-<h2 id="fetch-封装常用请求">fetch 封装常用请求</h2>
-<p>工具类文件utils下创建 http.js 用于封装常用的请求方法</p>
-<pre><code>import qs from 'querystring'
-
-&lt;!-- 导出封装的 get 请求 --&gt;
-export function httpGet(url) {
-    const result = fetch(url)
-    return result
-}
-
-&lt;!-- 导出封装的 post 请求 --&gt;
-export function httpPost(url, params) {
-    &lt;!-- params为post请求携带参数 --&gt;
-    const result = fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Accept': 'application/json, text/plain, */*',
-        },
-        body: qs.stringify(params)
-    })
-}
-</code></pre>
-<p>然后在 utils 同级创建一个 api 文件，用于管理接口，api 下新建一个 base.js ，用于向外暴露接口的前置接口地址公共部分(一般情况下接口地址的前半部分是一致的)，然后新建一个 index.js 用于定义业务接口请求统一管理，或者创建不同的功能分类 (如，登录的接口单独写在一个文件里，首页的接口单独写在一个文件里，便于维护)<br>
-base.js</p>
-<pre><code>const base = {
-    baseUrl: 'http://iwenwiki.com/api'
-}
-</code></pre>
-<p>index.js</p>
-<pre><code>import {httpGet, httpPost} from '../utils/http'
-import base from './base'
-
-&lt;!-- 在下面定义各种业务接口 --&gt;
-const api = {
-    &lt;!-- get请求 --&gt;
-    getUserId() {
-        return httpGet(base.baseUrl + '/blueberrypai/getChengpinInfo.php');
-    },
-    &lt;!-- post请求 --&gt;
-    getLogin(params) {
-        return httpPost(baseUrl + '/blueberrypai/login.php', params);
-    }
-}
-
-&lt;!-- 定义完成后导出 api ,在需要调用处导入调用即可 --&gt;
-export default api
-</code></pre>
-<p>调用接口的文件下</p>
-<pre><code>import api from '../api'
-&lt;!-- get请求不用携带参数，直接获取并打印数据 --&gt;
-api.getUserId().then(res =&gt; res.json()).then(data =&gt; {
-    console.log(data)
-})
-&lt;!-- post请求调用接口时传入参数，获取并打印数据 --&gt;
-api.getLogin({
-    'user_id': 'iwen@qq.com',
-    'password': 'iwen123',
-    'verification_code': 'crfvw'
-}).then(res =&gt; res.json()).then(data =&gt; {
-    console.log(data)
-})
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[关于各种浏览器兼容(持续更新中)]]></title>
-        <id>https://qinyu312.github.io/post/guan-yu-ge-chong-ie-jian-rong/</id>
-        <link href="https://qinyu312.github.io/post/guan-yu-ge-chong-ie-jian-rong/">
-        </link>
-        <updated>2020-12-04T10:07:51.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="ie条件注释">IE条件注释</h2>
-<p>IE10以下版本可用，IE11已经取消支持</p>
-<pre><code>&lt;!--[if lte IE 8]&gt; 	
-        &lt;script src=&quot;/js/html5.js&quot;&gt;&lt;/script&gt;
-        &lt;script src=&quot;/js/css3-mediaqueries.js&quot;&gt;&lt;/script&gt;
-        &lt;link href=&quot;/css/ie8.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
-&lt;![endif]--&gt;
-</code></pre>
-<p>因为IE11不支持条件注释，可以使用正则判断</p>
-<pre><code>var browser = navigator.appName;
-var ie11 = !!navigator.userAgent.match(/Trident\/7\./);
-if (browser == 'Microsoft Internet Explorer' || ie11 == true) {
-    //do something
-}
-</code></pre>
-<h2 id="ie9部分页面不显示的问题">IE9部分页面不显示的问题</h2>
-<pre><code>IE9是不支持 console.log 打印输出语句的，在非开发者模式下会阻塞不会执行后面的内容
-</code></pre>
-<h2 id="ie9-及以下-ie浏览器不支持placeholder属性">IE9 及以下 IE浏览器不支持placeholder属性</h2>
-<pre><code>引入 jquery和用于解决这个属性兼容的CDN
-&lt;script type=&quot;text/javascript&quot; src=&quot;http://www.ijquery.cn/js/jquery-1.7.2.min.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;http://www.ijquery.cn/js/jquery.placeholder.min.js&quot;&gt;&lt;/script&gt;
-
-&lt;%--兼容IE9及以下input输入框，textarea文本框不支持提示文本placeholder属性的问题--%&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-    $(function(){ $('input, textarea').placeholder(); });
-&lt;/script&gt;
-</code></pre>
-<p>上面这种方法在HTML文件中亲测有效，但是不知道为什么在前后端不分离JSP项目中不会生效，以某国企老项目为例，需要在每个页面的JS代码中加上</p>
-<pre><code>	&lt;!-- css代码 --&gt;
-    .phcolor{ 
-			color:#999;
-	}
-
-    &lt;!-- js代码 --&gt;
-	// placeholder兼容IE9
-	$(function(){
-	  //判断浏览器是否支持placeholder属性
-	  supportPlaceholder='placeholder'in document.createElement('input'),
-	  placeholder=function(input){
-	    var text = input.attr('placeholder'),
-	    defaultValue = input.defaultValue;
-	    if(!defaultValue){
-	      input.val(text).addClass(&quot;phcolor&quot;);
-	    }
-	    input.focus(function(){
-	      if(input.val() == text){
-	        $(this).val(&quot;&quot;);
-	      }
-	    });
-	    input.blur(function(){
-	      if(input.val() == &quot;&quot;){
-	        $(this).val(text).addClass(&quot;phcolor&quot;);
-	      }
-	    });
-	    //输入的字符不为灰色
-	    input.keydown(function(){
-	      $(this).removeClass(&quot;phcolor&quot;);
-	    });
-	  };
-	  //当浏览器不支持placeholder属性时，调用placeholder函数
-	  if(!supportPlaceholder){
-	    $('input').each(function(){
-	      text = $(this).attr(&quot;placeholder&quot;);
-	      if($(this).attr(&quot;type&quot;) == &quot;text&quot;){
-	        placeholder($(this));
-	      }
-	    });
-	  }
-	});
-</code></pre>
-<h2 id="换行word-wrap与word-break兼容ie和火狐-chrome">换行word-wrap与word-break兼容ie和火狐、chrome</h2>
-<ol>
-<li>word-wrap控制换行，使用break-word时，会强制进行换行，中文没问题，英文语句没问题，长串的英文不会生效。</li>
-<li>word-break控制是否断词<br>
-normal是默认情况，英文单词不被拆开<br>
-break-all，是断开单词。在单词到边界时，下个字母自动到下一行。主要解决了长串英文的问题。<br>
-keep-all，是指Chinese, Japanese, and Korean不断词。即只用此时，不用word-wrap，中文就不会换行了。（英文语句正常。）<br>
-所以，要做到英文和中文等强制换行，需要组合使用如下</li>
-</ol>
-<pre><code>&lt;p style=&quot;word-wrap: break-word; word-break: break-all&quot;&gt;&lt;/p&gt;
 </code></pre>
 ]]></content>
     </entry>
