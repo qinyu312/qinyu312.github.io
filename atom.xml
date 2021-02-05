@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qinyu312.github.io</id>
     <title>҉҉҈淸鷠҉҉҈、</title>
-    <updated>2021-02-05T06:49:33.313Z</updated>
+    <updated>2021-02-05T06:52:16.962Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qinyu312.github.io"/>
     <link rel="self" href="https://qinyu312.github.io/atom.xml"/>
@@ -1736,6 +1736,103 @@ var str = decodeURI(code); //结果: &quot;hello all&quot;<br>
 	resize : none;
 } 
 </code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[vue-router 路由守卫]]></title>
+        <id>https://qinyu312.github.io/post/vue-router-lu-you-shou-wei/</id>
+        <link href="https://qinyu312.github.io/post/vue-router-lu-you-shou-wei/">
+        </link>
+        <updated>2019-11-25T01:59:18.000Z</updated>
+        <content type="html"><![CDATA[<pre><code>有一段时间没有写过 vue 的项目了，最近工作中需要自己搭建，所以简单分享一下vue-router路由守卫!
+</code></pre>
+<p>项目中很常见的一种场景，需求是，用户打开网址进入线上地址，首先是登录页面，用户需要账号密码验证码等手段通过验证和赋权，才可以进入到包括首页，各种管理等内容页面，未登录之前，通过修改路由来进行跳转，如果确实存在此路由，会跳转到登录页面进行登录，如果没有这个路由，会跳转到 404 页面。而成功完成登录后再进行路由地址修改则可以正常跳转！<br>
+这里就需要用到通配符匹配和 路由守卫等操作了</p>
+<h2 id="通配符">通配符 *</h2>
+<p>一般用于菜单路由匹配的最后面，为什么要放在最后面呢？因为放在前面会把写在它之后的路由菜单全部匹配进去，就相当于在小河的上游筑起水坝蓄水，那下游自然就没水了，所以通配符相当于确保没有漏网之鱼的作用，凡是没有被定义的路由，都会被它拦截，转而跳转到首页或者404等页面。</p>
+<pre><code>&lt;!-- router 下的 index.js --&gt;
+export default new Router({
+  routes: [
+    {
+      path:'/home',
+      name:'home',
+      component:home
+    },
+    //通配符的使用
+    {
+      path: '/detail-*',
+      component:detail
+    },
+    {
+      path: '/*',
+      component:notFound
+    }
+  ]
+})
+</code></pre>
+<h2 id="beforeeach-前置路由守卫">beforeEach() 前置路由守卫</h2>
+<p>当你随意修改路由地址上的路由菜单进行跳转，比如在 '/login' 修改为 '/home'却可以正常跳转时，在尚未登录赋权的情况下就可以进入程序主页面，是一种很不安全的操作，就需要用到路由守卫了！全局前置路由守卫用于路由跳转之前执行，他有三个参数 'to' 参数，表示你当前正要跳转到哪里去，也就是目标页面路由， 'from'参数表示，从哪里来的，也就是当前页面， next() 方法，一定需要调用，继续往下执行的函数。</p>
+<pre><code>&lt;!-- 在 roter 文件下的路由配置处， 将meta下的 requireAuth 设置为 true作为此菜单不可不登录直接跳转的标记 --&gt;
+{
+    path: '/home',
+    meta:{ requireAuth: true }
+}
+</code></pre>
+<pre><code>&lt;!-- main.js --&gt;
+beforeEach((to, form, next) =&gt; {
+    console.log(to)
+    console.log(from)
+    &lt;!-- 如果要去的这个页面的路由配置中 meta.requireAuth 为 true的话 --&gt;
+    if(to.meta.requireAuth) {
+        &lt;!-- 判断本地存储是否有token令牌，如果有并且令牌合法，调用 next() 方法继续执行 --&gt;
+        if(localStorage.getItem('access_token')) {
+            next();
+        } else {
+            &lt;!-- 否则就直接调用next()方法跳转回登录页面重新登录 --&gt;
+            next({
+                path: '/login'
+            })
+        }
+    } else {
+        next();
+    }
+})
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://qinyu312.github.io/post-images/1606098979481.png" alt="" loading="lazy"></figure>
+<p>设置完成之后保存并运行项目就会发现，在路径处修改路由不会直接跳转而是会自动拦截。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[记个人博客之旅]]></title>
+        <id>https://qinyu312.github.io/post/ji-yi-ci-bu-tong-xun-chang-de-ge-ren-blog-da-jian/</id>
+        <link href="https://qinyu312.github.io/post/ji-yi-ci-bu-tong-xun-chang-de-ge-ren-blog-da-jian/">
+        </link>
+        <updated>2019-11-12T12:29:35.000Z</updated>
+        <content type="html"><![CDATA[<pre><code>前端开发小菜🐦，借助Gridea平台搭建属于自己的个人博客正式通🚗，🎉🎉🎉🎉🎉🎉🎉🎉🎉  
+在这里，我将不定时分享不定时内容，更多的是对工作👨🏻‍🔧 技术👨🏻‍💻 生活🚶🏻等方面的积累收获与感悟，期待与你共同进步！
+</code></pre>
+<p><img src="https://w.wallhaven.cc/full/5w/wallhaven-5w26x1.jpg" alt="avatar" loading="lazy"><br>
+饮水思源，第一次写博客的内容就决定是分享Gridea + Github快速搭建个人博客类网站！</p>
+<h2 id="安装gridea">安装Gridea</h2>
+<p>首先需要安装Gridea客户端，附官网地址 <a href="https://gridea.dev/">Gridea</a><br>
+因为只满足于日常个人写作轻量级使用，所以选择使用最简单的Github Pages部署，这边就不详细讲解域名，服务器，备案等等配置，感兴趣的建议参考这位大佬的博客观看学习<a href="https://aoizz.com/post/sha-gua-shi-cong-wu-dao-you-jian-li-yi-ge-bo-ke/">https://aoizz.com</a></p>
+<figure data-type="image" tabindex="1"><img src="https://qinyu312.github.io/post-images/1605677874498.png" alt="" loading="lazy"></figure>
+<h2 id="创建git仓库">创建git仓库</h2>
+<p>Gridea安装完成后，登录Github，创建一个空白仓库，用于存储个人博客内容。</p>
+<figure data-type="image" tabindex="2"><img src="https://qinyu312.github.io/post-images/1605680193617.png" alt="" loading="lazy"></figure>
+<h2 id="配置gridea">配置Gridea</h2>
+<p>打开Gridea客户端，在远程菜单中，对Github Pages进行配置如下，平台选择Github Pages，如果需要使用自己的服务器和域名也可以选择SFTP，这里不做赘述，域名直接填写之前创建的Github空白仓库的地址即可，仓库名称同上，分支，仓库用户名，邮箱几项按自己的填写即可，<a href="https://github.com/settings/tokens/new">令牌创建地址</a> 创建完成的令牌复制到令牌选项框。CNAME处填写自己的仓库名称。至此，Gridea中的Github Pages配置基本完成，点击保存和同步后，就可以输入你的域名进行访问了！</p>
+<figure data-type="image" tabindex="3"><img src="https://qinyu312.github.io/post-images/1605681597177.png" alt="" loading="lazy"></figure>
+<h2 id="芜湖起飞">芜湖！起飞</h2>
+<p>更加贴心的是， Gridea还为广大个人博主提供了各种风格迥异的博客模版，可以让大家更加专注于写出高质量博客，而不用过于关注样式布局方面的问题。当然，如果你追求极致和个性化，也可以自己定制你的博客。<a href="https://gridea.dev/themes/">更多主题</a></p>
+<figure data-type="image" tabindex="4"><img src="https://qinyu312.github.io/post-images/1605682923167.png" alt="" loading="lazy"></figure>
+<h2 id="使用主题">使用主题</h2>
+<p>进入官网下载主题到本地，然后解压后将文件放到Gridea所在的本地地址路径下的themes文件夹下</p>
+<figure data-type="image" tabindex="5"><img src="https://qinyu312.github.io/post-images/1605683290929.png" alt="" loading="lazy"></figure>
+<p>然后在Gridea客户端的主题菜单里就可以看到你下载的新主题啦。选中后即可同步预览效果！</p>
+<figure data-type="image" tabindex="6"><img src="https://qinyu312.github.io/post-images/1605683207314.png" alt="" loading="lazy"></figure>
+<p>那关于个人博客的简单搭建就介绍完了，有兴趣的小伙伴可以动手尝试一下，期待你们精美的博客和优质的作品！</p>
+<p>ヽ｀、ヽ｀｀、ヽ｀ヽ｀、、ヽ ｀ヽ 、ヽ｀🌙｀ヽヽ｀ヽ、ヽ｀ヽ｀、ヽ｀｀、ヽ 、｀｀、 ｀、ヽ｀ 、｀ ヽ｀ヽ、ヽ ｀、ヽ｀｀、ヽ、｀｀、｀、ヽ｀｀、 、ヽヽ｀、｀、、ヽヽ、｀｀、 、 ヽ｀、ヽ｀｀、ヽ｀ヽ｀、、ヽ ｀ヽ 、ヽ｀｀ヽ、｀🏡｀ヽ｀、、🚶｀ヽ｀、</p>
 ]]></content>
     </entry>
 </feed>
