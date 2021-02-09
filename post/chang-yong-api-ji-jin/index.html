@@ -82,7 +82,7 @@ pageIds.length;
       <div class="hide-on-mobile hide-on-tablet hide-on-desktop">
         <div id="search-lightbox" class="grid-container grid-small grid-parent mfp-hide">
           <div class="search-wrapper section">
-            <form id="gridea-search-form" data-update="1612762946447" action="/search/index.html" class="search-form" _lpchecked="1">
+            <form id="gridea-search-form" data-update="1612850488248" action="/search/index.html" class="search-form" _lpchecked="1">
               <input type="text" name="q" id="s" value="" class="search-field" placeholder="搜点啥..." aria-label="搜点啥..." required="">
               <button type="submit" class="submit" aria-label="Submit">
                 <i class="fa fa-search-line"></i>
@@ -351,6 +351,236 @@ var str = decodeURI(code); //结果: &quot;hello all&quot;<br>
 25.Math.SQRT1_2 : 1/2的平方根(0.7071067811865476)<br>
 26.Math.SQRT2 : 2的平方根(1.4142135623730951)</li>
 </ol>
+<h2 id="获取时间戳字符串">获取时间戳字符串</h2>
+<pre><code>new Date() 
+&lt;!-- new一个data对象，当前日期和时间 --&gt;
+let time = Date.parse(new Date())
+toLocaleString() 
+&lt;!-- 方法可根据本地时间把 Date 对象转换为字符串，并返回结果 --&gt;
+</code></pre>
+<h2 id="sessionstorage存取">sessionStorage存取</h2>
+<pre><code>var cun = sessionStorage.setItem('cun')
+var qu = sessionStorage.getItem('qu')
+var cun1 = localStorage.setItem('cun1')
+var qu1 = localStorage.getItem('qu1')
+</code></pre>
+<h2 id="常用正则">常用正则</h2>
+<pre><code>&lt;!-- 身份证 --&gt;
+let idCardReg = /^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/;
+&lt;!-- 手机号 --&gt;
+let phoneReg = /(^1\d{10}$)|(^[0-9]\d{7}$)/;
+&lt;!-- 银行卡 16 - 19位数字 --&gt;
+let pattern = /^([1-9]{1})(\d{16}|\d{19})$/;
+</code></pre>
+<h2 id="防抖-debounce-将多次高频操作优化为只在最后一次执行通常使用的场景是用户输入只需再输入完成后做一次输入校验即可">防抖 (debounce): 将多次高频操作优化为只在最后一次执行，通常使用的场景是：用户输入，只需再输入完成后做一次输入校验即可。</h2>
+<pre><code>&lt;!-- 1.  --&gt;
+function debounce(fn, wait, immediate) {
+    let timer = null
+    return function() {
+        let args = arguments
+        let context = this
+        if (immediate &amp;&amp; !timer) {
+            fn.apply(context, args)
+        }
+        if (timer) clearTimeout(timer)
+        timer = setTimeout(() =&gt; {
+            fn.apply(context, args)
+        }, wait)
+    }
+}
+&lt;!-- 2. --&gt;
+function debounce(func, wait) {
+    let timeout = null
+    return function() {
+        let context = this
+        let args = arguments
+        if (timeout) clearTimeout(timeout)
+        timeout = setTimeout(() =&gt; {
+            func.apply(context, args)
+        }, wait)
+    }
+}
+</code></pre>
+<h2 id="节流throttle-每隔一段时间后执行一次也就是降低频率将高频操作优化成低频操作通常使用场景-滚动条事件-或者-resize-事件通常每隔-100~500-ms执行一次即可">节流(throttle): 每隔一段时间后执行一次，也就是降低频率，将高频操作优化成低频操作，通常使用场景: 滚动条事件 或者 resize 事件，通常每隔 100~500 ms执行一次即可</h2>
+<pre><code>&lt;!-- 1. --&gt;
+function throttle(fn, wait, immediate) {
+    let timer = null
+    let callNow = immediate
+    return function() {
+        let context = this,
+            args = arguments
+        if (callNow) {
+            fn.apply(context, args)
+            callNow = false
+        }
+        if (!timer) {
+            timer = setTimeout(() =&gt; {
+                fn.apply(context, args)
+                timer = null
+            }, wait)
+        }
+    }
+}
+&lt;!-- 2. --&gt;
+function throttle(func, wait) {
+    let timeout = null
+    return function() {
+        let context = this
+        let args = arguments
+        if (!timeout) {
+            timeout = setTimeout(() =&gt; {
+                timeout = null
+                func.apply(context, args)
+            }, wait)
+        }
+    }
+}
+&lt;!-- 3. --&gt;
+function throttle(func, wait) {
+    var prev = 0;
+    return function() {
+        let now = Date.now();
+        let context = this;
+        let args = arguments;
+        if (now - prev &gt; wait) {
+            func.apply(context, args);
+            prev = now;
+        }
+    }
+}
+</code></pre>
+<h2 id="js-定时器有以下两个方法">js 定时器有以下两个方法：</h2>
+<pre><code>setInterval() ：按照指定的周期（以毫秒计）来调用函数或计算表达式。方法会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。 setTimeout() ：在指定的毫秒数后调用函数或计算表达式
+setTimeout (function() {
+    alert(456)
+},2000)
+&lt;!-- ES61写法 --&gt;
+setTimeout(() =&gt; {
+    
+}2000)
+</code></pre>
+<p>##手机号中间四位隐藏</p>
+<pre><code>this.newTel = this.tel.substr(0,3) + &quot;****&quot; + this.tel.substr(7);
+</code></pre>
+<h2 id="数组扁平化">数组扁平化</h2>
+<p>对于[1, [1,2], [1,2,3]]这样多层嵌套的数组，我们如何将其扁平化为[1, 1, 2, 1, 2, 3]这样的一维数组呢：</p>
+<pre><code>// 1.ES6的flat()
+const arr = [1, [1,2], [1,2,3]]
+arr.flat(Infinity)  // [1, 1, 2, 1, 2, 3]
+
+// 2.序列化后正则
+const arr = [1, [1,2], [1,2,3]]
+const str = `[${JSON.stringify(arr).replace(/(\[|\])/g, '')}]`
+JSON.parse(str)   // [1, 1, 2, 1, 2, 3]
+
+// 3.递归 对于树状结构的数据，最直接的处理方式就是递归
+const arr = [1, [1,2], [1,2,3]]
+function flat(arr) {
+  let result = []
+  for (const item of arr) {
+    item instanceof Array ? result = result.concat(flat(item)) : result.push(item)
+  }
+  return result
+}
+flat(arr) // [1, 1, 2, 1, 2, 3]
+
+// 4.reduce()递归
+const arr = [1, [1,2], [1,2,3]]
+function flat(arr) {
+  return arr.reduce((prev, cur) =&gt; {
+    return prev.concat(cur instanceof Array ? flat(cur) : cur)
+  }, [])
+}
+flat(arr)  // [1, 1, 2, 1, 2, 3]
+
+// 5.迭代+展开运算符
+let arr = [1, [1,2], [1,2,3]]
+while (arr.some(Array.isArray)) {
+  arr = [].concat(...arr);
+}
+console.log(arr)  // [1, 1, 2, 1, 2, 3]
+</code></pre>
+<h2 id="延迟函数delay">延迟函数delay</h2>
+<pre><code>const delay = ms =&gt; new Promise((resolve, reject) =&gt; setTimeout(resolve, ms))
+const getData = status =&gt; new Promise((resolve, reject) =&gt; {
+    status ? resolve('done') : reject('fail')
+})
+const getRes = async (data) =&gt; {
+    try {
+        const res = await getData(data)
+        const timestamp = new Date().getTime()
+        await delay(1000)
+        console.log(res, new Date().getTime() - timestamp)
+    } catch (error) {
+        console.log(error)
+    }
+}
+getRes(true) // 隔了1秒
+</code></pre>
+<h2 id="分割指定长度的元素数组">分割指定长度的元素数组</h2>
+<pre><code>const listChunk = (list, size = 1, cacheList = []) =&gt; {
+    const tmp = [...list]
+    if (size &lt;= 0) {
+        return cacheList
+    }
+    while (tmp.length) {
+        cacheList.push(tmp.splice(0, size))
+    }
+    return cacheList
+}
+console.log(listChunk([1, 2, 3, 4, 5, 6, 7, 8, 9])) // [[1], [2], [3], [4], [5], [6], [7], [8], [9]]
+console.log(listChunk([1, 2, 3, 4, 5, 6, 7, 8, 9], 3)) // [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+console.log(listChunk([1, 2, 3, 4, 5, 6, 7, 8, 9], 0)) // []
+console.log(listChunk([1, 2, 3, 4, 5, 6, 7, 8, 9], -1)) // []
+</code></pre>
+<h2 id="函数柯里化">函数柯里化</h2>
+<pre><code>const curring = fn =&gt; {
+    const { length } = fn
+    const curried = (...args) =&gt; {
+        return (args.length &gt;= length
+              ? fn(...args)
+              : (...args2) =&gt; curried(...args.concat(args2)))
+    }
+    return curried
+}
+const listMerge = (a, b, c) =&gt; [a, b, c]
+const curried = curring(listMerge)
+console.log(curried(1)(2)(3)) // [1, 2, 3]
+console.log(curried(1, 2)(3)) // [1, 2, 3]
+console.log(curried(1, 2, 3)) // [1, 2, 3]
+</code></pre>
+<h2 id="字符串前面空格去除与替换">字符串前面空格去除与替换</h2>
+<pre><code>const trimStart = str =&gt; str.replace(new RegExp('^([\\s]*)(.*)$'), '$2')
+console.log(trimStart(' abc ')) // abc  
+console.log(trimStart('123 ')) // 123  
+</code></pre>
+<h2 id="字符串后面空格去除与替换">字符串后面空格去除与替换</h2>
+<pre><code>const trimEnd = str =&gt; str.replace(new RegExp('^(.*?)([\\s]*)$'), '$1')
+console.log(trimEnd(' abc ')) //   abc  
+console.log(trimEnd('123 ')) // 123  
+</code></pre>
+<h2 id="去除字符串中的html代码">去除字符串中的html代码</h2>
+<pre><code>const removeHTML = (str = '') =&gt; str.replace(/&lt;[\/\!]*[^&lt;&gt;]*&gt;/ig, '')
+console.log(removeHTML('&lt;h1&gt;哈哈哈哈&lt;呵呵呵&lt;/h1&gt;')) // 哈哈哈哈&lt;呵呵呵
+</code></pre>
+<h2 id="判断屏幕是否旋转">判断屏幕是否旋转</h2>
+<pre><code>function orientationChange() {
+	switch (window.orientation) {　　
+		case 0:
+			alert(&quot;肖像模式 0,screen-width: &quot; + screen.width + &quot;; screen-height:&quot; + screen.height);
+			break;　　
+		case -90:
+			alert(&quot;左旋 -90,screen-width: &quot; + screen.width + &quot;; screen-height:&quot; + screen.height);
+			break;　　
+		case 90:
+			alert(&quot;右旋 90,screen-width: &quot; + screen.width + &quot;; screen-height:&quot; + screen.height);
+			break;　　
+		case 180:
+			　　alert(&quot;风景模式 180,screen-width: &quot; + screen.width + &quot;; screen-height:&quot; + screen.height);　　
+			break;
+	};
+};
+</code></pre>
 
                 </div>
                 <div class="clear"></div>

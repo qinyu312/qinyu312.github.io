@@ -80,7 +80,7 @@ IE10以下版本可用，IE11已经取消支持
       <div class="hide-on-mobile hide-on-tablet hide-on-desktop">
         <div id="search-lightbox" class="grid-container grid-small grid-parent mfp-hide">
           <div class="search-wrapper section">
-            <form id="gridea-search-form" data-update="1612762946447" action="/search/index.html" class="search-form" _lpchecked="1">
+            <form id="gridea-search-form" data-update="1612850488248" action="/search/index.html" class="search-form" _lpchecked="1">
               <input type="text" name="q" id="s" value="" class="search-field" placeholder="搜点啥..." aria-label="搜点啥..." required="">
               <button type="submit" class="submit" aria-label="Submit">
                 <i class="fa fa-search-line"></i>
@@ -200,6 +200,30 @@ keep-all，是指Chinese, Japanese, and Korean不断词。即只用此时，不�
 所以，要做到英文和中文等强制换行，需要组合使用如下</li>
 </ol>
 <pre><code>&lt;p style=&quot;word-wrap: break-word; word-break: break-all&quot;&gt;&lt;/p&gt;
+</code></pre>
+<h2 id="js判断移动端浏览器还是pc浏览器">JS判断移动端浏览器还是PC浏览器</h2>
+<pre><code>window.parent.location.href = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? &quot;${context}/erpGuaranteeFlowController/findErpGuaranteeApprovalNew.do&quot; :  &quot;${context}/erpItosController/toDoList&quot;;
+
+
+var userAgentInfo = navigator.userAgent;
+var Agents = [&quot;Android&quot;, &quot;iPhone&quot;,
+            &quot;SymbianOS&quot;, &quot;Windows Phone&quot;,
+            &quot;iPad&quot;, &quot;iPod&quot;];
+var flag = true;
+for (var v = 0; v &lt; Agents.length; v++) {
+    if (userAgentInfo.indexOf(Agents[v]) &gt; 0) {
+        flag = false;
+        break;
+    }
+}
+
+if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+	&lt;!-- 移动端设备 --&gt;
+	h5flag = false
+} else {
+	&lt;!-- pc端设备 --&gt;
+	h5flag = true
+}
 </code></pre>
 
                 </div>
