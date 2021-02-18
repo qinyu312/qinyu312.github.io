@@ -80,7 +80,7 @@ if(navigator.geolocation) {
       <div class="hide-on-mobile hide-on-tablet hide-on-desktop">
         <div id="search-lightbox" class="grid-container grid-small grid-parent mfp-hide">
           <div class="search-wrapper section">
-            <form id="gridea-search-form" data-update="1613613565178" action="/search/index.html" class="search-form" _lpchecked="1">
+            <form id="gridea-search-form" data-update="1613641793949" action="/search/index.html" class="search-form" _lpchecked="1">
               <input type="text" name="q" id="s" value="" class="search-field" placeholder="搜点啥..." aria-label="搜点啥..." required="">
               <button type="submit" class="submit" aria-label="Submit">
                 <i class="fa fa-search-line"></i>
@@ -95,7 +95,7 @@ if(navigator.geolocation) {
         <div class="center content">
           <div class="featured-image cover" style="background-image: url('/media/images/custom-featureImage.gif');">
             <div class="meta top"> 
-              <time class="meta-info" style="float:left;" datetime="2021-02-18"><i class="fa fa-calendar"></i><span class="lately">2 分钟前</span></time>
+              <time class="meta-info" style="float:left;" datetime="2021-02-18"><i class="fa fa-calendar"></i><span class="lately">8 小时前</span></time>
               
               <a href="https://qinyu312.github.io/post/di-tu-ding-wei-xiang-guan/#comments" class="comments meta-info" title="">
                 <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/di-tu-ding-wei-xiang-guan/"> </span>
@@ -148,6 +148,84 @@ if(navigator.geolocation) {
       }
     })
 </code></pre>
+<h2 id="微信小程序通过经纬度逆推获取当前城市信息">微信小程序通过经纬度逆推获取当前城市信息</h2>
+<ol>
+<li>首先需要去<a href="https://lbs.qq.com/miniProgram/jsSdk/jsSdkGuide/jsSdkOverview">腾讯位置服务官网</a>，<a href="https://lbs.qq.com/dev/console/application/mine">申请开发者密钥</a><br>
+<img src="https://qinyu312.github.io/post-images/1613641773112.png" alt="" loading="lazy"></li>
+<li>开通webserviceAPI服务：在控制台 -&gt; key管理 -&gt; 设置（使用该功能的key）-&gt; 勾选webserviceAPI -&gt; 保存。(小程序SDK需要用到webserviceAPI的部分服务，所以使用该功能的KEY需要具备相应的权限)</li>
+<li>下载微信小程序JavaScriptSDK，微信小程序JavaScriptSDK v1.1   JavaScriptSDK v1.2</li>
+<li>安全域名设置，在小程序管理后台 -&gt; 开发 -&gt; 开发管理 -&gt; 开发设置 -&gt; “服务器域名” 中设置request合法域名，添加https://apis.map.qq.com</li>
+<li>示例如下</li>
+</ol>
+<pre><code>getAddress() {
+    var that = this
+    &lt;!-- 调用微信小程序获取经纬度API --&gt;
+    wx.getLocation({
+      altitude: 'altitude',
+      isHighAccuracy: true, 
+      success(res) {
+        // 手机经纬度定位更加精准，需要截取到小数点后六位
+        var currentLatitude = (res.latitude).toFixed(6);  //纬度
+        var currentLongitude = (res.longitude).toFixed(6); //经度
+        &lt;!-- 将经纬度存储在data中 --&gt;
+        that.setData({
+          // 经度
+          longitude: currentLongitude,
+          // 纬度
+          latitude: currentLatitude
+        })
+        // 逆解析接口 /ws/geocoder/v1
+        &lt;!-- 定义一个变量用于拼接地址逆解析接口，key值是腾讯位置服务中注册后生成的 key --&gt;
+        var qqMapApi = 'http://apis.map.qq.com/ws/geocoder/v1/' + &quot;?location=&quot; + that.data.latitude + ',' +
+        that.data.longitude + &quot;&amp;key=&quot; + 'ZHHBZ-MCN6D-HUX4Y-PL7SW-KM4TQ-WYBDZ' + &quot;&amp;get_poi=1&quot;;
+        &lt;!-- 拼接完成后作为参数使用 --&gt;
+        that.getSkys(qqMapApi);
+      }
+    })
+  },
+  &lt;!-- 调用接口将参数作为 url 发送请求 --&gt;
+  getSkys(qqMapApi){
+    const that = this
+    wx.request({
+      url: qqMapApi,
+      header: {
+        'Content-Type': 'application/json'
+      },
+      data: {},
+      method:'GET',
+      success: (res) =&gt; {
+          &lt;!-- 获取的返回值数据就是传入的经纬度提取到的 各级地理数据信息 --&gt;
+        if (res.statusCode == 200 &amp;&amp; res.data.status == 0) {
+          // 从返回值中提取需要的业务地理信息数据 国家、省、市、县区、街道
+          // that.setData({ nation: res.data.result.address_component.nation });
+          // that.setData({ province: res.data.result.address_component.province });
+          that.setData({ city: res.data.result.address_component.city });
+          // that.setData({ district: res.data.result.address_component.district });
+          // that.setData({ street: res.data.result.address_component.street });
+          wx.request({
+            url: &quot;http://wthrcdn.etouch.cn/weather_mini&quot;,
+            data: {city: res.data.result.address_component.city},
+            // data: {city: '昆明'},
+            method: 'GET',
+            success: res =&gt; {
+              var low = res.data.data.forecast[0].low.split(' ', 2)[1]
+              var high = res.data.data.forecast[0].high.split(' ', 2)[1]
+              var skyTitle = low + '~' + high + ' ' + res.data.data.forecast[0].type
+              var skyType = res.data.data.forecast[0].type
+              this.setData({
+                skyType: skyType,
+                skyTitle: skyTitle
+              })
+              console.log(skyTitle)
+            }
+          })
+        }
+      }
+    })
+  },
+</code></pre>
+<p>最后得到所需要的位置信息<br>
+<img src="https://qinyu312.github.io/post-images/1613641792498.png" alt="" loading="lazy"></p>
 
                 </div>
                 <div class="clear"></div>
