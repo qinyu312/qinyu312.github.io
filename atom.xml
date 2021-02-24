@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qinyu312.github.io</id>
     <title>҉҉҈淸鷠҉҉҈、</title>
-    <updated>2021-02-20T09:54:02.397Z</updated>
+    <updated>2021-02-24T09:46:38.014Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qinyu312.github.io"/>
     <link rel="self" href="https://qinyu312.github.io/atom.xml"/>
@@ -1015,7 +1015,35 @@ wx.navigataTo({
     duration: 1500
 })
 </code></pre>
+<h2 id="微信小程序返回上一页面数据不刷新解决">微信小程序返回上一页面数据不刷新解决</h2>
+<p>当你在某活动详情页调用方法后数据发生改变，然后返回上一个页面，活动列表中的数据没有发生更新，此时可以使用以下两种方式</p>
+<ol>
+<li>简单粗暴的 onShow:function() {}方法中调用 获取列表数据的方法 ，但是会重新加载整个页面，增加开销且比较慢。</li>
+</ol>
+<pre><code>onShow: function() {
+    this.onLoad();
+}
+</code></pre>
+<ol>
+<li>在子页面中进行某些操作的时候，后台刷新父页面，此时返回父页面数据已更新且不会重新加载，比较推荐的用法，快速且不会有多余消耗</li>
+</ol>
+<pre><code>&lt;!-- 父页面定义更新方法 --&gt;
+changeData: function() {
+    this.onLoad();
+ },
+
+&lt;!-- 子页面某处触发方法 --&gt;
+changeParentData: function() {
+    var pages = getCurrentPages();  //当前页面栈
+    if(pages.length &gt; 1) {
+      var beforePage = pages[pages.length - 2] //获取上一个页面的实例对象
+      beforePage.changeData() // 触发父页面中的更新方法
+      console.log('更新成功了吗？？？')
+    }
+  },
+</code></pre>
 <h2 id="微信小程序获取当前经纬度定位信息">微信小程序获取当前经纬度定位信息</h2>
+<p>在微信小程序开发者工具中测试获取到的经纬度信息有较大的偏差，不够准确，手机上测试相对较为精准，后续会持续优化精准度。</p>
 <!-- 在 app.json里面设置是否允许获取当前定位信息的弹窗 -->
 <pre><code>{
     &quot;pages&quot;:[
