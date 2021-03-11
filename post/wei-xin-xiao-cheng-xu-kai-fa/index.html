@@ -84,7 +84,7 @@
       <div class="hide-on-mobile hide-on-tablet hide-on-desktop">
         <div id="search-lightbox" class="grid-container grid-small grid-parent mfp-hide">
           <div class="search-wrapper section">
-            <form id="gridea-search-form" data-update="1615253139673" action="/search/index.html" class="search-form" _lpchecked="1">
+            <form id="gridea-search-form" data-update="1615451642878" action="/search/index.html" class="search-form" _lpchecked="1">
               <input type="text" name="q" id="s" value="" class="search-field" placeholder="搜点啥..." aria-label="搜点啥..." required="">
               <button type="submit" class="submit" aria-label="Submit">
                 <i class="fa fa-search-line"></i>
@@ -151,6 +151,11 @@ wx.switchTab({
 wx.navigataTo({
     url: '/pages/oa_login/index',
 })
+
+&lt;!-- 绝对路径跳转，一般用于页面token失效需要重新跳转到登陆页面使用 --&gt;
+wx.reLaunch({  //绝对路径跳转
+      url: &quot;/pages/health_page/health_list/index&quot;,
+    });
 </code></pre>
 <h2 id="微信小程序轻提示">微信小程序轻提示</h2>
 <pre><code>wx.showToast({
