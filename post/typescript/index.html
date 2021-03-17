@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>关于各种浏览器兼容(持续更新中) | ҉҉҈淸鷠҉҉҈、</title>
+<title>TypeScript | ҉҉҈淸鷠҉҉҈、</title>
 <meta name="description" content="万般皆苦，唯有自渡" />
 <link rel="shortcut icon" href="https://qinyu312.github.io/favicon.ico">
 <link rel="stylesheet" href="https://qinyu312.github.io/styles/main.css">
@@ -15,11 +15,8 @@
 <script src="https://qinyu312.github.io/media/js/jquery.magnific-popup.min.js"></script>
 <script src="https://qinyu312.github.io/media/js/functions.js"></script>
     <meta name="referrer" content="never">
-    <meta name="description" content="IE条件注释
-IE10以下版本可用，IE11已经取消支持
-&lt;!--[if lte IE 8]&gt; 	
-        &lt;script src=&quot;/js/html5.js&quot;&gt;&lt;/script&g..." />
-    <meta name="keywords" content="兼容" />
+    <meta name="description" content="typescript是javascript的超集，二者最本质的区别就体现在名字上面， type意为类型，从前的javascript，由于历史遗留及语言定位问题，一直以来虽然独霸前端技术栈，但也一直深受诟病。中小型项目尚可，真要在大型项目的场..." />
+    <meta name="keywords" content="" />
     <script src="https://qinyu312.github.io/media/js/waterfall.min.js"></script>
     <script src="https://qinyu312.github.io/media/js/prism.min.js"></script>
   </head>
@@ -95,21 +92,19 @@ IE10以下版本可用，IE11已经取消支持
         <div class="center content">
           <div class="featured-image cover" style="background-image: url('/media/images/custom-featureImage.gif');">
             <div class="meta top"> 
-              <time class="meta-info" style="float:left;" datetime="2020-07-15"><i class="fa fa-calendar"></i><span class="lately">8 个月前</span></time>
+              <time class="meta-info" style="float:left;" datetime="2021-03-12"><i class="fa fa-calendar"></i><span class="lately">5 天前</span></time>
               
-              <a href="https://qinyu312.github.io/post/guan-yu-ge-chong-ie-jian-rong/#comments" class="comments meta-info" title="">
-                <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/guan-yu-ge-chong-ie-jian-rong/"> </span>
+              <a href="https://qinyu312.github.io/post/typescript/#comments" class="comments meta-info" title="">
+                <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/typescript/"> </span>
               </a>
-              <span id="/guan-yu-ge-chong-ie-jian-rong/" class="leancloud_visitors views-counter meta-info" title=""><i class="fa fa-leancloud remixicon"></i><span class="leancloud-visitors-count"></span></span>
+              <span id="/typescript/" class="leancloud_visitors views-counter meta-info" title=""><i class="fa fa-leancloud remixicon"></i><span class="leancloud-visitors-count"></span></span>
               
             </div>
             <div class="info">
               <div class="tags ">
                 
-                      <a href="https://qinyu312.github.io/tag/glhfgA99X/" class="ctag ctag-0 ctag-glhfgA99X" aria-label="">兼容</a>
-                    
               </div>
-              <h1 class="title ularge white bold">关于各种浏览器兼容(持续更新中)</h1>
+              <h1 class="title ularge white bold">TypeScript</h1>
             </div>
           </div>
         </div>  
@@ -119,111 +114,74 @@ IE10以下版本可用，IE11已经取消支持
             <article class="main-article post">
               <section class="post-content">
                 <div class="text">
-                  <h2 id="ie条件注释">IE条件注释</h2>
-<p>IE10以下版本可用，IE11已经取消支持</p>
-<pre><code>&lt;!--[if lte IE 8]&gt; 	
-        &lt;script src=&quot;/js/html5.js&quot;&gt;&lt;/script&gt;
-        &lt;script src=&quot;/js/css3-mediaqueries.js&quot;&gt;&lt;/script&gt;
-        &lt;link href=&quot;/css/ie8.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
-&lt;![endif]--&gt;
+                  <p>typescript是javascript的超集，二者最本质的区别就体现在名字上面， type意为类型，从前的javascript，由于历史遗留及语言定位问题，一直以来虽然独霸前端技术栈，但也一直深受诟病。中小型项目尚可，真要在大型项目的场景中使用，就会暴露出许多问题，例如，定义变量类型不够明确，不会抛出异常报错信息，处理复杂业务能力欠佳等。而typescript的到来填补了许多坑。</p>
+<h2 id="环境搭建">环境搭建</h2>
+<p>首先，typescript是使用 node.js进行编写的javascript的超集，所以运行typescript需要先安装 node.js 环境，官网下载安装即可，安装完成之后，需要借助 node.js 的包管理器 npm ，进行typescript的全局安装，命令行指令如下</p>
+<pre><code>npm install -g typescript
 </code></pre>
-<p>因为IE11不支持条件注释，可以使用正则判断</p>
-<pre><code>var browser = navigator.appName;
-var ie11 = !!navigator.userAgent.match(/Trident\/7\./);
-if (browser == 'Microsoft Internet Explorer' || ie11 == true) {
-    //do something
+<p>安装完成之后就可以创建 以 .ts 为结尾的ts文件，需要注意的是，浏览器是不支持解析ts文件的，所以我们写完 ts代码后，还需要将 ts 文件编译为 js文件，在可以在浏览器中执行，例如 test.ts 文件，如果需要执行，就需要在当前文件的命令行下执行命令</p>
+<pre><code>tsc test.ts
+</code></pre>
+<p>然后 test.ts 同级目录下就会输出一个 test.js 的编译好的 js文件，html代码中引入 js文件， 既可以正常执行，值得注意的是，现在的 ts 文件，每次修改后都需要重新编译为 js 文件。</p>
+<h2 id="语法学习">语法学习</h2>
+<p>ts 可以指定变量或者函数传参的类型，这点在大型项目中尤为重要，大型项目动辄一个js文件上千上万行代码，而js定义变量和函数传参等写法上又十分随意，时常会有类型错误导致程序异常，导致项目过大难以维护，加上js本身的机制上并不会抛出异常，所以遇到类型错误难以捕获，维护成本大大增加，使用ts之后，虽然前期写法上略显多余和臃肿，但是为之后的项目维护提前布局，从而提高了效率。<br>
+基本写法</p>
+<pre><code>&lt;!-- 在ts文件中定义一个变量,变量后面紧跟冒号加数据类型，即可指定当前变量的数据类型 --&gt;
+let a:string = 'hello ts'
+&lt;!-- 当给 a 指定了数据类型为字符串 string 后，再次修改 a 的 值为 number 123时，程序就会抛出异常，告诉你此处需要的是一个字符串，而不是number类型 --&gt;
+a = 123
+&lt;!-- 此时，在命令行中输入编译命令， tsc test.ts 将文件编译为 js文件时，也会抛出错误信息，但是编译器依然会帮你将错误的ts语法代码编译为 js文件 --&gt;
+
+&lt;!-- 函数传参时指定参数的类型可以有效防止传入的值与所需类型不一致的问题，例如此处，一个求和的函数，需要传入两个数字，进行相加得到结果，如果指定参数类型为 number ,但调用时传入其他类型的参数就会直接抛出异常，如果不在函数参数里指定数据类型，那么如果传入的是一个数字和一个字符串，那么就会进行字符串的拼串操作，得到的会是一个字符串，而非我们希望的数字 --&gt;
+function sum(a:number, b:number) {
+    return a + b;
+} 
+let res = sum(2 , 7)
+
+&lt;!--  联合类型  在 ts中， ｜ 表示或的意思，什么或者什么，所以a的值只可以在 male 和 demale之间才可以，否则，就会抛出异常。 ｜ 既可以用来连接字面量，也可以用来连接类型 --&gt;
+
+let a: &quot;male&quot; | &quot;famale&quot;
+let b: false | string
+
+&lt;!-- any  表示任意类型，定义为any的变量，可以是任意类型。但是当一个变量设置为any类型后，相当于是对这个变量关闭了 ts 的类型检测，之后不管赋值什么类型都不会抛出异常。 所以不建议使用--&gt;
+let c:any
+c = 'hello'
+c = 12
+c = true
+
+&lt;!-- 当声名一个变量，但是不去赋值的时候，ts 解析器无法知道变量的数据类型，就会隐式的将 变量类型设置为 any ,  --&gt;
+let d
+
+&lt;!-- 当你暂时不知道变量的类型设置为什么比较好时，any并不是首选项，还可以使用 unknown, 表示未知类型的值，他的效果和 any 一样， 但是他们在使用上会有很大的差异， 举个例子，现在有一个变量 e的值为 string 类型， 变量 f 只声名未赋值，也就是 any 类型， 当把 f 赋值给e的时候，由于f是any类型，也就是任意类型，它显然是符合 e 的类型条件的，所以并不会报错，但是此时，f 就把自己的类型 any 也带给了 e ,导致 e 的类型从 string 变成了 any , 污染了其他变量。  而 unknown 类型的变量实际上就是一个类型安全的 any ，因为它不能直接赋值给其他变量  --&gt;
+let e = 'hello'
+let f
+e = f
+当需要把 unknown 变量赋值给其他变量时， 可以先做一个类型判断后再进行赋值操作
+if(typeof e === 'string') {
+    e = f
 }
-</code></pre>
-<h2 id="ie9部分页面不显示的问题">IE9部分页面不显示的问题</h2>
-<pre><code>IE9是不支持 console.log 打印输出语句的，在非开发者模式下会阻塞不会执行后面的内容
-</code></pre>
-<h2 id="ie9-及以下-ie浏览器不支持placeholder属性">IE9 及以下 IE浏览器不支持placeholder属性</h2>
-<pre><code>引入 jquery和用于解决这个属性兼容的CDN
-&lt;script type=&quot;text/javascript&quot; src=&quot;http://www.ijquery.cn/js/jquery-1.7.2.min.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;http://www.ijquery.cn/js/jquery.placeholder.min.js&quot;&gt;&lt;/script&gt;
+还可以使用类型断言的方式强行指定类型
+e = f as string
+&lt;!-- 或者 --&gt;
+e = &lt;string&gt; f;
 
-&lt;%--兼容IE9及以下input输入框，textarea文本框不支持提示文本placeholder属性的问题--%&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-    $(function(){ $('input, textarea').placeholder(); });
-&lt;/script&gt;
-</code></pre>
-<p>上面这种方法在HTML文件中亲测有效，但是不知道为什么在前后端不分离JSP项目中不会生效，以某国企老项目为例，需要在每个页面的JS代码中加上</p>
-<pre><code>	&lt;!-- css代码 --&gt;
-    .phcolor{ 
-			color:#999;
-	}
-
-    &lt;!-- js代码 --&gt;
-	// placeholder兼容IE9
-	$(function(){
-	  //判断浏览器是否支持placeholder属性
-	  supportPlaceholder='placeholder'in document.createElement('input'),
-	  placeholder=function(input){
-	    var text = input.attr('placeholder'),
-	    defaultValue = input.defaultValue;
-	    if(!defaultValue){
-	      input.val(text).addClass(&quot;phcolor&quot;);
-	    }
-	    input.focus(function(){
-	      if(input.val() == text){
-	        $(this).val(&quot;&quot;);
-	      }
-	    });
-	    input.blur(function(){
-	      if(input.val() == &quot;&quot;){
-	        $(this).val(text).addClass(&quot;phcolor&quot;);
-	      }
-	    });
-	    //输入的字符不为灰色
-	    input.keydown(function(){
-	      $(this).removeClass(&quot;phcolor&quot;);
-	    });
-	  };
-	  //当浏览器不支持placeholder属性时，调用placeholder函数
-	  if(!supportPlaceholder){
-	    $('input').each(function(){
-	      text = $(this).attr(&quot;placeholder&quot;);
-	      if($(this).attr(&quot;type&quot;) == &quot;text&quot;){
-	        placeholder($(this));
-	      }
-	    });
-	  }
-	});
-</code></pre>
-<h2 id="换行word-wrap与word-break兼容ie和火狐-chrome">换行word-wrap与word-break兼容ie和火狐、chrome</h2>
-<ol>
-<li>word-wrap控制换行，使用break-word时，会强制进行换行，中文没问题，英文语句没问题，长串的英文不会生效。</li>
-<li>word-break控制是否断词<br>
-normal是默认情况，英文单词不被拆开<br>
-break-all，是断开单词。在单词到边界时，下个字母自动到下一行。主要解决了长串英文的问题。<br>
-keep-all，是指Chinese, Japanese, and Korean不断词。即只用此时，不用word-wrap，中文就不会换行了。（英文语句正常。）<br>
-所以，要做到英文和中文等强制换行，需要组合使用如下</li>
-</ol>
-<pre><code>&lt;p style=&quot;word-wrap: break-word; word-break: break-all&quot;&gt;&lt;/p&gt;
-</code></pre>
-<h2 id="js判断移动端浏览器还是pc浏览器">JS判断移动端浏览器还是PC浏览器</h2>
-<pre><code>window.parent.location.href = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? &quot;${context}/erpGuaranteeFlowController/findErpGuaranteeApprovalNew.do&quot; :  &quot;${context}/erpItosController/toDoList&quot;;
-
-
-var userAgentInfo = navigator.userAgent;
-var Agents = [&quot;Android&quot;, &quot;iPhone&quot;,
-            &quot;SymbianOS&quot;, &quot;Windows Phone&quot;,
-            &quot;iPad&quot;, &quot;iPod&quot;];
-var flag = true;
-for (var v = 0; v &lt; Agents.length; v++) {
-    if (userAgentInfo.indexOf(Agents[v]) &gt; 0) {
-        flag = false;
-        break;
-    }
+&lt;!-- void 为空的， 以函数为例，当给函数的返回值设置为 void 类型时，如果返回的值不为空类型（underfind 或者 null ）就会报错 --&gt;
+function fn():void {
+    return ;
 }
 
-if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-	&lt;!-- 移动端设备 --&gt;
-	h5flag = false
-} else {
-	&lt;!-- pc端设备 --&gt;
-	h5flag = true
+&lt;!-- never 类型，表示永远不会又返回结果。 适用于没有返回值的函数使用，比如专门用来捕获抛出异常的函数 --&gt;
+function fn1(): never {
+    return
 }
+
+&lt;!-- object 对象类型  { } 用来指定对象中可以包含哪些类型的属性--&gt;
+let g: {name: string}
+g = {name: 'suibianshenme '}
+
+&lt;!-- [ccc: string]: string表示任意名称的字符串和 字符串类型的值 --&gt;
+let h: {name: string, [ccc: string]: string}
+h = {name: 'suibianshenme ', ddd: 'sdhu'}
 </code></pre>
 
                 </div>
@@ -234,26 +192,13 @@ if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
 
             <section class="related section">
               
-              <article class="prev grid-50 tablet-grid-50 grid-parent">
-                <div class="thumb cover lazy loaded" style="background-image: url('https://qinyu312.github.io/media/images/PP9Y5sIbi.jpg');"></div>
-                 <a href="https://qinyu312.github.io/post/js-ge-chong-ling-sui-zhi-shi-he-ji/" class="full-link"></a>
-                 <div class="info">
-                  <time datetime="2020-07-28">2020-07-28</time>
-                  <h4 class="title white no-margin">React各种零碎知识合集</h4>
-                </div>
-                 <span class="epcl-button red">
-                  <img src="https://qinyu312.github.io/media/images/left-arrow.svg" width="15" alt="Left Arrow">
-                </span>
-                <div class="overlay"></div>
-              </article>
-              
               
               <article class="next grid-50 tablet-grid-50 grid-parent">
-                <div class="thumb cover lazy loaded" style="background-image: url('https://qinyu312.github.io/media/images/PP9Y5sIbi.jpg');"></div>
-                 <a href="https://qinyu312.github.io/post/chu-shi-react/" class="full-link"></a>
+                <div class="thumb cover lazy loaded" style="background-image: url('https://qinyu312.github.io/media/images/gridea.jpg');"></div>
+                 <a href="https://qinyu312.github.io/post/di-tu-ding-wei-xiang-guan/" class="full-link"></a>
                  <div class="info">
-                  <time datetime="2020-07-02">2020-07-02</time>
-                  <h4 class="title white no-margin">初识React</h4>
+                  <time datetime="2021-02-18">2021-02-18</time>
+                  <h4 class="title white no-margin">地图定位相关</h4>
                 </div>
                  <span class="epcl-button red">
                   <img src="https://qinyu312.github.io/media/images/right-arrow.svg" width="15" alt="Left Arrow">

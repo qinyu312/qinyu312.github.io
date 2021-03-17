@@ -83,7 +83,7 @@ textarea 输入时光标直接定位到后面，且不会展示placeholder..." /
       <div class="hide-on-mobile hide-on-tablet hide-on-desktop">
         <div id="search-lightbox" class="grid-container grid-small grid-parent mfp-hide">
           <div class="search-wrapper section">
-            <form id="gridea-search-form" data-update="1615451642878" action="/search/index.html" class="search-form" _lpchecked="1">
+            <form id="gridea-search-form" data-update="1615973543952" action="/search/index.html" class="search-form" _lpchecked="1">
               <input type="text" name="q" id="s" value="" class="search-field" placeholder="搜点啥..." aria-label="搜点啥..." required="">
               <button type="submit" class="submit" aria-label="Submit">
                 <i class="fa fa-search-line"></i>
@@ -202,6 +202,36 @@ overflow-y: auto;
     background: rgba(255, 0, 0, 0.4);
 }
 </code></pre>
+<h2 id="当你想触发的事件被遮罩层挡住无法触发时">当你想触发的事件被遮罩层挡住无法触发时</h2>
+<p>之前做提交表单的时候，因为html原生提供的radio样式不满足客户要求，需要将基础样式替换成美工提供的小角标，我的思路比较简单，就是将小角标定位在默认控件的上面，遮罩住，然后点击时，通过判断点击是左右两个单选项的哪一个，来进行角标图片的切换即可，但是写完之后，发现当我点击右侧控件试图切换角标时，发现由于角标遮罩在控件上面，导致无法正常进行切换，控件并未触发。最后在一篇大佬的博客上找到了解决方案。当上面元素遮盖下面元素时无法触发下面元素的点击事件，需要给遮盖层加一个css属性 ：<br>
+<b>pointer-events: none</b></p>
+<h3 id="html">html</h3>
+<pre><code>&lt;label&gt;性 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 别
+							&lt;input onclick=&quot;clickSelect()&quot; style=&quot;position: relative; width: 30px; height: 30px; margin-left: 50px; margin-right: 20px;&quot; type=&quot;radio&quot; name=&quot;sex&quot; checked=&quot;true&quot; value=&quot;male&quot;&gt;
+								&lt;image id=&quot;iconSelect1&quot; width=&quot;30px&quot; height=&quot;30px&quot; style=&quot;position: absolute; margin: 10px 0 0 -58px;&quot; src=&quot;./image/selectA.png&quot;&gt;&lt;/image&gt;
+							&lt;/input&gt;先生
+							&lt;input onclick=&quot;clickSelect()&quot; style=&quot; position: relative; width: 30px; height: 30px; margin-left: 50px; margin-right: 20px;&quot; type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;female&quot;&gt;
+								&lt;image id=&quot;iconSelect2&quot; width=&quot;30px&quot; height=&quot;30px&quot; style=&quot;pointer-events: none; position: absolute; margin: 10px 0 0 -58px;&quot; src=&quot;./image/select.png&quot;&gt;&lt;/image&gt;
+							&lt;/input&gt;女士	
+						&lt;/label&gt;
+</code></pre>
+<h3 id="js">js</h3>
+<pre><code>function clickSelect() {
+    var radioVal = $('input:radio:checked').val();
+    console.log('=====&gt;', radioVal)
+    if(radioVal == 'female') {
+        $(&quot;#iconSelect2&quot;).attr('src', './image/selectA.png');
+        $(&quot;#iconSelect1&quot;).attr('src', './image/select.png');
+    } else {
+        $(&quot;#iconSelect1&quot;).attr('src', './image/selectA.png');
+        $(&quot;#iconSelect2&quot;).attr('src', './image/select.png');
+    }
+}
+</code></pre>
+<p>pointer-events是css3的一个属性，指定在什么情况下元素可以成为鼠标事件的target（包括鼠标的样式）<br>
+有两个常用属性<br>
+auto——效果和没有定义pointer-events属性相同，鼠标不会穿透当前层。在SVG中，该值和visiblePainted的效果相同。<br>
+none——元素永远不会成为鼠标事件的target（目标）。但是，当其后代元素的pointer-events属性指定其他值时，鼠标事件可以指向后代元素，在这种情况下，鼠标事件将在捕获或冒泡阶段触发父元素的事件侦听器。实际上默认就可以穿透当前层，因为pointer-events默认为auto</p>
 
                 </div>
                 <div class="clear"></div>
@@ -264,6 +294,21 @@ overflow-y: auto;
                   
                   
                   <article class="item post-0 post type-post status-publish format-standard has-post-thumbnail hentry">
+                    <a href="https://qinyu312.github.io/post/typescript/" class="thumb hover-effect">
+                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/custom-featureImage.gif');"></span>
+                    </a>
+                    <div class="info gradient-effect">
+                      <time datetime="2021-03-12">2021-03-12</time>
+                      <h4 class="title usmall">
+                        <a href="https://qinyu312.github.io/post/typescript/">TypeScript</a>
+                      </h4>
+                    </div>
+                    <div class="clear"></div>
+                  </article>
+                  
+                  
+                  
+                  <article class="item post-1 post type-post status-publish format-standard has-post-thumbnail hentry">
                     <a href="https://qinyu312.github.io/post/di-tu-ding-wei-xiang-guan/" class="thumb hover-effect">
                       <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/custom-featureImage.gif');"></span>
                     </a>
@@ -278,7 +323,7 @@ overflow-y: auto;
                   
                   
                   
-                  <article class="item post-1 post type-post status-publish format-standard has-post-thumbnail hentry">
+                  <article class="item post-2 post type-post status-publish format-standard has-post-thumbnail hentry">
                     <a href="https://qinyu312.github.io/post/25-ji-jin-ri-bao/" class="thumb hover-effect">
                       <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/custom-featureImage.gif');"></span>
                     </a>
@@ -292,19 +337,6 @@ overflow-y: auto;
                   </article>
                   
                   
-                  
-                  <article class="item post-2 post type-post status-publish format-standard has-post-thumbnail hentry">
-                    <a href="https://qinyu312.github.io/post/jia-mi-cao-zuo/" class="thumb hover-effect">
-                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/custom-featureImage.gif');"></span>
-                    </a>
-                    <div class="info gradient-effect">
-                      <time datetime="2021-02-04">2021-02-04</time>
-                      <h4 class="title usmall">
-                        <a href="https://qinyu312.github.io/post/jia-mi-cao-zuo/">AES加密前端操作</a>
-                      </h4>
-                    </div>
-                    <div class="clear"></div>
-                  </article>
                   
                   
                   
@@ -416,7 +448,7 @@ overflow-y: auto;
           <a href="https://qinyu312.github.io"><img src="/media/images/custom-footerLogo.jpeg" alt=""></a>
         </div>
         <p class="published border-effect">
-          ©2019 共 20 篇文章
+          ©2019 共 21 篇文章
           <br/>
           Theme <a href="https://gridea.dev/" target="_blank">「breek」</a> Powered by <a href="https://gridea.dev/" target="_blank">「Gridea」</a>
         </p>
