@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qinyu312.github.io</id>
     <title>҉҉҈淸鷠҉҉҈、</title>
-    <updated>2021-03-17T09:32:32.103Z</updated>
+    <updated>2021-03-22T08:16:47.894Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qinyu312.github.io"/>
     <link rel="self" href="https://qinyu312.github.io/atom.xml"/>
@@ -10,6 +10,652 @@
     <logo>https://qinyu312.github.io/images/avatar.png</logo>
     <icon>https://qinyu312.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, ҉҉҈淸鷠҉҉҈、</rights>
+    <entry>
+        <title type="html"><![CDATA[测试用数据]]></title>
+        <id>https://qinyu312.github.io/post/ce-shi-yong-shu-ju/</id>
+        <link href="https://qinyu312.github.io/post/ce-shi-yong-shu-ju/">
+        </link>
+        <updated>2021-03-22T03:12:50.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="线上视频资源测试用">线上视频资源测试用</h2>
+<pre><code>https://v-cdn.zjol.com.cn/280443.mp4
+https://v-cdn.zjol.com.cn/276982.mp4
+https://v-cdn.zjol.com.cn/276984.mp4
+https://v-cdn.zjol.com.cn/276985.mp4
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[常用小功能封装]]></title>
+        <id>https://qinyu312.github.io/post/chang-yong-xiao-gong-neng-feng-zhuang/</id>
+        <link href="https://qinyu312.github.io/post/chang-yong-xiao-gong-neng-feng-zhuang/">
+        </link>
+        <updated>2021-03-19T02:35:27.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="js-轻提示">js 轻提示</h2>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;style type=&quot;text/css&quot;&gt;
+			@keyframes show {
+			    0% {
+			        opacity: 0;
+			    }
+			    100% {
+			        opacity: 1;
+			    }            
+			}
+			@keyframes hide {
+			    0% {
+			        opacity: 1;
+			    }
+			    100% {
+			        opacity: 0;
+			    }
+			} 
+			.toast_box {
+			    /* width: 100%; */
+			    position: absolute;
+			    bottom: 50%;
+				left: 50%;
+			    /* justify-content: center; */
+				z-index: 10;
+				transform: translate(-50%, -50%);
+			    display: none;
+			}
+			.toast_box p {
+			    box-sizing: border-box;
+			    padding: 10px 20px;
+			    width: max-content;
+				/* 提示框的背景色 */
+			    background: #707070;
+			    color: #fff;
+			    font-size: 16px;
+			    text-align: center;
+			    border-radius: 6px;
+			    opacity: 0.8;
+			} 
+			.toliet{
+				margin: 0 auto;
+			}
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;div id=&quot;hotal&quot;&gt;
+			&lt;!-- 提示框 --&gt;
+			&lt;div class=&quot;toast_box&quot;&gt;
+			    &lt;p id=&quot;toast&quot;&gt;&lt;/p&gt;
+			&lt;/div&gt;
+			&lt;button id=&quot;toliet&quot; type=&quot;button&quot; onclick=&quot;correct()&quot;&gt;正常&lt;/button&gt;
+			&lt;button id=&quot;toliet&quot; type=&quot;button&quot; onclick=&quot;warning()&quot;&gt;警告&lt;/button&gt;
+			&lt;button id=&quot;toliet&quot; type=&quot;button&quot; onclick=&quot;error()&quot;&gt;报错异常&lt;/button&gt;
+		&lt;/div&gt;
+		&lt;script type=&quot;text/javascript&quot;&gt;
+			//形参分别是: 提示内容,停留时间时间
+			function toast(text, time) {
+			    let toast = document.getElementById('toast');
+			    let toast_box = document.getElementsByClassName('toast_box')[0];
+			    toast.innerHTML = text;
+			    toast_box.style.animation = 'show 1.5s'
+			    toast_box.style.display = 'inline-block';
+				setTimeout(function(){
+					toast_box.style.animation = 'hide 1.5s'
+					setTimeout(function(){
+						toast_box.style.display = 'none';
+					}, 1400)
+				}, time)   
+			}
+			//调用
+			function correct(){
+				toast(&quot;is ok!&quot;,5000);
+			}
+			function warning(){
+				toast(&quot;异常提醒&quot;,3000);
+			}
+			function error(){
+				toast(&quot;报错&quot;,3000);
+			}
+		&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="js-遮罩层弹出表单">js 遮罩层弹出表单</h2>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+	&lt;meta charset=&quot;utf-8&quot;&gt;
+	&lt;title&gt;&lt;/title&gt;
+    &lt;body&gt;
+        &lt;style type=&quot;text/css&gt;
+            #dialogBg3{
+                width:100%;
+                height:100%;
+                background-color:#000000;
+                opacity:.8;
+                filter:alpha(opacity=60);
+                position:fixed;
+                top:0;
+                left:0;
+                z-index:9999;
+                display:none;
+            }
+            #dialog3{ 
+                width: 70%; 
+                height: 500px; 
+                margin: 0 auto; 
+                display: none; 
+                background-color: #ffffff; 
+                position: fixed;
+                top: 45%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                /* margin: -120px 0 0 -150px; */
+                z-index: 10000; 
+                border: 1px solid #ccc; 
+                border-radius: 10px; 
+                -webkit-border-radius: 10px; 
+                box-shadow: 3px 2px 4px rgba(0,0,0,0.2); 
+                -webkit-box-shadow: 3px 2px 4px rgba(0,0,0,0.2); 
+                background-image: linear-gradient(#F9E2C3, #fff5e6);
+            }
+            .dialogTop3{
+                width:90%;
+                margin:0 auto;
+                border-bottom:1px dotted #ccc;
+                letter-spacing:1px;
+                padding:10px 0;
+                text-align:right;
+                position: relative;
+            }
+            .submitImg {
+                position: absolute;
+                top: -180px;
+                left: 50%;
+                transform: translate(-50%, 80px);
+            }
+            .claseDialogBtn3 {
+                position: absolute;
+                top: -80px;
+                right: -80px;
+            }
+            .dialogIco3{
+                width:50px;
+                height:50px;
+                position:absolute;
+                top:-25px;
+                left:50%;
+                margin-left:-25px;
+            }
+        &lt;/style&gt;
+        &lt;div id=&quot;dialogBg3&quot;&gt;&lt;/div&gt;
+		&lt;div id=&quot;dialog3&quot; class=&quot;animated3&quot;&gt;
+			&lt;div class=&quot;dialogTop3&quot;&gt;
+				&lt;image class=&quot;claseDialogBtn3&quot; src=&quot;./image/backBtn.png&quot;&gt;&lt;/image&gt;
+			&lt;/div&gt;
+			&lt;p style=&quot;text-align: center; font-size: 36px; color: #671404; margin: 80px auto;&quot;&gt;提交失败&lt;/p&gt;
+			&lt;p style=&quot;text-align: center; margin: 30px 0 60px 0; font-size: 28px; line-height: 41px; letter-spacing: 2px; padding-left: 40px; padding-right: 40px;&quot;&gt;您的报名提交失败！请重新提交&lt;/p&gt;
+			&lt;div style=&quot;margin-top: 120px; position: relative;&quot; onclick=&quot;submitData()&quot;&gt;
+				&lt;image width=&quot;90%;&quot; height=&quot;90px&quot; style=&quot; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);&quot; src=&quot;./image/submitBtn.png&quot;&gt;&lt;/image&gt;
+				&lt;p onclick=&quot;offDialog()&quot; style=&quot;position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 32px; color: #fff;&quot;&gt;我知道了&lt;/p&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/body&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        $(function(){
+			getSrceenWH();
+			//点击触发弹窗
+			$('.course3 p').click(function(){
+				className = $(this).attr('class');
+				$('#dialogBg'3).fadeIn(300);
+				$('#dialog3').removeAttr('class').addClass('animated '+className+'').fadeIn();
+			});
+			//关闭弹窗
+			$('.claseDialogBtn3').click(function(){
+				$('#dialogBg3').fadeOut(300,function(){
+					$('#dialog3').addClass('bounceOutUp3').fadeOut();
+				});
+			});
+        })  
+    &lt;/script&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="类似于微信的时间格式转换">类似于微信的时间格式转换</h2>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[AES前后端加密实例]]></title>
+        <id>https://qinyu312.github.io/post/aes-qian-hou-duan-jia-mi-shi-li/</id>
+        <link href="https://qinyu312.github.io/post/aes-qian-hou-duan-jia-mi-shi-li/">
+        </link>
+        <updated>2021-03-18T06:18:41.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="前端部分">前端部分</h2>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.3.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;js/rollups/tripledes.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;js/components/aes.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;js/components/mode-ecb-min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;input id=&quot;test&quot; name=&quot;gj&quot;&gt;
+&lt;button onclick=&quot;test()&quot;&gt;点击&lt;/button&gt;
+&lt;script&gt;
+    function test(){
+        var param = $(&quot;input[name='gj']&quot;).val();
+        Encrypt(param);
+    }
+
+    var key  = CryptoJS.enc.Utf8.parse('asdfghjklqwertuuiop');
+    function Encrypt(word){
+
+        var srcs = CryptoJS.enc.Utf8.parse(word);
+        var encrypted = CryptoJS.AES.encrypt(srcs, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});
+        console.log(encrypted.toString());
+    }
+    function Decrypt(word) {
+
+        var decrypt = CryptoJS.AES.decrypt(word, key, {mode: CryptoJS.mode.ECB, padding: CryptoJS.pad.Pkcs7});
+        return CryptoJS.enc.Utf8.stringify(decrypt).toString();
+    }
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="后端部分java">后端部分（java）</h2>
+<pre><code>import javax.crypto.*;
+import javax.crypto.spec.SecretKeySpec;
+import org.apache.commons.codec.binary.Base64;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ * @Author:yw
+ * @Description:AES 加密解密
+ * @Date: Created in 18:392018/6/11
+ */
+public class AESUtil {
+    private static final String KEY =&quot;sadaasdsad&quot;   
+ private static final String KEY_ALGORITHM = &quot;AES&quot;;
+    private static final String DEFAULT_CIPHER_ALGORITHM = &quot;AES/ECB/PKCS5Padding&quot;;//默认的加密算法
+
+    /**
+     * AES 加密操作
+     *
+     * @param content 待加密内容
+     * @param password 加密密码
+     * @return 返回Base64转码后的加密数据
+     */
+    public static String encrypt(String content, String decryptKey) {
+        try {
+            Cipher cipher = Cipher.getInstance(DEFAULT_CIPHER_ALGORITHM);// 创建密码器
+
+            byte[] byteContent = content.getBytes(&quot;utf-8&quot;);
+
+            cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(decryptKey.getBytes(), &quot;AES&quot;));// 初始化为加密模式的密码器
+
+            byte[] result = cipher.doFinal(byteContent);// 加密
+
+            return Base64.encodeBase64String(result);//通过Base64转码返回
+        } catch (Exception ex) {
+            Logger.getLogger(AESUtil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+
+    /**
+     * AES 加密操作
+     *
+     * @param content 待加密内容
+     * @param password 加密密码
+     * @return 返回Base64转码后的加密数据
+     */
+    public static String encrypt(String content) {
+        try {
+            Cipher cipher = Cipher.getInstance(DEFAULT_CIPHER_ALGORITHM);// 创建密码器
+
+            byte[] byteContent = content.getBytes(&quot;utf-8&quot;);
+
+            cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(KEY.getBytes(), &quot;AES&quot;));// 初始化为加密模式的密码器
+
+            byte[] result = cipher.doFinal(byteContent);// 加密
+
+            return Base64.encodeBase64String(result);//通过Base64转码返回
+        } catch (Exception ex) {
+            Logger.getLogger(AESUtil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+    /**
+     * AES 解密操作
+     *
+     * @param content
+     * @param password
+     * @return
+     */
+    public static String decrypt(String content, String decryptKey) {
+
+        try {
+            //实例化
+            Cipher cipher = Cipher.getInstance(DEFAULT_CIPHER_ALGORITHM);
+
+            //使用密钥初始化，设置为解密模式
+            cipher.init(Cipher.DECRYPT_MODE,new SecretKeySpec(decryptKey.getBytes(), &quot;AES&quot;));
+
+            //执行操作
+            byte[] result = cipher.doFinal(Base64.decodeBase64(content));
+
+            return new String(result, &quot;utf-8&quot;);
+        } catch (Exception ex) {
+            Logger.getLogger(AESUtil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+
+    /**
+     * AES 解密操作
+     *
+     * @param content
+     * @param password
+     * @return
+     */
+    public static String decrypt(String content) {
+
+        try {
+            //实例化
+            Cipher cipher = Cipher.getInstance(DEFAULT_CIPHER_ALGORITHM);
+
+            //使用密钥初始化，设置为解密模式
+            cipher.init(Cipher.DECRYPT_MODE,new SecretKeySpec(KEY.getBytes(), &quot;AES&quot;));
+
+            //执行操作
+            byte[] result = cipher.doFinal(Base64.decodeBase64(content));
+
+            return new String(result, &quot;utf-8&quot;);
+        } catch (Exception ex) {
+            Logger.getLogger(AESUtil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+    /**
+     * 生成加密秘钥
+     *
+     * @return
+     */
+    private static SecretKeySpec getSecretKey(final String password) {
+        //返回生成指定算法密钥生成器的 KeyGenerator 对象
+        KeyGenerator kg = null;
+
+        try {
+            kg = KeyGenerator.getInstance(KEY_ALGORITHM);
+
+            //AES 要求密钥长度为 128
+            kg.init(128, new SecureRandom(password.getBytes()));
+
+            //生成一个密钥
+            SecretKey secretKey = kg.generateKey();
+
+            return new SecretKeySpec(secretKey.getEncoded(), KEY_ALGORITHM);// 转换为AES专用密钥
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(AESUtil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        String content = &quot;13958160820&quot;;  //0gqIDaFNAAmwvv3tKsFOFf9P9m/6MWlmtB8SspgxqpWKYnELb/lXkyXm7P4sMf3e
+        System.out.println(&quot;加密前：&quot; + content);
+
+        System.out.println(&quot;加密密钥和解密密钥：&quot; + KEY);
+
+        String encrypt = encrypt(content, KEY);
+        System.out.println(encrypt.length()+&quot;:加密后：&quot; + encrypt);
+
+        String decrypt = decrypt(encrypt, KEY);
+        System.out.println(&quot;解密后：&quot; + decrypt);
+
+
+    }
+   /* *//**
+     * 加密
+     * @method encrypt
+     * @param content   需要加密的内容
+     * @param password  加密密码
+     * @return
+     * @throws
+     * @since v1.0
+     *//*
+    public static String encrypt(String content){
+        try {
+            KeyGenerator kgen = KeyGenerator.getInstance(&quot;AES&quot;);
+            kgen.init(128, new SecureRandom(KEY.getBytes()));
+            SecretKey secretKey = kgen.generateKey();
+            byte[] enCodeFormat = secretKey.getEncoded();
+            SecretKeySpec key = new SecretKeySpec(enCodeFormat, &quot;AES&quot;);
+            Cipher cipher = Cipher.getInstance(&quot;AES&quot;);// 创建密码器
+            byte[] byteContent = content.getBytes(&quot;utf-8&quot;);
+            cipher.init(Cipher.ENCRYPT_MODE, key);// 初始化
+            byte[] result = cipher.doFinal(byteContent);
+            return parseByte2HexStr(result);// 加密
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }catch (NoSuchPaddingException e) {
+            e.printStackTrace();
+        }catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }catch (InvalidKeyException e) {
+            e.printStackTrace();
+        }catch (IllegalBlockSizeException e) {
+            e.printStackTrace();
+        }catch (BadPaddingException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    *//**
+     * 加密
+     * @method encrypt
+     * @param content   需要加密的内容
+     * @param password  加密密码
+     * @return
+     * @throws
+     * @since v1.0
+     *//*
+    public static String encrypt(String content, String password){
+        try {
+            KeyGenerator kgen = KeyGenerator.getInstance(&quot;AES&quot;);
+            kgen.init(128, new SecureRandom(password.getBytes()));
+            SecretKey secretKey = kgen.generateKey();
+            byte[] enCodeFormat = secretKey.getEncoded();
+            SecretKeySpec key = new SecretKeySpec(enCodeFormat, &quot;AES&quot;);
+            Cipher cipher = Cipher.getInstance(&quot;AES&quot;);// 创建密码器
+            byte[] byteContent = content.getBytes(&quot;utf-8&quot;);
+            cipher.init(Cipher.ENCRYPT_MODE, key);// 初始化
+            byte[] result = cipher.doFinal(byteContent);
+            return parseByte2HexStr(result);// 加密
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }catch (NoSuchPaddingException e) {
+            e.printStackTrace();
+        }catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }catch (InvalidKeyException e) {
+            e.printStackTrace();
+        }catch (IllegalBlockSizeException e) {
+            e.printStackTrace();
+        }catch (BadPaddingException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    *//**
+     * 解密
+     * @method decrypt
+     * @param content   待解密内容
+     * @param password  解密密钥
+     * @return
+     * @throws
+     * @since v1.0
+     *//*
+    public static String decrypt(String content, String password){
+        try {
+            byte[] param = parseHexStr2Byte(content);
+            KeyGenerator kgen = KeyGenerator.getInstance(&quot;AES&quot;);
+            kgen.init(128, new SecureRandom(password.getBytes()));
+            SecretKey secretKey = kgen.generateKey();
+            byte[] enCodeFormat = secretKey.getEncoded();
+            SecretKeySpec key = new SecretKeySpec(enCodeFormat, &quot;AES&quot;);
+            Cipher cipher = Cipher.getInstance(&quot;AES&quot;);// 创建密码器
+            cipher.init(Cipher.DECRYPT_MODE, key);// 初始化
+            byte[] result = cipher.doFinal(param);
+            return new String(result); // 解密
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }catch (NoSuchPaddingException e) {
+            e.printStackTrace();
+        }catch (InvalidKeyException e) {
+            e.printStackTrace();
+        }catch (IllegalBlockSizeException e) {
+            e.printStackTrace();
+        }catch (BadPaddingException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    *//**
+     * 解密
+     * @method decrypt
+     * @param content   待解密内容
+     * @param password  解密密钥
+     * @return
+     * @throws
+     * @since v1.0
+     *//*
+    public static String decrypt(String content){
+        try {
+            byte[] param = Base64.decodeBase64(parseHexStr2Byte(content));
+
+            KeyGenerator kgen = KeyGenerator.getInstance(&quot;AES&quot;);
+            kgen.init(128, new SecureRandom(KEY.getBytes()));
+            SecretKey secretKey = kgen.generateKey();
+            byte[] enCodeFormat = secretKey.getEncoded();
+            SecretKeySpec key = new SecretKeySpec(enCodeFormat, &quot;AES&quot;);
+            Cipher cipher = Cipher.getInstance(&quot;AES&quot;);// 创建密码器
+            cipher.init(Cipher.DECRYPT_MODE, key);// 初始化
+            byte[] result = cipher.doFinal(param);
+            return new String(result); // 解密
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }catch (NoSuchPaddingException e) {
+            e.printStackTrace();
+        }catch (InvalidKeyException e) {
+            e.printStackTrace();
+        }catch (IllegalBlockSizeException e) {
+            e.printStackTrace();
+        }catch (BadPaddingException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    *//**
+     * 将二进制转换成16进制
+     * @method parseByte2HexStr
+     * @param buf
+     * @return
+     * @throws
+     * @since v1.0
+     *//*
+    public static String parseByte2HexStr(byte buf[]){
+        StringBuffer sb = new StringBuffer();
+        for(int i = 0; i &lt; buf.length; i++){
+            String hex = Integer.toHexString(buf[i] &amp; 0xFF);
+            if (hex.length() == 1) {
+                hex = '0' + hex;
+            }
+            sb.append(hex.toUpperCase());
+        }
+        return sb.toString();
+    }
+
+    *//**
+     * 将16进制转换为二进制
+     * @method parseHexStr2Byte
+     * @param hexStr
+     * @return
+     * @throws
+     * @since v1.0
+     *//*
+    public static byte[] parseHexStr2Byte(String hexStr){
+        if(hexStr.length() &lt; 1)
+            return null;
+        byte[] result = new byte[hexStr.length()/2];
+        for (int i = 0;i&lt; hexStr.length()/2; i++) {
+            int high = Integer.parseInt(hexStr.substring(i*2, i*2+1), 16);
+            int low = Integer.parseInt(hexStr.substring(i*2+1, i*2+2), 16);
+            result[i] = (byte) (high * 16 + low);
+        }
+        return result;
+    }
+
+    *//**
+     * 另外一种加密方式--这种加密方式有两种限制
+     * 1、密钥必须是16位的
+     * 2、待加密内容的长度必须是16的倍数，如果不是16的倍数，就会出如下异常
+     * javax.crypto.IllegalBlockSizeException: Input length not multiple of 16 bytes
+     at com.sun.crypto.provider.SunJCE_f.a(DashoA13*..)
+     at com.sun.crypto.provider.SunJCE_f.b(DashoA13*..)
+     at com.sun.crypto.provider.SunJCE_f.b(DashoA13*..)
+     at com.sun.crypto.provider.AESCipher.engineDoFinal(DashoA13*..)
+     at javax.crypto.Cipher.doFinal(DashoA13*..)
+     要解决如上异常，可以通过补全传入加密内容等方式进行避免。
+     * @method encrypt2
+     * @param content   需要加密的内容
+     * @param password  加密密码
+     * @return
+     * @throws
+     * @since v1.0
+     *//*
+    public static byte[] encrypt2(String content, String password){
+        try {
+            SecretKeySpec key = new SecretKeySpec(password.getBytes(), &quot;AES&quot;);
+            Cipher cipher = Cipher.getInstance(&quot;AES/ECB/NoPadding&quot;);
+            byte[] byteContent = content.getBytes(&quot;utf-8&quot;);
+            cipher.init(Cipher.ENCRYPT_MODE, key);// 初始化
+            byte[] result = cipher.doFinal(byteContent);
+            return result; // 加密
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (NoSuchPaddingException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (InvalidKeyException e) {
+            e.printStackTrace();
+        } catch (IllegalBlockSizeException e) {
+            e.printStackTrace();
+        } catch (BadPaddingException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }*/
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[TypeScript]]></title>
         <id>https://qinyu312.github.io/post/typescript/</id>
@@ -1386,448 +2032,6 @@ if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
 	&lt;!-- pc端设备 --&gt;
 	h5flag = true
 }
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[初识React]]></title>
-        <id>https://qinyu312.github.io/post/chu-shi-react/</id>
-        <link href="https://qinyu312.github.io/post/chu-shi-react/">
-        </link>
-        <updated>2020-07-02T13:47:24.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="搭建react项目">搭建React项目</h2>
-<p>在装有node.js的基础上，命令行输入命令</p>
-<pre><code>npx create-react-app item-name
-</code></pre>
-<p>即可创建一个React项目，项目结构如下</p>
-<figure data-type="image" tabindex="1"><img src="https://qinyu312.github.io/post-images/1605707465716.png" alt="" loading="lazy"></figure>
-<h2 id="jsx语法">JSX语法</h2>
-<p>src文件下的index.js是项目的入口文件，文件中先后引入了react和react-dom两个库。</p>
-<pre><code>ReactDOM.render(&lt;h2&gt;hello react&lt;/h2&gt;, document.getElementById('root'));
-</code></pre>
-<p>ReactDOM实例通过render方法，将前面的h2标签元素，添加到root元素中，而id为root的元素是public文件的index.html文件的元素。<br>
-JSX语法由JavaScript语法 和 XML语法组成，通俗来说就是，当我们在JSX语句中遇到 &lt;&gt; 的形式的，按照XML的形式来解析，因为他们是标签；遇到 {} 按照javaScript来解析，表示JS语法。</p>
-<pre><code>const a = (
-        &lt;div&gt;
-            &lt;p&gt;hello react&lt;/p&gt;
-        &lt;/div&gt;
-) 
-</code></pre>
-<p>如果存在标签结构，并且标签结构需要换行的话，可以使用 （）的形式进行表示</p>
-<h2 id="react-元素渲染">React 元素渲染</h2>
-<p>这里通过一个实例了解react的元素渲染</p>
-<pre><code>&lt;!-- 首先定义一个方法 --&gt;
-function nowTime() {
-    const ele = (
-        &lt;!-- 使用()的形式，可以换行写标签语法 --&gt;
-        &lt;h2&gt;get now time&lt;/h2&gt;  
-        &lt;!-- 定义一个获取当前时间的方法 --&gt;
-        &lt;h1&gt;now time is { new Date().toLocalTimeString() } &lt;/h1&gt;
-    )
-    &lt;!-- 渲染这个获取当前时间的方法 --&gt;
-    reactDOM.render(ele, document.getElementById('root));
-}
-&lt;!-- 定时器每隔一秒会调用一次该方法，实现实时更新当前时间 --&gt;
-setInterval(() =&gt; {
-    nowTime()
-},1000)
-
-</code></pre>
-<h2 id="react-组件">React 组件</h2>
-<p>关于Ract组件，区别于vue的以 .vue为后缀结尾的文件，React的组件可以是以 .js 为后缀的文件，也可以是 .jsx 为后缀的文件命名。编写React组件的时候，创建 .js 的组件是没有代码语法提示的，而创建 .jsx 组件文件是有代码语法提示的。 创建React组件分别有两种方式，第一种是通过 类的形式创建组件，第二种是通过Hook的形式创建。并且组件之间是可以互相引入和使用的，以标签的形式存在！</p>
-<pre><code>&lt;!-- 第一种写法 --&gt;
-&lt;!-- 创建一个React组件首先需要引入 React 库 --&gt;
-import React from 'react'
-&lt;!-- 创建一个类App继承React所提供的Component组件的对象 --&gt;
-class App extends React Component {
-    &lt;!-- rander(){} 渲染函数 --&gt;
-    render() {
-        &lt;p&gt;渲染函数中写你需要这个组件展示的内容，或者要做什么&lt;/p&gt;
-    }
-}
-&lt;!-- 导出组件 --&gt;
-export default App
-
-&lt;!-- 第二种写法 --&gt;
-import React from 'react'
-
-export default class App extends React.Component{
-    render() {
-        return {
-            &lt;div&gt;
-                &lt;p&gt;直接导出并继承React下的Component对象&lt;/p&gt;
-            &lt;/div&gt;
-        }
-    }
-}
-</code></pre>
-<pre><code>&lt;!-- 函数组件 --&gt;
-function fun(props) {
-    return (
-        &lt;div&gt;
-            &lt;h3&gt;函数组件&lt;/h3&gt;
-        &lt;/div&gt;
-    )
-}
-&lt;!-- ES6 class类组件 --&gt;
-class App extends React.Component {
-    render() {
-        return (
-            &lt;div&gt;
-                &lt;h3&gt;ES6 class类创建组件&lt;/h3&gt;  
-            &lt;/div&gt;
-        )
-    }
-}
-</code></pre>
-<p>然后在需要使用的地方引入该组件,并将其放置在渲染函数中渲染即可。</p>
-<pre><code>import 'App' from './App.jsx'
-ReactDOM.render(&lt;App /&gt;, document.getElementById('root));
-
-</code></pre>
-<h3 id="props组件动态传参">Props组件动态传参</h3>
-<p>React里面的组件传参通过 props</p>
-<h3 id="父组件传递参数给子组件">父组件传递参数给子组件</h3>
-<pre><code>&lt;!-- 子组件 --&gt;
-import React from 'react'
-export default class Son extends React.Component {
-    render() {
-        return {
-            &lt;div&gt;
-                &lt;ul&gt;
-                    {
-                    &lt;!-- 子组件中 通过this.props的方式获取父组件传递过来的数据，也就是arr ,然后通过map来遍历获取到的数据--&gt;
-                        this.props.arr.map((element, index) =&gt; {
-                            &lt;!-- 将遍历得到的数据放在li标签中渲染返回，key值需要绑定index唯一值，否则会抛出语法error --&gt;
-                            return &lt;li key={ index }&gt;{ element }&lt;/li&gt;
-                        })
-                    }
-                &lt;/ul&gt;            
-            &lt;/div&gt;
-        }
-    }
-}
-</code></pre>
-<pre><code>import React from 'react'
-&lt;!-- 引入子组件 --&gt;
-import Son from './son'
-export default class Father extends React.Component {
-    render() {
-        &lt;!-- 父组件定义两个数组，用于传递给子组件使用 --&gt;
-        const arrOne = ['Vue' , 'React', 'Angular'],
-                 arrTwo = ['Java', 'Pythen', 'C++']
-        return (
-            &lt;!-- 在两个子组件中分别传入不同的数据 --&gt;
-            &lt;Son arr={ arrOne } /&gt;
-            &lt;Son arr={ arrTwo } /&gt;
-        )
-    }
-}
-</code></pre>
-<h3 id="子组件传递参数给父组件">子组件传递参数给父组件</h3>
-<pre><code>&lt;!-- 父组件 --&gt;
-import React from 'react'
-import Son from './son'
-export defaul{t class Father React.Component {
-    &lt;!-- 首先定义state用来存储title的状态 --&gt;
-    constructor() {
-        super();
-        this.state = {
-            title: ‘最初的标题’
-        }
-    }
-    clickChange = () =&gt; {
-        this.setState({
-            title: '最后的标题'
-        })
-    }
-    render()  {
-        return (    
-            &lt;div&gt;
-                父子组件传参
-            &lt;/div&gt;
-            &lt;!-- 使用子组件,title最开始为 ‘最初的标题’， changeFatherProps 被子组件中的点击事件触发从而执行父组件中的clickChange方法，完成对标题的修改 --&gt;
-            &lt;son title={ this.state.title } changeFatherProps={ this.clickChange } /&gt;
-        )
-    }
-}
-</code></pre>
-<pre><code>&lt;!-- 子组件 --&gt;
-import React from 'react'
-
-export defaul{t class Father React.Component {
-    changeFather = () =&gt; {
-        &lt;!-- 通过 this.props 的方式 --&gt;
-        this.prpos.changFatherProps()
-    }
-    render()  {
-        return &lt;div&gt;
-                    父子组件传参
-                    &lt;!-- 点击button事件会触发父组件中方法的执行，将标题修改 --&gt;
-                    &lt;button onClick={ this.changeFather }&gt;点击传参修改&lt;button&gt;
-                &lt;/div&gt;
-    }
-}
-</code></pre>
-<h2 id="state-状态">state 状态</h2>
-<pre><code>&lt;!-- 通过this.state定义保存数据和状态 --&gt;
-    this.state = {
-        flag: true,
-        count: 10,
-    }
-    &lt;!-- 需要修改状态值的时候通过 this.setState({})的方式进行修改 --&gt;
-    this.setState({
-        flag:  false,
-        count: this.state.count ++
-    })
-</code></pre>
-<h2 id="生命周期函数">生命周期函数</h2>
-<p>随着我们对React理解和使用的原来越多，生命周期会越来越有参考价值<br>
-生命周期函数包括:</p>
-<ol>
-<li>componentWillMount:  在组件创建之前执行</li>
-<li>componentDidMount: 在组件渲染之后执行</li>
-<li>shouldComponentUpdata: 返回 true 和 false, true代表允许改变， false代表不允许改变</li>
-<li>componentWillUpdata: 数据在改变之前执行（state, props）</li>
-<li>conponentDidUpdata: 代表数据修改完成（state, props）</li>
-<li>conponentWillReveiceProps: props发生改变时执行的生命周期函数</li>
-<li>conponentWillUnMount: 组件卸载前执行</li>
-</ol>
-<h2 id="探讨关于-setstate-更新是同步操作还是异步操作的问题">探讨关于 setState 更新是同步操作还是异步操作的问题</h2>
-<pre><code>setState会引起视图的重绘
-官方文档解答:在可控的情况下是异步的，在不可控的情况下是同步的
-</code></pre>
-<h2 id="create-react-app-按需加载antd-组件">create-react-app 按需加载Antd 组件</h2>
-<ol>
-<li>命令行输入 cnpm run eject  拉取React的配置文件</li>
-<li>文件被修改时，会抛出异常，由于GIt的原因导致,此时找到文件目录，按下shift + command + . 显示隐藏文件，删除 .git 文件，重新 cnpm run eject即可，安装完成后目录多出了两个文件，分别是config和script文件，config文件就是webpack配置文件</li>
-<li>安装一个依赖文件 cnpm install babel-plugin-import --save-dev</li>
-</ol>
-<h2 id="react-router">React-Router</h2>
-<p>React路由也分为两种路由模式： BrowserRouter 和 HashRouter<br>
-两者的区别在于 HashRouter使用的是锚点链接的形式，表现为 # 的形式， # 号后面为跳转的二级路由地址 而BrowserRouter 则使用了HTML5的新特性，主要是 history.push() 实现。<br>
-实际开发中， BrowserRouter 会在项目上线之后存在一些问题，就是需要后台配合做一些配置处理和重定向，否则会很容易跳转到 404 页面，而 HashRouter 则不会有这个问题。</p>
-<pre><code>&lt;!-- 安装 react-router --&gt;
-cnpm install react-router-dom -save
-
-&lt;!-- 使用 react-router --&gt;
-import {BrowserRouter as Router, Link,NavLink, Route, Redirect} from &quot;react-router-dom&quot;
-&lt;!-- 引入  react-router 相关的组件 --&gt;
-
-function App() {
-    render() {
-        return(
-            &lt;div&gt;
-            &lt;!-- 在 Router盒子中嵌套 Route盒子，在Route中定义路由路径和路径对应的页面 --&gt;
-                &lt;Router&gt;
-                    &lt;switch&gt;
-                        &lt;Route path=&quot;/login&quot; component={ Login }&gt;&lt;/Route&gt;
-                        &lt;Route path=&quot;/home&quot; component={ Home }&gt;&lt;/Route&gt;
-                        &lt;Route path=&quot;/home/detail&quot; exact={ true } component={ detail }&gt;&lt;/Route&gt;         
-                        &lt;Route path=&quot;/demo&quot; render={ () =&gt; &lt;div&gt;简约写法，不需要创建页面和组件，直接路由显示render函数中定义路由页面内容即可&lt;/div&gt;}&lt;/Route&gt;
-                        &lt;!-- 简约写法，不需要创建页面和组件，直接路由显示render函数中定义路由页面内容即可 --&gt;
-                    &lt;/switch&gt;
-                    &lt;!-- 当路由规则包裹在switch内的时，路由就不会同时显示多个，而是按照当前路径进行匹配 --&gt;
-                &lt;/Router&gt;
-                    &lt;!-- 路由匹配规则之，如果一个页面上同时存在 路径为 /home 和 /home/detail 两个组件，两个组件都会显示，因为 /home 是包含 /home/detail , 但是正常情况下访问 /home下的/detail是不应该显示上一级组件也就是 /home的，这个时候就需要使用到 路由规则的精准匹配， 使用 exace = { true } 即可开启精准匹配，就不会匹配到下一级路由，只会匹配到 /home 这一个, strict = { true } 可以更加精确的匹配路由，而且使用的时候strice需要和exace一起使用才可以生效，而exace不需要组合使用也可以生效 --&gt;
-
-                    &lt;Link to=&quot;/login&quot;&gt;go login now&lt;/Link&gt;
-                    &lt;!-- Link 点击跳转到 to 后面的路由页面 --&gt;
-
-                    &lt;NavLink to=&quot;/login&quot; activeClassName=&quot;setActive&quot;&gt;&lt;/NavLink&gt;
-                    &lt;!-- NavLink顾名思义，导航跳转，后为当前选中的菜单导航添加一个名为active的class样式，给你这个样式添加颜色或者背景选中时便会添加该样式,activeClassName可以修改样式名称，默认是active --&gt;
-
-                    &lt;Redirect from=&quot;/happy&quot; to=&quot;/login&quot;&gt;&lt;/Redirect&gt;
-                    &lt;!-- Redirect可以实现路由重新向，当你访问 的地址是属性中的from，也就是要去的路由为 ‘/happy',他会直接重定向到 to所给定的路由地址 --&gt;
-
-
-                &lt;/Router&gt;
-            &lt;/div&gt; 
-        )
-    }
-}
-&lt;!-- 处于用户体验方面的考虑，我们一般还会在路由匹配中加入 404 等页面，将不存在的路径以更友好地方式提醒用户 --&gt;
-</code></pre>
-<pre><code>&lt;button&gt;跳转&lt;/button&gt;
-
-&lt;!-- 跳转的方法有 两种  props.history.push('/home')   和 props.history.replace('/home')
-区别在于， push方法的页面跳转是叠加的，也就是说点击浏览器左上角的返回上一个页面依然有效，因为历史数据被保留； 而replace方法是替换的，所以不会存有历史跳转记录
- --&gt;
-</code></pre>
-<h2 id="redux数据管理方案-类似于vuex">Redux数据管理方案  (类似于Vuex)</h2>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Ant Design for vue]]></title>
-        <id>https://qinyu312.github.io/post/ant-design-for-vue/</id>
-        <link href="https://qinyu312.github.io/post/ant-design-for-vue/">
-        </link>
-        <updated>2020-06-22T13:32:27.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="ant-design-for-vue按需加载报错问题解决">Ant design for vue按需加载报错问题解决</h2>
-<p><a href="https://www.antdv.com/docs/vue/introduce-cn/">Ant Design for Vue</a><br>
-官网有详细的按需加载教程，但是在使用之后，项目启动会抛出如下错误</p>
-<pre><code> ERROR  Failed to compile with 1 error                                                
- error  in ./node_modules/ant-design-vue/es/button/style/index.less
-Syntax Error:
-// https://github.com/ant-design/ant-motion/issues/44
-.bezierEasingMixin();
-^
-Inline JavaScript is not enabled. Is it set in your options?
-</code></pre>
-<p>此时需要把 babel.config.js 配置文件中</p>
-<pre><code>module.exports = {
-  presets: [
-    '@vue/cli-plugin-babel/preset'
-  ],
-  plugins: [
-    [
-       &quot;import&quot;,
-      { libraryName: &quot;ant-design-vue&quot;, libraryDirectory: &quot;es&quot;, style: true }
-    ]
-  ]
-}
-</code></pre>
-<p>的 style 处的 true 改为 &quot;css&quot;，项目即可正常启动并完成按需加载组件库</p>
-<pre><code>module.exports = {
-  presets: [
-    '@vue/cli-plugin-babel/preset'
-  ],
-  plugins: [
-    [
-       &quot;import&quot;,
-      { libraryName: &quot;ant-design-vue&quot;, libraryDirectory: &quot;es&quot;, style: &quot;css&quot; }
-    ]
-  ]
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Fetch querystring解决跨域]]></title>
-        <id>https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/</id>
-        <link href="https://qinyu312.github.io/post/fetch-shu-ju-jie-kou-qing-qiu/">
-        </link>
-        <updated>2020-06-11T14:38:43.000Z</updated>
-        <content type="html"><![CDATA[<p>以前写数据接口，对接请求都是使用的Ajax，或者Axios之类的，最近在使用React进行开发，用到了<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch">fetch</a>, 和<a href="http://nodejs.cn/api/querystring.html">querystring</a></p>
-<pre><code>import qs from 'querystring'
-&lt;!-- get请求 --&gt;
-fetch(&quot;http://iwenwiki.com/api/blueberrypai/getChengpinInfo.php&quot;)
-.then(res =&gt; res.json())
-.then(data =&gt; {
-    console.log(data)
-})
-
-&lt;!-- post请求 --&gt;
-fetch(&quot;http://iwenwiki.com/api/blueberrypai/login.php&quot;, {
-    method: 'POST' ,   // 请求方式
-    headers: {            // 请求头
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json, text/plain, */*',
-    },
-    &lt;!-- body: &quot;user_id=iwen@qq.com&amp;password=iwen123&amp;verification_code=crfvw&quot; --&gt;
-    &lt;!-- 此处传参使用字符串传参的方式，所以需要参数间 &amp; 分隔拼串 --&gt;
-    &lt;!-- 如果不想写拼串，也可以直接引入 querystring来进行转换操作如下 --&gt;
-    body: qs.stringify({
-        'user_id': 'iwen@qq.com',
-        'password': 'iwen123',
-        'verification_code': 'crfvw'
-    })
-})
-</code></pre>
-<h2 id="跨域的解决方案">跨域的解决方案</h2>
-<p>跨域一般分为两种场景： 开发环境下的跨域问题和生产环境下的跨域问题<br>
-此处以React项目开发环境下为例</p>
-<pre><code>componentDidMount() {
-    fetch(&quot;http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billList&amp;type=1&amp;size=10&amp;offset=0&quot;)
-    .then(res =&gt; res.json())
-    .then(data =&gt; {
-        console.log(data)
-    })
-    .catch(error =&gt; {
-        console.log(new Error(error))
-    })
-}
-</code></pre>
-<p><img src="https://qinyu312.github.io/post-images/1607442245412.png" alt="" loading="lazy"><br>
-此处请求会跨域<br>
-需要在 package.json 文件中配置 proxy 代理解决<br>
-<img src="https://qinyu312.github.io/post-images/1607442296763.png" alt="" loading="lazy"><br>
-配置完成 package.json 文件后需要将请求接口前面的已经被代理的地址去掉如下</p>
-<pre><code>componentDidMount() {
-    fetch(&quot;/v1/restserver/ting?method=baidu.ting.billboard.billList&amp;type=1&amp;size=10&amp;offset=0&quot;)
-    .then(res =&gt; res.json())
-    .then(data =&gt; {
-        console.log(data)
-    })
-    .catch(error =&gt; {
-        console.log(new Error(error))
-    })
-}
-</code></pre>
-<p>然后终止此项目进程，重新运行该项目即可使用代理解决跨域问题。打开浏览器调试，接口数据正常请求得到。<br>
-<img src="https://qinyu312.github.io/post-images/1607442458895.png" alt="" loading="lazy"></p>
-<h2 id="fetch-封装常用请求">fetch 封装常用请求</h2>
-<p>工具类文件utils下创建 http.js 用于封装常用的请求方法</p>
-<pre><code>import qs from 'querystring'
-
-&lt;!-- 导出封装的 get 请求 --&gt;
-export function httpGet(url) {
-    const result = fetch(url)
-    return result
-}
-
-&lt;!-- 导出封装的 post 请求 --&gt;
-export function httpPost(url, params) {
-    &lt;!-- params为post请求携带参数 --&gt;
-    const result = fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Accept': 'application/json, text/plain, */*',
-        },
-        body: qs.stringify(params)
-    })
-}
-</code></pre>
-<p>然后在 utils 同级创建一个 api 文件，用于管理接口，api 下新建一个 base.js ，用于向外暴露接口的前置接口地址公共部分(一般情况下接口地址的前半部分是一致的)，然后新建一个 index.js 用于定义业务接口请求统一管理，或者创建不同的功能分类 (如，登录的接口单独写在一个文件里，首页的接口单独写在一个文件里，便于维护)<br>
-base.js</p>
-<pre><code>const base = {
-    baseUrl: 'http://iwenwiki.com/api'
-}
-</code></pre>
-<p>index.js</p>
-<pre><code>import {httpGet, httpPost} from '../utils/http'
-import base from './base'
-
-&lt;!-- 在下面定义各种业务接口 --&gt;
-const api = {
-    &lt;!-- get请求 --&gt;
-    getUserId() {
-        return httpGet(base.baseUrl + '/blueberrypai/getChengpinInfo.php');
-    },
-    &lt;!-- post请求 --&gt;
-    getLogin(params) {
-        return httpPost(baseUrl + '/blueberrypai/login.php', params);
-    }
-}
-
-&lt;!-- 定义完成后导出 api ,在需要调用处导入调用即可 --&gt;
-export default api
-</code></pre>
-<p>调用接口的文件下</p>
-<pre><code>import api from '../api'
-&lt;!-- get请求不用携带参数，直接获取并打印数据 --&gt;
-api.getUserId().then(res =&gt; res.json()).then(data =&gt; {
-    console.log(data)
-})
-&lt;!-- post请求调用接口时传入参数，获取并打印数据 --&gt;
-api.getLogin({
-    'user_id': 'iwen@qq.com',
-    'password': 'iwen123',
-    'verification_code': 'crfvw'
-}).then(res =&gt; res.json()).then(data =&gt; {
-    console.log(data)
-})
 </code></pre>
 ]]></content>
     </entry>
